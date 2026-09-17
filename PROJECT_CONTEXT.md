@@ -82,6 +82,7 @@ Increase enrollment for a new class expected to begin in approximately one month
 - Target families within a 30-mile radius centered on Salt Creek Park.
 - Cap total advertising spend for the two-destination test at $200.
 - Run the test for 10 days with an equal allocation: $10 per day to the academy-funnel destination and $10 per day to the direct-City destination.
+- Target adults ages 25-65+, all genders, within the approved 30-mile radius. Include parents, guardians, and grandparents; do not directly target minors.
 
 ## Proposed
 

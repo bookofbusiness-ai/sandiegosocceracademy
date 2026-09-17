@@ -26,6 +26,7 @@
 | $200 advertising cap | Direct human authority | `CANONICAL` | Limit total spend across both destination variants to $200. |
 | 10-day equal allocation | Direct human authority | `CANONICAL` | Allocate $10 per day to each destination variant for 10 days. |
 | Fixed enrollment threshold | Direct human authority | `REJECTED` | Retire the internal threshold of 6 and evaluate registrations without a fixed minimum target. |
+| Adult advertising audience | Direct human authority | `CANONICAL` | Target adults ages 25-65+, all genders, within 30 miles; include grandparents and do not directly target minors. |
 | Project Context and Working Spec | Project-owned state | `CANONICAL` for current campaign state | Defines the observed facts, proposals, boundaries, and unresolved decisions. |
 
 ## Conflicts and gaps
@@ -43,4 +44,4 @@
 
 ## Current canon
 
-The nonprofit relaunch and the intent to improve access are current. The existing website is unaccepted prototype evidence. The upcoming class is the approved primary enrollment campaign, its 2026 offer is reconstructed, and the City remains the final registration authority. The two-destination acquisition test structure, 30-mile radius, $200 total cap, and 10-day equal allocation are approved. The fixed enrollment threshold is rejected; registrations and cost per registration are the outcome measures. The subsidized club remains a separate proposed strategic direction. No further implementation is authorized until the Product Room completes the remaining acquisition boundaries.
+The nonprofit relaunch and the intent to improve access are current. The existing website is unaccepted prototype evidence. The upcoming class is the approved primary enrollment campaign, its 2026 offer is reconstructed, and the City remains the final registration authority. The two-destination acquisition test structure, 30-mile radius, $200 total cap, 10-day equal allocation, and adults 25-65+ audience are approved. The fixed enrollment threshold is rejected; registrations and cost per registration are the outcome measures. The subsidized club remains a separate proposed strategic direction. No further implementation is authorized until the Product Room completes the remaining acquisition boundaries.

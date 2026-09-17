@@ -18,7 +18,7 @@
 - **Campaign state:** Product Room framing
 - **Approved path:** freeze class offer -> define conversion plan -> approve launch revision -> issue Build Assignment -> execute and verify; explore the club as a separate governed track
 - **Buildability Gate:** `NOT_READY`
-- **Blockers:** detailed adult audience, direct City class links or catalog fallback, tracking boundary, approved claims, and public boundary for the proposed club
+- **Blockers:** direct City class links or catalog fallback, tracking boundary, approved claims, and public boundary for the proposed club
 
 ## Active quest
 
@@ -43,9 +43,9 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 
 ## Resume cursor
 
-- **Last accepted decision:** retire the fixed enrollment threshold and evaluate the campaign by class registrations and cost per registration within the approved $200 cap
-- **Exact next action:** approve or revise the detailed adult audience in Q3 of `questions/SDSA-QUEST-002.md`
-- **Why it is next:** geography is fixed at 30 miles, but the eligible adult audience must be governed before ad configuration
+- **Last accepted decision:** target adults ages 25-65+, all genders, within 30 miles of Salt Creek Park, including parents, guardians, and grandparents without directly targeting minors
+- **Exact next action:** approve or revise the factual advertising claims in Q3 of `questions/SDSA-QUEST-002.md`
+- **Why it is next:** the audience is fixed, but the ad and landing-page promise must be governed before creative or implementation begins
 
 ## Current artifacts
 
@@ -60,6 +60,7 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 - Acquisition Budget Decision Record: `decisions/SDSA-DEC-005.md`
 - Test Duration and Allocation Decision Record: `decisions/SDSA-DEC-006.md`
 - Registration Outcome Decision Record: `decisions/SDSA-DEC-007.md`
+- Adult Audience Decision Record: `decisions/SDSA-DEC-008.md`
 - Canon Reconciliation: `CANON_RECONCILIATION.md`
 - Project Blueprint: `PROJECT_BLUEPRINT.md`
 - Build Receipt: `evidence/BUILD_RECEIPT-SDSA-001.md`
