@@ -93,7 +93,7 @@ The club concept is intended to lower the cost of competitive soccer and attract
 
 ## Known gaps
 
-- Exact upcoming-class offer and enrollment target.
+- Session-year confirmation, current enrollment, target enrollment, and direct registration destination.
 - Advertising budget, audience radius, creative claims, and measurement plan.
 - Time-sensitive program schedule and capacity.
 - Donation destination.

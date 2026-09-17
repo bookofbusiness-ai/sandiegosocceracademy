@@ -32,8 +32,22 @@ Increase enrollment for a new class expected to begin in approximately one month
 - The site is not yet published from this repository and the custom domain has not been changed in this campaign.
 - The first application build happened before the v0.1.9 Product Room flow was run. It is therefore an unaccepted implementation candidate, not an approved product target.
 - The user reports low sign-ups for the upcoming class.
-- The exact new-class date and enrollment offer are not yet recorded.
+- User-supplied City of Chula Vista listings establish two Wednesday class offers at Salt Creek Park Soccer Arena, with dates displayed as October 7-December 2 and no class November 25.
+- The City of Chula Vista's current program guide is Fall 2026, which supports—but does not replace human confirmation of—the inferred 2026 year because the screenshots omit the year.
 - A subsidized club with boys' and girls' age-group teams, supported in part by business sponsorships, is under consideration; it is not yet an approved operating model or public claim.
+
+## Observed class offer
+
+- **Intro Soccer Skills & Games-SC:** ages 6-9, Wednesdays 4:30-5:30 PM.
+- **Beginner II Soccer Skills & Games-SC:** ages 10-14, Wednesdays 5:30-6:30 PM.
+- **Displayed date range:** October 7-December 2, excluding November 25.
+- **Location:** Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vista, CA 91915.
+- **Fee per class:** $85 resident / $106 non-resident.
+- **Registration window displayed:** September 8 at 8:00 AM through October 30.
+- **Capacity per class:** minimum 12, maximum 36.
+- **Instructor:** San Diego Soccer Academy.
+- **Registration mechanism:** City account/sign-in flow; the official current catalog is `https://secure.rec1.com/CA/chula-vista-ca/catalog`.
+- **Contact shown:** Jason Taylor, `jason@sandiegosocceracademy.org`; facility phone `619-409-1994`.
 
 ## Product laws
 
@@ -73,8 +87,9 @@ Increase enrollment for a new class expected to begin in approximately one month
 
 ## Unresolved
 
-- Exact new-class start date, age range, day/time, location, price, capacity, and registration action.
-- What "low sign-ups" means in current enrollment, target enrollment, and minimum viable enrollment.
+- Confirmation that the screenshots refer to the 2026 session.
+- Current sign-ups for each class and the desired enrollment target for each class.
+- Whether the general City catalog is the intended ad destination or a direct class URL is available.
 - Whether Wednesday 4:30 PM-6:30 PM remains the current schedule.
 - Current coach titles and affiliations.
 - Donation destination or payment link.
@@ -101,5 +116,7 @@ Increase enrollment for a new class expected to begin in approximately one month
 
 - User-authorized repository: `bookofbusiness-ai/sandiegosocceracademy`.
 - User-supplied reference: `https://soccer-academy-insights--jlanier01.replit.app`.
+- User-supplied class listings: `evidence/source/chula-vista-class-ages-6-9.png` and `evidence/source/chula-vista-class-ages-10-14.png`.
+- Extracted offer evidence: `evidence/CLASS_OFFER-SDSA-002.md`.
 - Implementation evidence: `evidence/BUILD_RECEIPT-SDSA-001.md`.
 - Source images and generated-image provenance: `README.md`.

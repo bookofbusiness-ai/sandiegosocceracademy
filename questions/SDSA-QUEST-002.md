@@ -14,11 +14,12 @@
 
 ## Q2: What is the exact class offer?
 
-- **Status:** `UNRESOLVED`
-- **Known:** The class begins roughly one month from 2026-09-17. The older reference includes Salt Creek Recreation Center and Wednesday training, but time-sensitive details are not confirmed.
-- **Missing:** Exact start/end dates, age range, day/time, location, price, capacity, current sign-ups, minimum viable enrollment, target enrollment, and the authoritative registration action.
-- **Recommendation:** Freeze these facts before writing launch copy or ad creative.
-- **Human decision:** Pending.
+- **Status:** `PARTIAL`
+- **Known from direct listing evidence:** Two Wednesday classes run October 7-December 2, excluding November 25, at Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vista. Intro Soccer Skills & Games-SC serves ages 6-9 from 4:30-5:30 PM. Beginner II Soccer Skills & Games-SC serves ages 10-14 from 5:30-6:30 PM. Both cost $85 for residents / $106 for non-residents, require at least 12 participants, and allow up to 36. Registration is shown as September 8 at 8:00 AM through October 30 and requires a City account.
+- **Corroboration:** The official City program guide is Fall 2026 and directs registration to `https://secure.rec1.com/CA/chula-vista-ca/catalog`. The displayed dates also align with Wednesdays in 2026.
+- **Missing:** Human confirmation that the year is 2026; current sign-ups and desired target for each class; and confirmation that the general City catalog is the intended registration destination or provision of a direct class URL.
+- **Recommendation:** Confirm the remaining facts, then freeze the offer before writing launch copy or ad creative.
+- **Human decision:** Partial evidence supplied on 2026-09-17; final confirmation pending.
 
 ## Q3: What is the paid-acquisition boundary?
 

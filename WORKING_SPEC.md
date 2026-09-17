@@ -19,6 +19,15 @@ Use two tracks with one shared mission:
 
 The enrollment track is the approved primary campaign. The two-track boundary is `CANONICAL`. The club operating model and offer remain `PROPOSED` until separately approved.
 
+## Observed enrollment offers
+
+| Class | Ages | Time | Dates shown | Price | Capacity |
+| --- | --- | --- | --- | --- | --- |
+| Intro Soccer Skills & Games-SC | 6-9 | Wednesday, 4:30-5:30 PM | Oct 7-Dec 2; no class Nov 25 | $85 resident / $106 non-resident | 12 minimum / 36 maximum |
+| Beginner II Soccer Skills & Games-SC | 10-14 | Wednesday, 5:30-6:30 PM | Oct 7-Dec 2; no class Nov 25 | $85 resident / $106 non-resident | 12 minimum / 36 maximum |
+
+Both are shown at Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vista, with registration displayed as September 8 at 8:00 AM through October 30. The screenshots omit the year; Fall 2026 is strongly supported by the current official program guide but remains a confirmation item.
+
 ## Existing implementation evidence
 
 - Preserve the reference site's core navigation and contact paths.
@@ -38,8 +47,10 @@ The enrollment track is the approved primary campaign. The two-track boundary is
 
 ## Unresolved questions
 
-- Exact class date, age range, schedule, location, price, capacity, and enrollment action.
-- Current sign-ups, target sign-ups, minimum viable enrollment, and advertising budget.
+- Confirmed session year.
+- Current and target sign-ups for each class.
+- Final registration destination: the general City catalog or a direct class URL.
+- Advertising budget.
 - Current coach titles and affiliations.
 - Donation destination.
 - Club launch horizon, team/age-group scope, facilities, coaching, subsidy economics, and sponsorship model.

@@ -18,15 +18,15 @@
 - **Campaign state:** Product Room framing
 - **Approved path:** freeze class offer -> define conversion plan -> approve launch revision -> issue Build Assignment -> execute and verify; explore the club as a separate governed track
 - **Buildability Gate:** `NOT_READY`
-- **Blockers:** exact class offer, enrollment target, and public boundary for the proposed club
+- **Blockers:** class-year confirmation, live enrollment/target numbers, registration destination, acquisition boundary, and public boundary for the proposed club
 
 ## Active quest
 
 - **Quest ID/title:** `SDSA-QUEST-002` Decide the relaunch path and club boundary
 - **Quest state:** Product Room
-- **Required decision areas remaining:** launch offer, enrollment target, club hypothesis boundary
+- **Required decision areas remaining:** complete the launch offer, set enrollment target, define acquisition boundary, and bound the club hypothesis
 - **Optional refinements:** ad creative, sponsorship packages, club operations, analytics, CRM, online registration
-- **Current Question ID/status:** `Q2 / UNRESOLVED`
+- **Current Question ID/status:** `Q2 / PARTIAL`
 - **Highest assigned Question ID:** `Q4`
 
 ## Build transition and return
@@ -44,8 +44,8 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 ## Resume cursor
 
 - **Last accepted decision:** approve the two-track strategy for the class relaunch and club discovery
-- **Exact next action:** capture the exact upcoming-class offer in Q2 of `questions/SDSA-QUEST-002.md`
-- **Why it is next:** the landing page, registration path, ad message, conversion measurement, and build acceptance criteria all depend on authoritative offer facts
+- **Exact next action:** confirm the inferred 2026 year, current and target enrollment by class, and final registration destination in Q2 of `questions/SDSA-QUEST-002.md`
+- **Why it is next:** the supplied listings resolve the program structure, but urgency, measurement, and the primary call to action still depend on these remaining facts
 
 ## Current artifacts
 
@@ -57,6 +57,7 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 - Canon Reconciliation: `CANON_RECONCILIATION.md`
 - Project Blueprint: `PROJECT_BLUEPRINT.md`
 - Build Receipt: `evidence/BUILD_RECEIPT-SDSA-001.md`
+- Class Offer Evidence: `evidence/CLASS_OFFER-SDSA-002.md`
 - Approved spec: `NONE`
 - Production handoff: `NONE`
 
