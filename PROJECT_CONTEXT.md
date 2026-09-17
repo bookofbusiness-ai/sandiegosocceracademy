@@ -33,18 +33,19 @@ Increase enrollment for a new class expected to begin in approximately one month
 - The first application build happened before the v0.1.9 Product Room flow was run. It is therefore an unaccepted implementation candidate, not an approved product target.
 - The user reports low sign-ups for the upcoming class.
 - User-supplied City of Chula Vista listings establish two Wednesday class offers at Salt Creek Park Soccer Arena, with dates displayed as October 7-December 2 and no class November 25.
-- The City of Chula Vista's current program guide is Fall 2026, which supports—but does not replace human confirmation of—the inferred 2026 year because the screenshots omit the year.
+- The user confirmed that the class listings are for 2026.
 - A subsidized club with boys' and girls' age-group teams, supported in part by business sponsorships, is under consideration; it is not yet an approved operating model or public claim.
 
 ## Observed class offer
 
 - **Intro Soccer Skills & Games-SC:** ages 6-9, Wednesdays 4:30-5:30 PM.
 - **Beginner II Soccer Skills & Games-SC:** ages 10-14, Wednesdays 5:30-6:30 PM.
-- **Displayed date range:** October 7-December 2, excluding November 25.
+- **Confirmed date range:** October 7-December 2, 2026, excluding November 25.
 - **Location:** Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vista, CA 91915.
 - **Fee per class:** $85 resident / $106 non-resident.
 - **Registration window displayed:** September 8 at 8:00 AM through October 30.
 - **Capacity per class:** minimum 12, maximum 36.
+- **Human-defined campaign enrollment floor:** 6. This is an internal relaunch threshold and does not rewrite the City listing's displayed minimum of 12.
 - **Instructor:** San Diego Soccer Academy.
 - **Registration mechanism:** City account/sign-in flow; the official current catalog is `https://secure.rec1.com/CA/chula-vista-ca/catalog`.
 - **Contact shown:** Jason Taylor, `jason@sandiegosocceracademy.org`; facility phone `619-409-1994`.
@@ -76,6 +77,7 @@ Increase enrollment for a new class expected to begin in approximately one month
 - Preserve the current callback workflow without sending test submissions.
 - Install the SpecLoops v0.1.9 release candidate and label it accurately as unreleased.
 - Use two governed tracks: make the upcoming class the immediate enrollment campaign, and validate the subsidized club separately before presenting it as available.
+- Keep final class registration on the City's public website; the nonprofit site may serve as an explanatory funnel that sends families to the City system.
 
 ## Proposed
 
@@ -87,9 +89,10 @@ Increase enrollment for a new class expected to begin in approximately one month
 
 ## Unresolved
 
-- Confirmation that the screenshots refer to the 2026 session.
-- Current sign-ups for each class and the desired enrollment target for each class.
-- Whether the general City catalog is the intended ad destination or a direct class URL is available.
+- Approval and parameters for a controlled destination test: academy landing page versus direct City registration.
+- Advertising budget, audience radius, campaign duration, and success threshold.
+- Direct City class URLs, if available; otherwise the general catalog remains the verified destination.
+- Whether the City listing's displayed minimum of 12 can be changed or should simply remain external source information while the campaign uses an internal floor of 6.
 - Whether Wednesday 4:30 PM-6:30 PM remains the current schedule.
 - Current coach titles and affiliations.
 - Donation destination or payment link.

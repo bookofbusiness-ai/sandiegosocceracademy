@@ -23,10 +23,12 @@ The enrollment track is the approved primary campaign. The two-track boundary is
 
 | Class | Ages | Time | Dates shown | Price | Capacity |
 | --- | --- | --- | --- | --- | --- |
-| Intro Soccer Skills & Games-SC | 6-9 | Wednesday, 4:30-5:30 PM | Oct 7-Dec 2; no class Nov 25 | $85 resident / $106 non-resident | 12 minimum / 36 maximum |
-| Beginner II Soccer Skills & Games-SC | 10-14 | Wednesday, 5:30-6:30 PM | Oct 7-Dec 2; no class Nov 25 | $85 resident / $106 non-resident | 12 minimum / 36 maximum |
+| Intro Soccer Skills & Games-SC | 6-9 | Wednesday, 4:30-5:30 PM | Oct 7-Dec 2, 2026; no class Nov 25 | $85 resident / $106 non-resident | City listing: 12 minimum / 36 maximum |
+| Beginner II Soccer Skills & Games-SC | 10-14 | Wednesday, 5:30-6:30 PM | Oct 7-Dec 2, 2026; no class Nov 25 | $85 resident / $106 non-resident | City listing: 12 minimum / 36 maximum |
 
-Both are shown at Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vista, with registration displayed as September 8 at 8:00 AM through October 30. The screenshots omit the year; Fall 2026 is strongly supported by the current official program guide but remains a confirmation item.
+Both are shown at Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vista, with registration displayed as September 8 at 8:00 AM through October 30. The user confirmed the year is 2026 and set an internal enrollment floor of 6. The City listing's displayed minimum of 12 remains external source information and must not be silently rewritten.
+
+Final registration remains on the City's public website. The academy website may act as a focused explanatory funnel with `Sign up now` actions that send families to the City system.
 
 ## Existing implementation evidence
 
@@ -47,10 +49,9 @@ Both are shown at Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vist
 
 ## Unresolved questions
 
-- Confirmed session year.
-- Current and target sign-ups for each class.
-- Final registration destination: the general City catalog or a direct class URL.
-- Advertising budget.
+- Approval of the controlled homepage-funnel versus direct-City destination test.
+- Advertising budget, audience radius, duration, and success threshold.
+- Direct City class links or approval to use the general catalog fallback.
 - Current coach titles and affiliations.
 - Donation destination.
 - Club launch horizon, team/age-group scope, facilities, coaching, subsidy economics, and sponsorship model.
@@ -73,4 +74,4 @@ See `evidence/BUILD_RECEIPT-SDSA-001.md`.
 
 ## Next checkpoint
 
-Resolve Q2 in `questions/SDSA-QUEST-002.md`: gather the exact class offer and enrollment target. Do not change website code or create ads until those facts are authoritative. Then define the paid-acquisition boundary in Q3 and prepare a named launch revision and bounded Build Assignment.
+Resolve Q3 in `questions/SDSA-QUEST-002.md`: approve or revise the destination test and define its budget, audience, duration, and success measure. Do not change website code or create ads until Q3 is authoritative. Then prepare a named launch revision and bounded Build Assignment.

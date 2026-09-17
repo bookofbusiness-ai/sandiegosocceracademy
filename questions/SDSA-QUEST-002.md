@@ -14,20 +14,19 @@
 
 ## Q2: What is the exact class offer?
 
-- **Status:** `PARTIAL`
+- **Status:** `ANSWERED`
 - **Known from direct listing evidence:** Two Wednesday classes run October 7-December 2, excluding November 25, at Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vista. Intro Soccer Skills & Games-SC serves ages 6-9 from 4:30-5:30 PM. Beginner II Soccer Skills & Games-SC serves ages 10-14 from 5:30-6:30 PM. Both cost $85 for residents / $106 for non-residents, require at least 12 participants, and allow up to 36. Registration is shown as September 8 at 8:00 AM through October 30 and requires a City account.
 - **Corroboration:** The official City program guide is Fall 2026 and directs registration to `https://secure.rec1.com/CA/chula-vista-ca/catalog`. The displayed dates also align with Wednesdays in 2026.
-- **Missing:** Human confirmation that the year is 2026; current sign-ups and desired target for each class; and confirmation that the general City catalog is the intended registration destination or provision of a direct class URL.
-- **Recommendation:** Confirm the remaining facts, then freeze the offer before writing launch copy or ad creative.
-- **Human decision:** Partial evidence supplied on 2026-09-17; final confirmation pending.
+- **Human decision:** Confirmed 2026 on 2026-09-17. The human-defined campaign enrollment floor is 6, and final registration occurs on the City's public website.
+- **Evidence boundary:** The City screenshot displays `Min Participants 12`. That external listing remains recorded as observed evidence; the internal campaign floor of 6 does not silently alter it.
 
 ## Q3: What is the paid-acquisition boundary?
 
-- **Status:** `UNRESOLVED`
-- **Known:** Facebook ads are desired to drive sign-ups.
-- **Missing:** Budget, geographic radius, audience, campaign duration, approved claims, tracking consent, destination, and success threshold.
-- **Recommendation:** Optimize for completed registrations if a trustworthy registration path exists; otherwise optimize for qualified leads and measure lead-to-registration conversion separately.
-- **Human decision:** Pending after Q2.
+- **Status:** `PARTIAL`
+- **Known:** Facebook ads are desired to drive sign-ups. Final registration happens on the City's public website. The academy homepage may provide program context and a `Sign up now` action before handing off to the City. The user is considering a second ad that links directly to the City.
+- **Missing:** Approval of the test design, total budget, geographic radius, audience, duration, approved claims, direct class URLs or catalog fallback, tracking consent, and success threshold.
+- **Recommendation:** Run a controlled two-destination test with the same audience, creative, schedule, and equal budget. Variant A lands on the academy's focused class page and measures the outbound City-registration click. Variant B goes directly to the same City registration destination. Compare City enrollment movement and cost per attributable enrollment where possible—not click-through rate alone. If direct class links cannot be obtained, prefer the academy funnel as the primary path because the general catalog adds search friction.
+- **Human decision:** The two destinations are under consideration; test parameters are not yet approved.
 
 ## Q4: What club hypothesis should be validated first?
 
@@ -39,4 +38,4 @@
 
 ## Resume rule
 
-Resume at Q2. Do not change website code or produce launch ads until the exact class offer and enrollment target are authoritative. Keep Q4 as a parallel discovery track that does not block the class relaunch.
+Resume at Q3. Do not change website code or produce launch ads until the acquisition test and its operating boundaries are approved. Keep Q4 as a parallel discovery track that does not block the class relaunch.

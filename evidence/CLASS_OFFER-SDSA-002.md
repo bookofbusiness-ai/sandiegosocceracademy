@@ -1,6 +1,6 @@
 # Class Offer Evidence: SDSA-002
 
-**Status:** `PARTIAL`  
+**Status:** `CONFIRMED_WITH_BOUNDARY`
 **Recorded:** 2026-09-17  
 **Source type:** user-supplied screenshots of City of Chula Vista recreation listings
 
@@ -38,7 +38,8 @@ The listings show Jason Taylor at `jason@sandiegosocceracademy.org` for question
 
 ## Evidence limits
 
-- The screenshots do not display a year.
+- The screenshots do not display a year; the user confirmed 2026 on 2026-09-17.
 - They do not show live enrollment counts.
 - They do not expose a direct class registration URL or activity code.
 - The maximum of 36 is capacity, not an approved campaign target.
+- The screenshot displays `Min Participants 12`; the user's separately defined internal campaign enrollment floor is 6. Both facts are preserved within their respective scopes.
