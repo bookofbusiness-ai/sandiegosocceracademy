@@ -1,7 +1,7 @@
 # SDSA Full-Site Relaunch and 2026 Class Campaign — Named Target Revision
 
 **Revision:** `SDSA-LAUNCH-v1`
-**Status:** `PROPOSED_NEEDS_CONTENT_RECONCILIATION`
+**Status:** `PROPOSED_FOR_HUMAN_APPROVAL`
 **Prepared:** 2026-09-17
 **Implementation authority:** `NONE`
 
@@ -28,6 +28,7 @@ Relaunch San Diego Soccer Academy as a complete nonprofit website with two clear
 - Maintain a separately managed directory of coaches currently available for private sessions.
 - Give each published private coach a stable academy-branded landing page with a verified bio, specialties and service details, current availability, approved social-proof video, direct booking, and human-callback option.
 - Allow authorized site operators to add, edit, publish, unpublish, and mark a private coach unavailable without redesigning the site.
+- Keep booking provider-neutral. Each coach can use a Google Calendar appointment page, Calendly, Cal.com, another trusted booking link/embed, callback-only mode, or unavailable status.
 - Preserve the nonprofit access, confidence, discipline, belonging, story, values, and community-support mission.
 - Preserve or improve the full information architecture: Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact.
 - Give each major destination a distinct, linkable route or equivalent clearly separated destination with persistent responsive navigation.
@@ -48,7 +49,7 @@ This path uses the approved 2026 offer and makes the external City handoff expli
 
 `Homepage or Private Training -> available coach directory -> coach booking page -> reserve a session or request a human callback`
 
-This path is informed by the Replit private-coaching model but improves it with managed availability, individual booking pages, explicit appointment booking, and a human fallback. The current generic callback workflow may be reused only after its ownership, payload, coach context, routing behavior, and fallback are verified against this target.
+This path is informed by the Replit private-coaching model but improves it with managed availability, individual booking pages, provider-neutral appointment actions, and a human fallback. The prototype will not create real appointments or connect to the production CRM. The current generic callback workflow may be represented only through safe prototype behavior and a documented handoff contract.
 
 ## Full-site content requirements
 
@@ -87,6 +88,9 @@ This path is informed by the Replit private-coaching model but improves it with 
 - Add the approved class content, full-site information architecture, calls to action, and City handoff.
 - Add distinct founder/member profiles and a managed directory of bookable private coaches.
 - Add individual academy-branded coach pages, verified profile/video content, availability, direct booking, coach-aware callback routing, and a documented human fallback.
+- Add a provider-neutral booking adapter supporting `external_link`, `embed`, `callback_only`, and `unavailable` prototype states.
+- Add safe prototype coach-management states for add, edit, preview, publish, unpublish, and unavailable behavior.
+- Document the coach data shape, selected-coach context, callback payload, and interaction events for the separate CRM integration owner.
 - Add anonymous aggregate signup-click measurement without personal data or advertising cookies.
 - Prepare two placement-ready ad creative variants with equivalent claims and different destinations.
 - Verify responsive behavior, accessibility, content accuracy, destination behavior, privacy boundary, and performance.
@@ -97,7 +101,8 @@ This path is informed by the Replit private-coaching model but improves it with 
 - Publishing ads or spending funds.
 - Meta Pixel, advertising cookies, custom audiences, or direct targeting of minors.
 - A first-party park-district registration system, player account system, or CRM.
-- A first-party scheduling or payment engine unless separately approved; connected scheduling may be used after Q6.
+- A first-party scheduling or payment engine unless separately approved; live provider connections belong to the separate integration scope.
+- Live calendar OAuth, production appointment creation, production coach accounts, production CRM reads or writes, and final CRM authentication or persistence.
 - Publishing the proposed club as an available program.
 - Fabricated availability, urgency, discounts, scholarships, results, or impact claims.
 
@@ -110,17 +115,19 @@ This path is informed by the Replit private-coaching model but improves it with 
 5. Founder/member profiles and bookable-coach status are separate; no founder is shown as available solely because of organizational membership.
 6. Authorized operators can add, edit, publish, unpublish, and mark a coach unavailable without redesigning the site.
 7. Every published available coach has a stable academy-branded page with verified biography, approved accessible social-proof video, current availability, direct booking, and human-callback options.
-8. Booking and callback flows preserve the selected coach context; successful routing and fallback behavior are documented and tested without unauthorized production submissions.
-9. Every published coach name, title, credential, affiliation, biography, specialty, service area, video, email, calendar source, and routing destination has human-confirmed authority and appropriate permissions.
-10. About, FAQ, support, and contact content is preserved or improved from the current public site; no unsupported donation transaction or quantitative claim is introduced.
-11. The proposed club is not presented as available.
-12. No Meta Pixel, advertising cookies, visitor profiles, uploaded contact lists, or unnecessary new personal-data fields are introduced.
-13. Anonymous signup-click measurement contains no personal data and is documented.
-14. Two equivalent ad creative variants are prepared but not published; destination is the controlled variable.
-15. The $200 cap, 10-day duration, 30-mile radius, and adults 25-65+ audience are represented accurately in the campaign handoff.
-16. Automated responsive, accessibility, link, syntax, routing, and performance checks pass.
-17. Human preview acceptance remains required before deployment or ad launch.
+8. The prototype supports external link, embed, callback-only, and unavailable states without coupling the experience to Cal.com or any single provider.
+9. Booking and callback flows preserve the selected coach context; prototype behavior and fallback states are documented and tested without live appointment creation or production submissions.
+10. Every published coach name, title, credential, affiliation, biography, specialty, service area, video, email, calendar source, and routing destination has human-confirmed authority and appropriate permissions.
+11. A documented integration contract lets the separate CRM owner replace prototype data and handlers without redesigning the public experience.
+12. About, FAQ, support, and contact content is preserved or improved from the current public site; no unsupported donation transaction or quantitative claim is introduced.
+13. The proposed club is not presented as available.
+14. No Meta Pixel, advertising cookies, visitor profiles, uploaded contact lists, or unnecessary new personal-data fields are introduced.
+15. Anonymous signup-click measurement contains no personal data and is documented.
+16. Two equivalent ad creative variants are prepared but not published; destination is the controlled variable.
+17. The $200 cap, 10-day duration, 30-mile radius, and adults 25-65+ audience are represented accurately in the campaign handoff.
+18. Automated responsive, accessibility, link, syntax, routing, and performance checks pass.
+19. Human preview acceptance remains required before deployment or ad launch.
 
 ## Approval effect
 
-This revision is not approval-ready until the scheduling architecture and coach-management approach are selected in Q6. The initial bookable roster, profile and video facts, booking/callback destinations, private-session policies, and permissions may be supplied later, but each remains a publication gate for the affected coach page. Later human approval will make this the canonical target revision and authorize preparation of a bounded Build Assignment and Verification Contract. It will not by itself authorize production deployment, advertising publication, or spending.
+Human approval will make this the canonical prototype target revision and authorize preparation of a bounded Build Assignment and Verification Contract. The initial bookable roster, profile and video facts, booking/callback destinations, private-session policies, and permissions may be supplied later, but each remains a publication gate for the affected coach page. Approval will not authorize production CRM or calendar wiring, production deployment, advertising publication, or spending.

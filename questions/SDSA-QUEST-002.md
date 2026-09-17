@@ -30,7 +30,7 @@
 
 ## Q4: What club hypothesis should be validated first?
 
-- **Status:** `UNRESOLVED`
+- **Status:** `ANSWERED`
 - **Known:** The desired direction is an affordable, subsidized club with boys' and girls' teams in multiple age groups, supported partly by business sponsorships, with academy training inside the club.
 - **Missing:** Launch horizon, first age groups, roster size, competition level, facility access, coaching and safeguarding model, family fee target, subsidy per player, sponsorship target, and viability threshold.
 - **Recommendation:** Validate one smallest viable club cohort before designing a full multi-age organization.
@@ -53,8 +53,8 @@
 - **Decision required:** Whether a managed content layer should control coach profiles while Cal.com or another scheduling provider owns availability, calendar sync, appointment lifecycle, and notifications behind each academy-branded page, or whether SDSA builds and operates both systems itself.
 - **Recommendation:** Use academy-owned coach pages backed by a simple managed coach-content system, with an embedded or API-connected Cal.com schedule for the first release. Keep bios, videos, publication status, availability status, and calls to action under the SDSA brand, while Cal.com handles calendar synchronization, booking, rescheduling, cancellation, and notifications. Route `Request a callback` through the separately verified human workflow.
 - **Why it matters:** A first-party scheduler adds substantial operational and privacy scope. The connected-provider approach delivers the desired experience faster while preserving the option to replace the scheduling backend later.
-- **Human decision:** Pending.
+- **Human decision:** Use a flexible, provider-neutral prototype. Cal.com is only an example. A coach may bring a Google Calendar appointment page, Calendly, Cal.com, another booking link/embed, or use callback-only mode. Build the successful prototype experience and a clean integration contract; a separate agent will connect it to the existing CRM platform.
 
 ## Resume rule
 
-Q1-Q3 are answered. Q5 establishes the founder/member versus bookable-coach boundary; bookable roster details remain deferred. Resume at Q6 by selecting the scheduling architecture. Keep Q4 as a parallel discovery track that does not block the class relaunch. Do not change website code or produce launch ads until the launch-critical questions are reconciled, the named target is approved, and a Build Assignment is issued.
+Q1-Q3 and Q6 are answered. Q5 establishes the founder/member versus bookable-coach boundary; bookable roster details remain deferred and gate only publication of affected profiles. Review `specs/SDSA-LAUNCH-v1.md` for approval as the complete prototype target. Keep Q4 as a parallel discovery track that does not block the class relaunch. Do not change website code or produce launch ads until the named target is approved and a Build Assignment is issued.

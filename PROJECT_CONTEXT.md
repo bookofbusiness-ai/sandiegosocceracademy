@@ -96,6 +96,8 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 - Separate organization founders/members from the roster of coaches currently available for private sessions.
 - Give each published private coach an individual academy-branded page with verified profile content, availability, an approved social-proof video, direct booking, and a human-callback alternative.
 - Support adding, editing, publishing, unpublishing, and marking a private coach unavailable without redesigning the website.
+- Keep scheduling provider-neutral: support a Google Calendar appointment page, Calendly, Cal.com, another safe link/embed, callback-only mode, or unavailable status per coach.
+- Build a safe prototype and documented integration contract; preserve the existing CRM connection as a separate agent's implementation scope.
 
 ## Proposed
 
@@ -110,8 +112,8 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 - Whether the City listing's displayed minimum of 12 can be changed; until then it remains external source information and is not used as the campaign's success threshold.
 - Whether Wednesday 4:30 PM-6:30 PM remains the current schedule.
 - Initial bookable-coach roster; verified profile facts, availability source, direct-contact or booking destinations, video assets and permissions, private-training routing destination for each coach, and general fallback route.
-- Whether availability and booking use Cal.com, another scheduling provider, or a first-party scheduling system.
 - Private-session pricing, payment timing, cancellation, rescheduling, and refund policies.
+- Final CRM schema, authentication, routing, persistence, and production calendar configuration, owned by the separate CRM integration effort.
 - Authoritative volunteering, sponsorship, and donation destinations or payment link.
 - Club launch horizon, initial boys' and girls' age groups, seasonal format, expected roster sizes, coaching model, and facility plan.
 - Family price target, subsidy budget, scholarship policy, and sponsorship assumptions.
@@ -130,7 +132,7 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 - **Status:** Product Room content reconciliation
 - **Primary quest:** `SDSA-QUEST-002` Decide the relaunch path and club boundary
 - **Secondary historical quest:** `SDSA-QUEST-001` prior website candidate review
-- **Buildability blockers:** scheduling and coach-management architecture, followed by approval of the revised full-site target. Bookable-coach content and policies may arrive later but gate publication of each affected profile.
+- **Buildability blockers:** human approval of the revised full-site prototype target. Bookable-coach content and policies may arrive later but gate publication of each affected profile; production CRM and calendar wiring belong to a separate integration effort.
 
 ## Evidence and provenance
 
@@ -141,5 +143,6 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 - City destination evidence: `evidence/CITY_DESTINATION-SDSA-003.md`.
 - Full-site and Replit reconciliation evidence: `evidence/WEBSITE_RECONCILIATION-SDSA-004.md`.
 - Founder and bookable-coach platform decision: `decisions/SDSA-DEC-013.md`.
+- Provider-neutral prototype and CRM-boundary decision: `decisions/SDSA-DEC-014.md`.
 - Implementation evidence: `evidence/BUILD_RECEIPT-SDSA-001.md`.
 - Source images and generated-image provenance: `README.md`.

@@ -56,7 +56,7 @@ The current prototype does not persist data locally. Its callback form transmits
 - appointment slot, session type, and scheduling-provider reference when a booking is created;
 - submission timestamp.
 
-The managed coach model also needs publishable fields for role, biography, specialties, age ranges, session formats, service area, profile image, social-proof video, accessibility text, booking status, calendar source, and routing destination. The exact storage and editing interface depend on the scheduling and content-management decision.
+The managed coach model also needs publishable fields for role, biography, specialties, age ranges, session formats, service area, profile image, social-proof video, accessibility text, booking status, booking mode, provider label, booking URL, and callback route. The prototype uses safe local/demo state and documents these fields for the separate CRM integration owner.
 
 ## Security and privacy
 
@@ -73,7 +73,7 @@ The managed coach model also needs publishable fields for role, biography, speci
 - Web Share API with clipboard fallback.
 - No payment, CRM, analytics, CMS, or registration platform integration.
 
-The group-registration destination is the verified City catalog. The private-training workflow requires a selected scheduling provider, confirmed coach-specific booking and callback destinations, and a general fallback. The preferred first-release architecture is an academy-branded coach page with an embedded or API-connected Cal.com schedule, subject to human approval. Privacy-light campaign measurement is approved; Meta Pixel and advertising cookies are excluded.
+The group-registration destination is the verified City catalog. Private training uses a provider-neutral adapter so each coach can use a Google Calendar appointment page, Calendly, Cal.com, another safe booking link/embed, callback-only mode, or unavailable status. The prototype owns the experience and integration contract; another agent owns the existing CRM connection and production persistence. Privacy-light campaign measurement is approved; Meta Pixel and advertising cookies are excluded.
 
 ## Economics and club hypothesis
 
@@ -103,7 +103,7 @@ The club concept is intended to lower the cost of competitive soccer and attract
 ## Known gaps
 
 - Human approval of named revision `SDSA-LAUNCH-v1`.
-- Launch decision: scheduling provider and coach-management approach.
+- Human approval of the complete provider-neutral prototype target.
 - Deferred publication gates: initial bookable-coach roster; complete profile and video confirmation; coach-specific booking/callback routing; and private-session price, payment, cancellation, rescheduling, and refund policy.
 - Authoritative volunteering, sponsorship, and donation destinations.
 - Privacy/legal review if intake scope expands.
@@ -113,11 +113,11 @@ The club concept is intended to lower the cost of competitive soccer and attract
 
 ## Path to launch
 
-1. Select the scheduling architecture and coach-management approach.
-2. Approve the platform capability while treating bookable-coach data and policy as later publication-gated content.
-3. Approve or revise `specs/SDSA-LAUNCH-v1.md`.
-4. Create a Verification Contract and Build Assignment referencing the exact approved revision.
-5. Rebuild or revise the full site against the approved target.
-6. Review the preview, then obtain explicit deployment and ad-launch authority.
+1. Approve or revise `specs/SDSA-LAUNCH-v1.md` as the provider-neutral prototype target.
+2. Create a Verification Contract and Build Assignment referencing the exact approved revision.
+3. Rebuild or revise the full site and coach-booking prototype against the approved target.
+4. Deliver the documented provider-neutral data and event contract to the separate CRM integration owner.
+5. Review the preview, then obtain explicit deployment and ad-launch authority.
+6. Connect and verify production CRM/calendar behavior only within the separately owned integration scope.
 7. Deploy and verify the exact approved commit, both service paths, HTTPS, and both domain variants.
 8. Run the club discovery track and promote it to canon only after viability and human approval.
