@@ -9,7 +9,7 @@
 **Room:** `PRODUCT ROOM`  
 **Stage:** `PRODUCT FRAMING`  
 **Mode:** `GUIDED`  
-**Persistence:** `COMMITTED_LOCAL`  
+**Persistence:** `COMMITTED_REMOTE`
 **Future implementation authority:** `NONE`
 
 ## Active campaign
@@ -65,8 +65,8 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 
 ## Reality Before Resume
 
-- **Saved snapshot:** application commit `5ae799a` plus this candidate installation
-- **Live snapshot:** local `main`; GitHub remote was empty before this campaign
+- **Saved snapshot:** application commit `5ae799a` plus the v0.1.9 candidate installation and governed Product Room decisions
+- **Live snapshot:** local `main` aligned with GitHub `origin/main` after publication of the current decision state
 - **Material drift:** none detected during installation
 - **Build-result reconciliation:** completed implementation exists and must not be repeated
 - **Reconciliation:** the user's newer direction supersedes the prior resume cursor; route to product framing, not implementation or deployment
