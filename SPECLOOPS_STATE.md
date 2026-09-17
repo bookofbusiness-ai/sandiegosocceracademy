@@ -7,7 +7,7 @@
 **Last verified application HEAD:** `5ae799af74d29d65ea9450539b6526a8f63f06a7`  
 **Freshness:** `FRESH`  
 **Room:** `PRODUCT ROOM`  
-**Stage:** `PRODUCT FRAMING`  
+**Stage:** `TARGET SYNTHESIS`
 **Mode:** `GUIDED`  
 **Persistence:** `COMMITTED_REMOTE`
 **Future implementation authority:** `NONE`
@@ -17,16 +17,16 @@
 - **Campaign ID/title:** `SDSA-CAMPAIGN-002` Enrollment relaunch and club strategy
 - **Campaign state:** Product Room framing
 - **Approved path:** freeze class offer -> define conversion plan -> approve launch revision -> issue Build Assignment -> execute and verify; explore the club as a separate governed track
-- **Buildability Gate:** `NOT_READY`
-- **Blockers:** direct City class links or catalog fallback and public boundary for the proposed club
+- **Buildability Gate:** `READY_FOR_TARGET_APPROVAL`
+- **Blockers:** human approval of named launch revision `SDSA-LAUNCH-v1`; the proposed club remains a separate non-blocking discovery track
 
 ## Active quest
 
 - **Quest ID/title:** `SDSA-QUEST-002` Decide the relaunch path and club boundary
 - **Quest state:** Product Room
-- **Required decision areas remaining:** define acquisition boundary and bound the club hypothesis
+- **Required decision areas remaining:** approve the named class-launch revision; club hypothesis remains in the separate discovery track
 - **Optional refinements:** ad creative, sponsorship packages, club operations, analytics, CRM, online registration
-- **Current Question ID/status:** `Q3 / PARTIAL`
+- **Current Question ID/status:** `Q3 / ANSWERED`
 - **Highest assigned Question ID:** `Q4`
 
 ## Build transition and return
@@ -43,9 +43,9 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 
 ## Resume cursor
 
-- **Last accepted decision:** approve privacy-light measurement without Meta Pixel, advertising cookies, visitor profiles, or personal-data transmission from the academy site
-- **Exact next action:** establish direct City class URLs or approve the verified general catalog fallback in Q3 of `questions/SDSA-QUEST-002.md`
-- **Why it is next:** the registration handoff is the final unresolved acquisition boundary before a launch revision and Build Assignment can be prepared
+- **Last accepted decision:** approve privacy-light measurement; the public City catalog was independently verified to provide a filtered destination containing both classes
+- **Exact next action:** review and approve or revise `specs/SDSA-LAUNCH-v1.md`
+- **Why it is next:** Q1-Q3 are answered and the target must be approved as one coherent revision before a Build Assignment can authorize implementation
 
 ## Current artifacts
 
@@ -63,10 +63,13 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 - Adult Audience Decision Record: `decisions/SDSA-DEC-008.md`
 - Advertising Claims Decision Record: `decisions/SDSA-DEC-009.md`
 - Measurement Boundary Decision Record: `decisions/SDSA-DEC-010.md`
+- City Destination Decision Record: `decisions/SDSA-DEC-011.md`
 - Canon Reconciliation: `CANON_RECONCILIATION.md`
 - Project Blueprint: `PROJECT_BLUEPRINT.md`
 - Build Receipt: `evidence/BUILD_RECEIPT-SDSA-001.md`
 - Class Offer Evidence: `evidence/CLASS_OFFER-SDSA-002.md`
+- City Destination Evidence: `evidence/CITY_DESTINATION-SDSA-003.md`
+- Proposed named spec: `specs/SDSA-LAUNCH-v1.md`
 - Approved spec: `NONE`
 - Production handoff: `NONE`
 

@@ -85,6 +85,7 @@ Increase enrollment for a new class expected to begin in approximately one month
 - Target adults ages 25-65+, all genders, within the approved 30-mile radius. Include parents, guardians, and grandparents; do not directly target minors.
 - Use only the approved factual promise: fall soccer classes for ages 6-14; Wednesday skill-building sessions at Salt Creek Park, October 7-December 2; $85 residents / $106 non-residents; registration through the City of Chula Vista.
 - Use privacy-light measurement: no Meta Pixel, advertising cookies, visitor profiles, or personal-data transmission from the academy site; use aggregate Meta statistics, anonymous academy `Sign up now` click counts, and City registration totals.
+- Use the browser-verified filtered City catalog URL that returns both approved soccer classes: `https://secure.rec1.com/CA/chula-vista-ca/catalog/index/70755b78039cd652919a0e4ea69d4d56?filter=c2VhcmNoPVNvY2NlciUyMFNraWxscyUyMCUyNiUyMEdhbWVzLVND`.
 
 ## Proposed
 
@@ -96,7 +97,6 @@ Increase enrollment for a new class expected to begin in approximately one month
 
 ## Unresolved
 
-- Direct City class URLs, if available; otherwise the general catalog remains the verified destination.
 - Whether the City listing's displayed minimum of 12 can be changed; until then it remains external source information and is not used as the campaign's success threshold.
 - Whether Wednesday 4:30 PM-6:30 PM remains the current schedule.
 - Current coach titles and affiliations.
@@ -126,5 +126,6 @@ Increase enrollment for a new class expected to begin in approximately one month
 - User-supplied reference: `https://soccer-academy-insights--jlanier01.replit.app`.
 - User-supplied class listings: `evidence/source/chula-vista-class-ages-6-9.png` and `evidence/source/chula-vista-class-ages-10-14.png`.
 - Extracted offer evidence: `evidence/CLASS_OFFER-SDSA-002.md`.
+- City destination evidence: `evidence/CITY_DESTINATION-SDSA-003.md`.
 - Implementation evidence: `evidence/BUILD_RECEIPT-SDSA-001.md`.
 - Source images and generated-image provenance: `README.md`.

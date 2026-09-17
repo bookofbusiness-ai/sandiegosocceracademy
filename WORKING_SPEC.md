@@ -57,6 +57,14 @@ Creative may shorten or rearrange this promise by placement, but it must not cha
 - Count academy-site `Sign up now` clicks anonymously.
 - Treat City registration totals as the final outcome evidence.
 
+## Approved registration destination
+
+Both class paths use the browser-verified filtered City catalog URL:
+
+`https://secure.rec1.com/CA/chula-vista-ca/catalog/index/70755b78039cd652919a0e4ea69d4d56?filter=c2VhcmNoPVNvY2NlciUyMFNraWxscyUyMCUyNiUyMEdhbWVzLVND`
+
+The destination returned both approved soccer class results during verification on 2026-09-17.
+
 ## Existing implementation evidence
 
 - Preserve the reference site's core navigation and contact paths.
@@ -99,4 +107,4 @@ See `evidence/BUILD_RECEIPT-SDSA-001.md`.
 
 ## Next checkpoint
 
-Continue Q3 in `questions/SDSA-QUEST-002.md`: establish direct City class links or approve the verified general catalog fallback. Do not change website code, create ads, or spend funds until Q3 is complete. Then prepare a named launch revision and bounded Build Assignment.
+Q3 is complete. Review `specs/SDSA-LAUNCH-v1.md` as the proposed named target. Do not change website code, create ads, or spend funds until the target is approved and a bounded Build Assignment is issued.

@@ -29,6 +29,7 @@
 | Adult advertising audience | Direct human authority | `CANONICAL` | Target adults ages 25-65+, all genders, within 30 miles; include grandparents and do not directly target minors. |
 | Factual class advertising promise | Direct human authority | `CANONICAL` | Advertise only the approved ages, Wednesday schedule, Salt Creek location, dates, prices, and City registration boundary. |
 | Privacy-light measurement | Direct human authority | `CANONICAL` | Use aggregate Meta statistics, anonymous academy signup-click counts, and City registrations without Meta Pixel, ad cookies, visitor profiles, or academy-site personal-data transmission. |
+| Filtered City catalog destination | Verified public system evidence | `OBSERVED_CURRENT` | A shareable search-filter URL returns both approved soccer classes and is the approved handoff destination for the website and direct ad variant. |
 | Project Context and Working Spec | Project-owned state | `CANONICAL` for current campaign state | Defines the observed facts, proposals, boundaries, and unresolved decisions. |
 
 ## Conflicts and gaps
@@ -42,8 +43,8 @@
 - No authoritative club plan, team availability, sponsorship commitment, or subsidy level exists yet.
 - The screenshots omit the year, but the user confirmed 2026.
 - The City listing displays a minimum of 12. It remains external source information and is not used as the campaign's success threshold.
-- A general official registration catalog is verified, but a direct class registration URL is not yet established.
+- No item-specific permanent class URL is exposed, but a browser-verified filtered City catalog URL returns both approved class listings.
 
 ## Current canon
 
-The nonprofit relaunch and the intent to improve access are current. The existing website is unaccepted prototype evidence. The upcoming class is the approved primary enrollment campaign, its 2026 offer is reconstructed, and the City remains the final registration authority. The two-destination acquisition test structure, 30-mile radius, $200 total cap, 10-day equal allocation, adults 25-65+ audience, factual advertising promise, and privacy-light measurement boundary are approved. The fixed enrollment threshold is rejected; registrations and cost per registration are the outcome measures. The subsidized club remains a separate proposed strategic direction. No further implementation is authorized until the Product Room resolves the City destination link.
+The nonprofit relaunch and the intent to improve access are current. The existing website is unaccepted prototype evidence. The upcoming class is the approved primary enrollment campaign, its 2026 offer is reconstructed, and the City remains the final registration authority through the verified filtered catalog destination. The two-destination acquisition test structure, 30-mile radius, $200 total cap, 10-day equal allocation, adults 25-65+ audience, factual advertising promise, and privacy-light measurement boundary are approved. The fixed enrollment threshold is rejected; registrations and cost per registration are the outcome measures. The subsidized club remains a separate proposed strategic direction. The class-launch target is ready for named-revision approval; implementation authority remains `NONE`.

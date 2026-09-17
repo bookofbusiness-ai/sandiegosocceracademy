@@ -22,11 +22,11 @@
 
 ## Q3: What is the paid-acquisition boundary?
 
-- **Status:** `PARTIAL`
+- **Status:** `ANSWERED`
 - **Known:** Facebook ads are desired to drive sign-ups. Final registration happens on the City's public website. The academy homepage may provide program context and a `Sign up now` action before handing off to the City. A second ad will link directly to the City. The approved geography is a 30-mile radius centered on Salt Creek Park. Total spend is capped at $200 and allocated equally over 10 days at $10 per destination per day. The approved audience is adults ages 25-65+, all genders, including parents, guardians, and grandparents; minors are not directly targeted.
-- **Missing:** Direct class URLs or approval of the verified general City catalog fallback.
+- **Registration destination:** Browser verification found a shareable filtered City catalog URL that returns both approved classes: `https://secure.rec1.com/CA/chula-vista-ca/catalog/index/70755b78039cd652919a0e4ea69d4d56?filter=c2VhcmNoPVNvY2NlciUyMFNraWxscyUyMCUyNiUyMEdhbWVzLVND`.
 - **Recommendation:** Keep audience, creative, schedule, and budget equal. Variant A lands on the academy's focused class page and measures the outbound City-registration click. Variant B goes directly to the same City registration destination. Compare City enrollment movement and cost per attributable enrollment where possible—not click-through rate alone. If direct class links cannot be obtained, prefer the academy funnel as the primary path because the general catalog adds search friction.
-- **Human decision:** Test structure, 30-mile radius, $200 total cap, 10-day equal allocation, adults 25-65+ audience, factual class promise, and privacy-light measurement approved on 2026-09-17. The fixed enrollment threshold was rejected; registrations and cost per registration are the outcome measures. Only the City destination URL remains unresolved.
+- **Human decision:** Test structure, 30-mile radius, $200 total cap, 10-day equal allocation, adults 25-65+ audience, factual class promise, privacy-light measurement, and City registration boundary approved on 2026-09-17. The fixed enrollment threshold was rejected; registrations and cost per registration are the outcome measures. Q3 is complete.
 
 ## Q4: What club hypothesis should be validated first?
 
@@ -38,4 +38,4 @@
 
 ## Resume rule
 
-Resume at Q3. Do not change website code or produce launch ads until the acquisition test and its operating boundaries are approved. Keep Q4 as a parallel discovery track that does not block the class relaunch.
+Q1-Q3 are answered. Review the named target in `specs/SDSA-LAUNCH-v1.md`. Keep Q4 as a parallel discovery track that does not block the class relaunch. Do not change website code or produce launch ads until the named target is approved and a Build Assignment is issued.

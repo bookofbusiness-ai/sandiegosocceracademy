@@ -93,7 +93,7 @@ The club concept is intended to lower the cost of competitive soccer and attract
 
 ## Known gaps
 
-- Direct City class links or catalog fallback.
+- Human approval of named revision `SDSA-LAUNCH-v1`.
 - Advertising budget, audience radius, creative claims, and measurement plan.
 - Time-sensitive program schedule and capacity.
 - Donation destination.
@@ -105,10 +105,9 @@ The club concept is intended to lower the cost of competitive soccer and attract
 
 ## Path to launch
 
-1. Freeze the exact class offer, enrollment goal, and conversion action in Q2 of `questions/SDSA-QUEST-002.md`.
-2. Define the Facebook-ad message, audience, budget, tracking, and success threshold.
-3. Create an immutable launch revision, Verification Contract, and Build Assignment.
-4. Rebuild or revise the site against the approved target.
-5. Review the preview, then obtain explicit deployment and ad-launch authority.
-6. Deploy and verify the exact approved commit, conversion path, HTTPS, and both domain variants.
-7. Run the club discovery track and promote it to canon only after viability and human approval.
+1. Approve or revise `specs/SDSA-LAUNCH-v1.md`.
+2. Create a Verification Contract and Build Assignment referencing the exact approved revision.
+3. Rebuild or revise the site against the approved target.
+4. Review the preview, then obtain explicit deployment and ad-launch authority.
+5. Deploy and verify the exact approved commit, conversion path, HTTPS, and both domain variants.
+6. Run the club discovery track and promote it to canon only after viability and human approval.
