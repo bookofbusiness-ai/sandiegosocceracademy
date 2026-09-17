@@ -1,12 +1,12 @@
 # Project Blueprint
 
 **Project:** San Diego Soccer Academy nonprofit website  
-**Status:** proposed target under Product Room review  
+**Status:** two-track strategy approved; launch offer under Product Room review
 **SpecLoops Core:** `v0.1.9-beta RC1`, not released
 
 ## Executive summary
 
-The nonprofit needs an immediate enrollment relaunch for an upcoming class and is also considering a structural shift from a park-district-centered academy to an affordable subsidized club. The recommended product shape is a focused class-enrollment funnel now, with a separate club-discovery track that can graduate into the public experience only after its offer and economics are approved.
+The nonprofit needs an immediate enrollment relaunch for an upcoming class and is also considering a structural shift from a park-district-centered academy to an affordable subsidized club. The approved product shape is a focused class-enrollment funnel now, with a separate club-discovery track that can graduate into the public experience only after its offer and economics are approved.
 
 ## Product model
 
@@ -93,7 +93,6 @@ The club concept is intended to lower the cost of competitive soccer and attract
 
 ## Known gaps
 
-- Two-track strategy approval.
 - Exact upcoming-class offer and enrollment target.
 - Advertising budget, audience radius, creative claims, and measurement plan.
 - Time-sensitive program schedule and capacity.
@@ -106,11 +105,10 @@ The club concept is intended to lower the cost of competitive soccer and attract
 
 ## Path to launch
 
-1. Resolve the campaign framing in `questions/SDSA-QUEST-002.md`.
-2. Freeze the exact class offer, enrollment goal, and conversion action.
-3. Define the Facebook-ad message, audience, budget, tracking, and success threshold.
-4. Create an immutable launch revision, Verification Contract, and Build Assignment.
-5. Rebuild or revise the site against the approved target.
-6. Review the preview, then obtain explicit deployment and ad-launch authority.
-7. Deploy and verify the exact approved commit, conversion path, HTTPS, and both domain variants.
-8. Run the club discovery track and promote it to canon only after viability and human approval.
+1. Freeze the exact class offer, enrollment goal, and conversion action in Q2 of `questions/SDSA-QUEST-002.md`.
+2. Define the Facebook-ad message, audience, budget, tracking, and success threshold.
+3. Create an immutable launch revision, Verification Contract, and Build Assignment.
+4. Rebuild or revise the site against the approved target.
+5. Review the preview, then obtain explicit deployment and ad-launch authority.
+6. Deploy and verify the exact approved commit, conversion path, HTTPS, and both domain variants.
+7. Run the club discovery track and promote it to canon only after viability and human approval.

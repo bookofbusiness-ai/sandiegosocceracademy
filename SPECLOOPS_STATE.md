@@ -16,17 +16,17 @@
 
 - **Campaign ID/title:** `SDSA-CAMPAIGN-002` Enrollment relaunch and club strategy
 - **Campaign state:** Product Room framing
-- **Recommended path:** approve two-track strategy -> freeze class offer -> define conversion plan -> approve launch revision -> issue Build Assignment -> execute and verify; explore the club as a separate governed track
+- **Approved path:** freeze class offer -> define conversion plan -> approve launch revision -> issue Build Assignment -> execute and verify; explore the club as a separate governed track
 - **Buildability Gate:** `NOT_READY`
-- **Blockers:** strategy framing, exact class offer, enrollment target, and public boundary for the proposed club
+- **Blockers:** exact class offer, enrollment target, and public boundary for the proposed club
 
 ## Active quest
 
 - **Quest ID/title:** `SDSA-QUEST-002` Decide the relaunch path and club boundary
 - **Quest state:** Product Room
-- **Required decision areas remaining:** two-track framing, launch offer, enrollment target, club hypothesis boundary
+- **Required decision areas remaining:** launch offer, enrollment target, club hypothesis boundary
 - **Optional refinements:** ad creative, sponsorship packages, club operations, analytics, CRM, online registration
-- **Current Question ID/status:** `Q1 / UNRESOLVED`
+- **Current Question ID/status:** `Q2 / UNRESOLVED`
 - **Highest assigned Question ID:** `Q4`
 
 ## Build transition and return
@@ -43,9 +43,9 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 
 ## Resume cursor
 
-- **Last accepted decision:** install and run the SpecLoops v0.1.9 release candidate
-- **Exact next action:** decide whether to adopt the recommended two-track strategy in `questions/SDSA-QUEST-002.md`
-- **Why it is next:** combining an urgent class offer with an unvalidated club promise would blur the conversion path and prematurely canonize the club model
+- **Last accepted decision:** approve the two-track strategy for the class relaunch and club discovery
+- **Exact next action:** capture the exact upcoming-class offer in Q2 of `questions/SDSA-QUEST-002.md`
+- **Why it is next:** the landing page, registration path, ad message, conversion measurement, and build acceptance criteria all depend on authoritative offer facts
 
 ## Current artifacts
 
@@ -53,6 +53,7 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 - Working Spec: `WORKING_SPEC.md`
 - Question Ledger: `questions/SDSA-QUEST-001.md`
 - Active Question Ledger: `questions/SDSA-QUEST-002.md`
+- Decision Record: `decisions/SDSA-DEC-001.md`
 - Canon Reconciliation: `CANON_RECONCILIATION.md`
 - Project Blueprint: `PROJECT_BLUEPRINT.md`
 - Build Receipt: `evidence/BUILD_RECEIPT-SDSA-001.md`

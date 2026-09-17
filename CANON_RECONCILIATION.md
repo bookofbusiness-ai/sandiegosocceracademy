@@ -17,7 +17,7 @@
 | Initial rebuild target | Earlier campaign direction | `REFINED` | The rebuild remains desired, but implementation is paused until the new enrollment and club strategy is governed. |
 | Upcoming class and low sign-ups | New human direction | `CANONICAL_PROBLEM` | Establishes the urgent enrollment problem; exact offer facts remain unresolved. |
 | Affordable subsidized club | Human hypothesis | `PROPOSED` | Explore boys' and girls' age-group teams, sponsorships, and lower family cost without advertising them as available yet. |
-| Two-track campaign | SpecLoops recommendation | `PROPOSED` | Separate the immediate class conversion path from club-model discovery while keeping one nonprofit mission. |
+| Two-track campaign | Human-approved SpecLoops recommendation | `CANONICAL` | Separate the immediate class conversion path from club-model discovery while keeping one nonprofit mission. |
 | Project Context and Working Spec | Project-owned state | `CANONICAL` for current campaign state | Defines the observed facts, proposals, boundaries, and unresolved decisions. |
 
 ## Conflicts and gaps
@@ -32,4 +32,4 @@
 
 ## Current canon
 
-The nonprofit relaunch and the intent to improve access are current. The existing website is unaccepted prototype evidence. The upcoming class enrollment problem is current, while the subsidized club is a proposed strategic direction. No further implementation is authorized until the Product Room resolves the campaign framing and launch offer.
+The nonprofit relaunch and the intent to improve access are current. The existing website is unaccepted prototype evidence. The upcoming class is the approved primary enrollment campaign, while the subsidized club remains a separate proposed strategic direction. No further implementation is authorized until the Product Room resolves the launch offer and acquisition boundary.

@@ -10,14 +10,14 @@
 
 Create a relaunch that fills the upcoming class while establishing an honest strategic path toward a highly affordable, subsidized boys' and girls' club if that model proves viable.
 
-## Current proposal
+## Approved strategy
 
 Use two tracks with one shared mission:
 
 1. **Enrollment launch:** a time-bound, measurable campaign for the upcoming class, supported by a purpose-built landing experience and Facebook ads.
 2. **Club discovery:** validate demand, age groups, economics, facilities, coaching, sponsorships, and governance before presenting the club as available.
 
-The enrollment track is the recommended primary campaign. The club track remains `PROPOSED` until approved.
+The enrollment track is the approved primary campaign. The two-track boundary is `CANONICAL`. The club operating model and offer remain `PROPOSED` until separately approved.
 
 ## Existing implementation evidence
 
@@ -38,7 +38,6 @@ The enrollment track is the recommended primary campaign. The club track remains
 
 ## Unresolved questions
 
-- Approval of the two-track strategy.
 - Exact class date, age range, schedule, location, price, capacity, and enrollment action.
 - Current sign-ups, target sign-ups, minimum viable enrollment, and advertising budget.
 - Current coach titles and affiliations.
@@ -63,4 +62,4 @@ See `evidence/BUILD_RECEIPT-SDSA-001.md`.
 
 ## Next checkpoint
 
-Obtain the human decision on Q1 in `questions/SDSA-QUEST-002.md`. Do not change website code, create ads, or publish the club concept before that decision. After Q1, gather the exact class offer and enrollment target, then prepare a named launch revision and bounded Build Assignment.
+Resolve Q2 in `questions/SDSA-QUEST-002.md`: gather the exact class offer and enrollment target. Do not change website code or create ads until those facts are authoritative. Then define the paid-acquisition boundary in Q3 and prepare a named launch revision and bounded Build Assignment.

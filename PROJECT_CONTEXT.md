@@ -61,10 +61,10 @@ Increase enrollment for a new class expected to begin in approximately one month
 - Preserve the current green identity while replacing the gold-heavy presentation with a single field-green accent system.
 - Preserve the current callback workflow without sending test submissions.
 - Install the SpecLoops v0.1.9 release candidate and label it accurately as unreleased.
+- Use two governed tracks: make the upcoming class the immediate enrollment campaign, and validate the subsidized club separately before presenting it as available.
 
 ## Proposed
 
-- Run two connected but separately governed tracks: an immediate class-enrollment relaunch and a club-model discovery track.
 - Use the upcoming class as the primary near-term website and Facebook-ad conversion offer.
 - Treat the current implementation as a reusable prototype/evidence source, not as the approved rebuild target.
 - Confirm launch-critical content, create an approved revision and Build Assignment, then rebuild or revise the site against that target.
@@ -73,7 +73,6 @@ Increase enrollment for a new class expected to begin in approximately one month
 
 ## Unresolved
 
-- Whether the proposed two-track framing is approved.
 - Exact new-class start date, age range, day/time, location, price, capacity, and registration action.
 - What "low sign-ups" means in current enrollment, target enrollment, and minimum viable enrollment.
 - Whether Wednesday 4:30 PM-6:30 PM remains the current schedule.
