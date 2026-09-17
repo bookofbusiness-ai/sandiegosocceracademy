@@ -56,7 +56,7 @@ The current prototype does not persist data locally. Its callback form transmits
 - appointment slot, session type, and scheduling-provider reference when a booking is created;
 - submission timestamp.
 
-The managed coach model also needs publishable fields for role, biography, specialties, age ranges, session formats, service area, profile image, social-proof video, accessibility text, booking status, booking mode, provider label, booking URL, and callback route. The prototype uses safe local/demo state and documents these fields for the separate CRM integration owner.
+The managed coach model also needs publishable fields for role, biography, specialties, age ranges, session formats, service area, profile image, social-proof video, accessibility text, booking status, provider-side mapping, and callback route. Provider type and connection settings belong to the business record, not the coach record. The prototype uses safe local/demo state and documents these fields for the separate CRM integration owner.
 
 ## Security and privacy
 
@@ -73,7 +73,7 @@ The managed coach model also needs publishable fields for role, biography, speci
 - Web Share API with clipboard fallback.
 - No payment, CRM, analytics, CMS, or registration platform integration.
 
-The group-registration destination is the verified City catalog. Private training uses a provider-neutral adapter so each coach can use a Google Calendar appointment page, Calendly, Cal.com, another safe booking link/embed, callback-only mode, or unavailable status. The prototype owns the experience and integration contract; another agent owns the existing CRM connection and production persistence. Privacy-light campaign measurement is approved; Meta Pixel and advertising cookies are excluded.
+The group-registration destination is the verified City catalog. Private training uses one provider-neutral adapter selected by the business owner for the organization. Every coach page inherits that provider and uses only its provider-side coach/resource mapping. Different businesses may choose Google Calendar appointment scheduling, Calendly, Cal.com, another supported provider, or callback-only mode; one business does not mix booking engines among its coaches. The prototype owns the experience and integration contract; another agent owns the existing CRM connection and production persistence. Privacy-light campaign measurement is approved; Meta Pixel and advertising cookies are excluded.
 
 ## Economics and club hypothesis
 

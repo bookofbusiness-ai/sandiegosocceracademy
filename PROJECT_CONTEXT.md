@@ -96,7 +96,7 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 - Separate organization founders/members from the roster of coaches currently available for private sessions.
 - Give each published private coach an individual academy-branded page with verified profile content, availability, an approved social-proof video, direct booking, and a human-callback alternative.
 - Support adding, editing, publishing, unpublishing, and marking a private coach unavailable without redesigning the website.
-- Keep scheduling provider-neutral: support a Google Calendar appointment page, Calendly, Cal.com, another safe link/embed, callback-only mode, or unavailable status per coach.
+- Keep scheduling provider-neutral at the business level: one business owner selects one supported booking engine for the organization, and every bookable coach inherits it through a provider-side coach/resource mapping.
 - Build a safe prototype and documented integration contract; preserve the existing CRM connection as a separate agent's implementation scope.
 
 ## Proposed
@@ -144,5 +144,6 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 - Full-site and Replit reconciliation evidence: `evidence/WEBSITE_RECONCILIATION-SDSA-004.md`.
 - Founder and bookable-coach platform decision: `decisions/SDSA-DEC-013.md`.
 - Provider-neutral prototype and CRM-boundary decision: `decisions/SDSA-DEC-014.md`.
+- Business-level booking-provider correction: `decisions/SDSA-DEC-015.md`.
 - Implementation evidence: `evidence/BUILD_RECEIPT-SDSA-001.md`.
 - Source images and generated-image provenance: `README.md`.

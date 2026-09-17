@@ -2,18 +2,20 @@
 
 **Decision ID:** `SDSA-DEC-014`
 **Recorded:** 2026-09-17
-**Status:** `CANONICAL`
+**Status:** `SUPERSEDED_IN_PART_BY_SDSA-DEC-015`
 
 ## Decision
 
-The private-coach prototype will be scheduling-provider neutral. Cal.com is an example, not a required dependency. Each published coach can be configured with the easiest appropriate option, including:
+The private-coach prototype will be scheduling-provider neutral. Cal.com is an example, not a required dependency. The business owner selects one provider for the organization, including:
 
 - a Google Calendar appointment-schedule link;
 - Calendly;
 - Cal.com;
 - another trusted booking URL or embeddable scheduler;
 - callback-only mode; or
-- temporarily unavailable status.
+- temporarily unavailable organization status.
+
+The earlier per-coach provider interpretation is superseded. Individual coaches inherit the business's selected booking engine and carry only the provider-side mapping needed to display their own availability.
 
 The prototype will demonstrate the complete experience and the capability to add and manage coaches without implementing a production scheduling engine. It will provide a stable integration contract so a separately owned CRM implementation can replace the prototype data and connect live workflows later.
 
@@ -24,8 +26,8 @@ Each coach record supports:
 - stable ID and URL slug;
 - publication and private-availability status;
 - verified profile, specialties, age ranges, session formats, service area, image, and accessible social-proof video;
-- booking mode: `external_link`, `embed`, `callback_only`, or `unavailable`;
-- provider label and booking URL when applicable;
+- provider-side coach, resource, calendar, event-type, or route identifier;
+- coach availability and publication status;
 - human-callback route and general fallback;
 - display order and timestamps.
 

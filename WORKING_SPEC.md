@@ -37,7 +37,7 @@ The rebuild is not limited to the homepage. It must provide distinct, linkable, 
 - **Group training:** explain verified park-district classes and hand families to the City registration system.
 - **Private training:** explain the service, present a managed directory of coaches currently available for private sessions, and give each coach an individual academy-branded booking page with verified profile content, availability, video, direct booking, and a human-callback alternative.
 - **People:** present Jason Taylor, Jeff Taylor, Ashley Hernandez-Cavanagh, and Greg Coco as founders/members. Founder/member status and bookable-coach status are separate.
-- **Prototype integration:** support provider-neutral booking modes and document the handoff contract; another agent owns live CRM connectivity.
+- **Prototype integration:** let the business owner configure one supported booking provider for the organization; all coaches inherit that provider and use coach-specific mappings inside it. Document the handoff contract; another agent owns live CRM connectivity.
 - **Organization and trust:** preserve the nonprofit story, mission, values, methodology, FAQ, volunteering, sponsorship, donation concept, and general contact path without inventing unsupported facts or transaction destinations.
 
 The current public site supplies the broader content inventory. The Replit reference supplies the stronger private-training model. The repository prototype is useful implementation evidence but is not complete enough to be the approved target.
@@ -127,4 +127,4 @@ See `evidence/BUILD_RECEIPT-SDSA-001.md`.
 
 ## Next checkpoint
 
-Q5 confirms the four founders/members and separates them from the later bookable-coach roster. Q6 approves a provider-neutral prototype and assigns live CRM connection to a separate agent. Review `specs/SDSA-LAUNCH-v1.md` for target approval. Coach content, routing, media, and policy may be supplied later but must be verified before the affected profile is published. Do not change website code, create ads, or spend funds until the target is approved and a bounded Build Assignment is issued.
+Q5 confirms the four founders/members and separates them from the later bookable-coach roster. Q6 approves a provider-neutral prototype configured once per business, not once per coach, and assigns live CRM connection to a separate agent. Review `specs/SDSA-LAUNCH-v1.md` for target approval. Coach content, routing, media, and policy may be supplied later but must be verified before the affected profile is published. Do not change website code, create ads, or spend funds until the target is approved and a bounded Build Assignment is issued.

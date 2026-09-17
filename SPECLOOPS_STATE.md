@@ -43,7 +43,7 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 
 ## Resume cursor
 
-- **Last accepted decision:** build a provider-neutral coach-booking prototype with a clean integration contract; another agent owns the live CRM connection
+- **Last accepted decision:** configure one booking provider per business, inherited by every bookable coach through provider-side mappings; another agent owns the live CRM connection
 - **Exact next action:** review and approve or revise `specs/SDSA-LAUNCH-v1.md`
 - **Why it is next:** Q6 resolves the last launch-critical architecture ambiguity, while later coach content and production integrations remain publication or handoff gates rather than prototype blockers
 
@@ -67,6 +67,7 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 - Full-Site Scope Decision Record: `decisions/SDSA-DEC-012.md`
 - Founder and Bookable-Coach Platform Decision Record: `decisions/SDSA-DEC-013.md`
 - Provider-Neutral Prototype Decision Record: `decisions/SDSA-DEC-014.md`
+- Business-Level Booking Configuration Decision Record: `decisions/SDSA-DEC-015.md`
 - Canon Reconciliation: `CANON_RECONCILIATION.md`
 - Project Blueprint: `PROJECT_BLUEPRINT.md`
 - Build Receipt: `evidence/BUILD_RECEIPT-SDSA-001.md`

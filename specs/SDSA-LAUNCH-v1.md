@@ -28,7 +28,8 @@ Relaunch San Diego Soccer Academy as a complete nonprofit website with two clear
 - Maintain a separately managed directory of coaches currently available for private sessions.
 - Give each published private coach a stable academy-branded landing page with a verified bio, specialties and service details, current availability, approved social-proof video, direct booking, and human-callback option.
 - Allow authorized site operators to add, edit, publish, unpublish, and mark a private coach unavailable without redesigning the site.
-- Keep booking provider-neutral. Each coach can use a Google Calendar appointment page, Calendly, Cal.com, another trusted booking link/embed, callback-only mode, or unavailable status.
+- Keep booking provider-neutral at the business level. The business owner configures one supported engine—such as Google Calendar appointment scheduling, Calendly, Cal.com, another trusted provider, or callback-only mode—and every bookable coach uses that shared integration.
+- Give each coach only the provider-side mapping needed for that shared engine, such as a user, resource, calendar, event type, or booking-route identifier. Do not support a different booking engine per coach within one business.
 - Preserve the nonprofit access, confidence, discipline, belonging, story, values, and community-support mission.
 - Preserve or improve the full information architecture: Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact.
 - Give each major destination a distinct, linkable route or equivalent clearly separated destination with persistent responsive navigation.
@@ -88,7 +89,8 @@ This path is informed by the Replit private-coaching model but improves it with 
 - Add the approved class content, full-site information architecture, calls to action, and City handoff.
 - Add distinct founder/member profiles and a managed directory of bookable private coaches.
 - Add individual academy-branded coach pages, verified profile/video content, availability, direct booking, coach-aware callback routing, and a documented human fallback.
-- Add a provider-neutral booking adapter supporting `external_link`, `embed`, `callback_only`, and `unavailable` prototype states.
+- Add an owner-level `Booking settings` prototype that selects one provider adapter for the business and applies it across all coach pages.
+- Support business-level `external_link`, `embed`, `callback_only`, and `unavailable` prototype modes, plus coach-level provider mappings inside the selected engine.
 - Add safe prototype coach-management states for add, edit, preview, publish, unpublish, and unavailable behavior.
 - Document the coach data shape, selected-coach context, callback payload, and interaction events for the separate CRM integration owner.
 - Add anonymous aggregate signup-click measurement without personal data or advertising cookies.
@@ -115,18 +117,19 @@ This path is informed by the Replit private-coaching model but improves it with 
 5. Founder/member profiles and bookable-coach status are separate; no founder is shown as available solely because of organizational membership.
 6. Authorized operators can add, edit, publish, unpublish, and mark a coach unavailable without redesigning the site.
 7. Every published available coach has a stable academy-branded page with verified biography, approved accessible social-proof video, current availability, direct booking, and human-callback options.
-8. The prototype supports external link, embed, callback-only, and unavailable states without coupling the experience to Cal.com or any single provider.
-9. Booking and callback flows preserve the selected coach context; prototype behavior and fallback states are documented and tested without live appointment creation or production submissions.
-10. Every published coach name, title, credential, affiliation, biography, specialty, service area, video, email, calendar source, and routing destination has human-confirmed authority and appropriate permissions.
-11. A documented integration contract lets the separate CRM owner replace prototype data and handlers without redesigning the public experience.
-12. About, FAQ, support, and contact content is preserved or improved from the current public site; no unsupported donation transaction or quantitative claim is introduced.
-13. The proposed club is not presented as available.
-14. No Meta Pixel, advertising cookies, visitor profiles, uploaded contact lists, or unnecessary new personal-data fields are introduced.
-15. Anonymous signup-click measurement contains no personal data and is documented.
-16. Two equivalent ad creative variants are prepared but not published; destination is the controlled variable.
-17. The $200 cap, 10-day duration, 30-mile radius, and adults 25-65+ audience are represented accurately in the campaign handoff.
-18. Automated responsive, accessibility, link, syntax, routing, and performance checks pass.
-19. Human preview acceptance remains required before deployment or ad launch.
+8. The prototype supports external link, embed, callback-only, and unavailable business states without coupling the platform to Cal.com or any single provider.
+9. One business has one active booking provider; every bookable coach inherits it and supplies only the provider-side mapping required by that engine. The prototype does not mix booking providers among coaches in the same business.
+10. Booking and callback flows preserve the selected coach context; prototype behavior and fallback states are documented and tested without live appointment creation or production submissions.
+11. Every published coach name, title, credential, affiliation, biography, specialty, service area, video, email, provider mapping, and routing destination has human-confirmed authority and appropriate permissions.
+12. A documented integration contract lets the separate CRM owner replace prototype data and handlers without redesigning the public experience.
+13. About, FAQ, support, and contact content is preserved or improved from the current public site; no unsupported donation transaction or quantitative claim is introduced.
+14. The proposed club is not presented as available.
+15. No Meta Pixel, advertising cookies, visitor profiles, uploaded contact lists, or unnecessary new personal-data fields are introduced.
+16. Anonymous signup-click measurement contains no personal data and is documented.
+17. Two equivalent ad creative variants are prepared but not published; destination is the controlled variable.
+18. The $200 cap, 10-day duration, 30-mile radius, and adults 25-65+ audience are represented accurately in the campaign handoff.
+19. Automated responsive, accessibility, link, syntax, routing, and performance checks pass.
+20. Human preview acceptance remains required before deployment or ad launch.
 
 ## Approval effect
 
