@@ -43,6 +43,12 @@ Final registration remains on the City's public website. The academy website may
 - Do not select a winner based on click-through rate alone; prefer attributable enrollment and cost per enrollment where available.
 - Do not impose a fixed registration threshold; evaluate the test by registrations produced and cost per registration within the approved $200 cap.
 
+## Approved advertising promise
+
+> Fall soccer classes for ages 6-14. Wednesday skill-building sessions at Salt Creek Park, October 7-December 2. $85 for residents and $106 for non-residents. Registration through the City of Chula Vista.
+
+Creative may shorten or rearrange this promise by placement, but it must not change the facts, invent urgency, imply guaranteed outcomes, or present the proposed club as available.
+
 ## Existing implementation evidence
 
 - Preserve the reference site's core navigation and contact paths.
@@ -85,4 +91,4 @@ See `evidence/BUILD_RECEIPT-SDSA-001.md`.
 
 ## Next checkpoint
 
-Continue Q3 in `questions/SDSA-QUEST-002.md`: complete the approved-claim, tracking, and destination-link boundaries. Do not change website code, create ads, or spend funds until Q3 is complete. Then prepare a named launch revision and bounded Build Assignment.
+Continue Q3 in `questions/SDSA-QUEST-002.md`: complete the tracking and destination-link boundaries. Do not change website code, create ads, or spend funds until Q3 is complete. Then prepare a named launch revision and bounded Build Assignment.
