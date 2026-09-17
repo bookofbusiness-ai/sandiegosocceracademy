@@ -93,7 +93,7 @@ The club concept is intended to lower the cost of competitive soccer and attract
 
 ## Known gaps
 
-- Tracking boundary and direct City class links or catalog fallback.
+- Direct City class links or catalog fallback.
 - Advertising budget, audience radius, creative claims, and measurement plan.
 - Time-sensitive program schedule and capacity.
 - Donation destination.

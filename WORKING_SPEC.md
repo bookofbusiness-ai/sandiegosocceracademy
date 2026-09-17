@@ -49,6 +49,14 @@ Final registration remains on the City's public website. The academy website may
 
 Creative may shorten or rearrange this promise by placement, but it must not change the facts, invent urgency, imply guaranteed outcomes, or present the proposed club as available.
 
+## Approved measurement boundary
+
+- Do not install Meta Pixel or advertising cookies.
+- Do not create visitor profiles or send personal data from the academy site for campaign measurement.
+- Use aggregate statistics available from Meta.
+- Count academy-site `Sign up now` clicks anonymously.
+- Treat City registration totals as the final outcome evidence.
+
 ## Existing implementation evidence
 
 - Preserve the reference site's core navigation and contact paths.
@@ -91,4 +99,4 @@ See `evidence/BUILD_RECEIPT-SDSA-001.md`.
 
 ## Next checkpoint
 
-Continue Q3 in `questions/SDSA-QUEST-002.md`: complete the tracking and destination-link boundaries. Do not change website code, create ads, or spend funds until Q3 is complete. Then prepare a named launch revision and bounded Build Assignment.
+Continue Q3 in `questions/SDSA-QUEST-002.md`: establish direct City class links or approve the verified general catalog fallback. Do not change website code, create ads, or spend funds until Q3 is complete. Then prepare a named launch revision and bounded Build Assignment.

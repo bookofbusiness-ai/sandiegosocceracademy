@@ -84,6 +84,7 @@ Increase enrollment for a new class expected to begin in approximately one month
 - Run the test for 10 days with an equal allocation: $10 per day to the academy-funnel destination and $10 per day to the direct-City destination.
 - Target adults ages 25-65+, all genders, within the approved 30-mile radius. Include parents, guardians, and grandparents; do not directly target minors.
 - Use only the approved factual promise: fall soccer classes for ages 6-14; Wednesday skill-building sessions at Salt Creek Park, October 7-December 2; $85 residents / $106 non-residents; registration through the City of Chula Vista.
+- Use privacy-light measurement: no Meta Pixel, advertising cookies, visitor profiles, or personal-data transmission from the academy site; use aggregate Meta statistics, anonymous academy `Sign up now` click counts, and City registration totals.
 
 ## Proposed
 

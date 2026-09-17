@@ -28,6 +28,7 @@
 | Fixed enrollment threshold | Direct human authority | `REJECTED` | Retire the internal threshold of 6 and evaluate registrations without a fixed minimum target. |
 | Adult advertising audience | Direct human authority | `CANONICAL` | Target adults ages 25-65+, all genders, within 30 miles; include grandparents and do not directly target minors. |
 | Factual class advertising promise | Direct human authority | `CANONICAL` | Advertise only the approved ages, Wednesday schedule, Salt Creek location, dates, prices, and City registration boundary. |
+| Privacy-light measurement | Direct human authority | `CANONICAL` | Use aggregate Meta statistics, anonymous academy signup-click counts, and City registrations without Meta Pixel, ad cookies, visitor profiles, or academy-site personal-data transmission. |
 | Project Context and Working Spec | Project-owned state | `CANONICAL` for current campaign state | Defines the observed facts, proposals, boundaries, and unresolved decisions. |
 
 ## Conflicts and gaps
@@ -45,4 +46,4 @@
 
 ## Current canon
 
-The nonprofit relaunch and the intent to improve access are current. The existing website is unaccepted prototype evidence. The upcoming class is the approved primary enrollment campaign, its 2026 offer is reconstructed, and the City remains the final registration authority. The two-destination acquisition test structure, 30-mile radius, $200 total cap, 10-day equal allocation, adults 25-65+ audience, and factual advertising promise are approved. The fixed enrollment threshold is rejected; registrations and cost per registration are the outcome measures. The subsidized club remains a separate proposed strategic direction. No further implementation is authorized until the Product Room completes the remaining tracking and destination boundaries.
+The nonprofit relaunch and the intent to improve access are current. The existing website is unaccepted prototype evidence. The upcoming class is the approved primary enrollment campaign, its 2026 offer is reconstructed, and the City remains the final registration authority. The two-destination acquisition test structure, 30-mile radius, $200 total cap, 10-day equal allocation, adults 25-65+ audience, factual advertising promise, and privacy-light measurement boundary are approved. The fixed enrollment threshold is rejected; registrations and cost per registration are the outcome measures. The subsidized club remains a separate proposed strategic direction. No further implementation is authorized until the Product Room resolves the City destination link.

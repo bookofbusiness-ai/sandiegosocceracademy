@@ -18,7 +18,7 @@
 - **Campaign state:** Product Room framing
 - **Approved path:** freeze class offer -> define conversion plan -> approve launch revision -> issue Build Assignment -> execute and verify; explore the club as a separate governed track
 - **Buildability Gate:** `NOT_READY`
-- **Blockers:** direct City class links or catalog fallback, tracking boundary, and public boundary for the proposed club
+- **Blockers:** direct City class links or catalog fallback and public boundary for the proposed club
 
 ## Active quest
 
@@ -43,9 +43,9 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 
 ## Resume cursor
 
-- **Last accepted decision:** approve the factual class advertising promise for ages, schedule, location, price, and City registration
-- **Exact next action:** approve or revise the privacy-conscious tracking boundary in Q3 of `questions/SDSA-QUEST-002.md`
-- **Why it is next:** the factual promise is fixed, but measurement must be defined before the site or ads add tracking technology
+- **Last accepted decision:** approve privacy-light measurement without Meta Pixel, advertising cookies, visitor profiles, or personal-data transmission from the academy site
+- **Exact next action:** establish direct City class URLs or approve the verified general catalog fallback in Q3 of `questions/SDSA-QUEST-002.md`
+- **Why it is next:** the registration handoff is the final unresolved acquisition boundary before a launch revision and Build Assignment can be prepared
 
 ## Current artifacts
 
@@ -62,6 +62,7 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 - Registration Outcome Decision Record: `decisions/SDSA-DEC-007.md`
 - Adult Audience Decision Record: `decisions/SDSA-DEC-008.md`
 - Advertising Claims Decision Record: `decisions/SDSA-DEC-009.md`
+- Measurement Boundary Decision Record: `decisions/SDSA-DEC-010.md`
 - Canon Reconciliation: `CANON_RECONCILIATION.md`
 - Project Blueprint: `PROJECT_BLUEPRINT.md`
 - Build Receipt: `evidence/BUILD_RECEIPT-SDSA-001.md`
