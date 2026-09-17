@@ -36,6 +36,7 @@ Final registration remains on the City's public website. The academy website may
 - **Variant B:** Facebook ad -> City registration directly.
 - **Geography:** 30-mile radius centered on Salt Creek Park.
 - **Total spend cap:** $200.
+- **Duration and allocation:** 10 days, with $10 per day for each destination variant.
 - Keep audience, creative, schedule, and budget allocation equal so destination is the controlled variable.
 - Measure academy-to-City outbound clicks for Variant A and reconcile City enrollment movement for both variants where source evidence permits.
 - Do not select a winner based on click-through rate alone; prefer attributable enrollment and cost per enrollment where available.
@@ -59,7 +60,7 @@ Final registration remains on the City's public website. The academy website may
 
 ## Unresolved questions
 
-- Duration and success threshold.
+- Whether the success threshold of 6 registrations applies across the campaign or separately to each class.
 - Direct City class links or approval to use the general catalog fallback.
 - Current coach titles and affiliations.
 - Donation destination.
@@ -83,4 +84,4 @@ See `evidence/BUILD_RECEIPT-SDSA-001.md`.
 
 ## Next checkpoint
 
-Continue Q3 in `questions/SDSA-QUEST-002.md`: approve or revise the proposed 10-day equal split at $10 per variant per day, then finalize the success measure. Do not change website code, create ads, or spend funds until Q3 is complete. Then prepare a named launch revision and bounded Build Assignment.
+Continue Q3 in `questions/SDSA-QUEST-002.md`: determine whether the enrollment threshold is 6 total or 6 per class, then complete the audience, tracking, claim, and destination-link boundaries. Do not change website code, create ads, or spend funds until Q3 is complete. Then prepare a named launch revision and bounded Build Assignment.

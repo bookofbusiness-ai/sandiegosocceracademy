@@ -81,6 +81,7 @@ Increase enrollment for a new class expected to begin in approximately one month
 - Run a controlled two-destination acquisition test: one otherwise equivalent ad lands on the academy class page before City registration, and the other goes directly to the City registration destination.
 - Target families within a 30-mile radius centered on Salt Creek Park.
 - Cap total advertising spend for the two-destination test at $200.
+- Run the test for 10 days with an equal allocation: $10 per day to the academy-funnel destination and $10 per day to the direct-City destination.
 
 ## Proposed
 
@@ -92,7 +93,7 @@ Increase enrollment for a new class expected to begin in approximately one month
 
 ## Unresolved
 
-- Campaign duration and success threshold.
+- Whether the success threshold of 6 registrations applies campaign-wide or to each class.
 - Direct City class URLs, if available; otherwise the general catalog remains the verified destination.
 - Whether the City listing's displayed minimum of 12 can be changed or should simply remain external source information while the campaign uses an internal floor of 6.
 - Whether Wednesday 4:30 PM-6:30 PM remains the current schedule.
