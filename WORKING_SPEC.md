@@ -38,6 +38,7 @@ The rebuild is not limited to the homepage. It must provide distinct, linkable, 
 - **Private training:** explain the service, present a managed directory of coaches currently available for private sessions, and give each coach an individual academy-branded booking page with verified profile content, availability, video, direct booking, and a human-callback alternative.
 - **People:** present Jason Taylor, Jeff Taylor, Ashley Hernandez-Cavanagh, and Greg Coco as founders/members. Founder/member status and bookable-coach status are separate.
 - **Prototype integration:** let the business owner configure one supported booking provider for the organization; all coaches inherit that provider and use coach-specific mappings inside it. Document the handoff contract; another agent owns live CRM connectivity.
+- **Surface boundary:** coach management and organization booking settings live only in a separate admin/operator experience. The public website is read-only and exposes only approved public coach states.
 - **Organization and trust:** preserve the nonprofit story, mission, values, methodology, FAQ, volunteering, sponsorship, donation concept, and general contact path without inventing unsupported facts or transaction destinations.
 
 The current public site supplies the broader content inventory. The Replit reference supplies the stronger private-training model. The repository prototype is useful implementation evidence but is not complete enough to be the approved target.
@@ -119,6 +120,7 @@ The destination returned both approved soccer class results during verification 
 - Group-registration actions reach the verified City destination and disclose the handoff.
 - Every published bookable coach has a stable academy-branded landing page with verified bio, approved accessible video, current availability, direct booking, and human-callback choices.
 - Coaches can be added, edited, published, unpublished, and marked unavailable without a site redesign.
+- Public marketing routes contain no admin navigation, edit controls, provider settings, or unpublished coach data.
 - Private-training bookings and callback requests preserve the selected coach context, reach the documented destination or fallback, and show honest success and error states.
 
 ## Current evidence

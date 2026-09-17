@@ -39,6 +39,7 @@
 | Provider-neutral prototype | Direct human authority | `REFINED_BY_SDSA-DEC-015` | Cal.com is an example only. Support multiple provider adapters, with selection occurring once per business rather than once per coach. |
 | Business-level booking provider | Direct human correction | `CANONICAL` | Each business owner connects one booking engine for the organization; every coach inherits it through provider-side mapping. Do not mix booking engines within one business. |
 | Existing CRM connection | Parallel implementation ownership | `PRESERVED_EXTERNAL_SCOPE` | This build documents the UI/data/event handoff; another agent owns live CRM wiring and production persistence. |
+| Coach-management surface | Direct human authority | `CANONICAL` | Add/edit/preview/publish/unpublish/availability and booking-provider controls are admin-only; the public marketing site is read-only and cannot expose unpublished coach data. |
 | Project Context and Working Spec | Project-owned state | `CANONICAL` for current campaign state | Defines the observed facts, proposals, boundaries, and unresolved decisions. |
 
 ## Conflicts and gaps

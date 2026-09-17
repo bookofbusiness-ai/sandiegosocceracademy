@@ -31,6 +31,7 @@ The near-term relaunch serves eight connected needs:
 - Distinct linkable destinations for Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact.
 - Founder/member profiles establish organizational leadership without implying private availability.
 - Bookable-coach profiles connect to individual booking pages and human callback.
+- Coach and booking-provider management uses a separate operator surface and is never exposed through public marketing navigation.
 - Group-training actions use `Sign up now`; private-training actions use a distinct inquiry label that does not imply City registration.
 - Light/dark theme support and reduced-motion handling.
 
@@ -57,6 +58,8 @@ The current prototype does not persist data locally. Its callback form transmits
 - submission timestamp.
 
 The managed coach model also needs publishable fields for role, biography, specialties, age ranges, session formats, service area, profile image, social-proof video, accessibility text, booking status, provider-side mapping, and callback route. Provider type and connection settings belong to the business record, not the coach record. The prototype uses safe local/demo state and documents these fields for the separate CRM integration owner.
+
+The public read model includes only approved published fields. Admin-only fields, unpublished coach records, provider configuration, and management actions remain outside public routes and payloads.
 
 ## Security and privacy
 

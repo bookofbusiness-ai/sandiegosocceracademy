@@ -27,7 +27,8 @@ Relaunch San Diego Soccer Academy as a complete nonprofit website with two clear
 - Present the four confirmed founders/members as organizational leaders without implying that they are currently available for private coaching.
 - Maintain a separately managed directory of coaches currently available for private sessions.
 - Give each published private coach a stable academy-branded landing page with a verified bio, specialties and service details, current availability, approved social-proof video, direct booking, and human-callback option.
-- Allow authorized site operators to add, edit, publish, unpublish, and mark a private coach unavailable without redesigning the site.
+- Provide a separate admin-only operator experience where authorized business owners or staff can add, edit, preview, publish, unpublish, reorder, and mark a private coach unavailable without redesigning the site.
+- Do not expose coach-management controls, booking-provider settings, unpublished coach data, or admin navigation on the public marketing website.
 - Keep booking provider-neutral at the business level. The business owner configures one supported engine—such as Google Calendar appointment scheduling, Calendly, Cal.com, another trusted provider, or callback-only mode—and every bookable coach uses that shared integration.
 - Give each coach only the provider-side mapping needed for that shared engine, such as a user, resource, calendar, event type, or booking-route identifier. Do not support a different booking engine per coach within one business.
 - Preserve the nonprofit access, confidence, discipline, belonging, story, values, and community-support mission.
@@ -91,7 +92,8 @@ This path is informed by the Replit private-coaching model but improves it with 
 - Add individual academy-branded coach pages, verified profile/video content, availability, direct booking, coach-aware callback routing, and a documented human fallback.
 - Add an owner-level `Booking settings` prototype that selects one provider adapter for the business and applies it across all coach pages.
 - Support business-level `external_link`, `embed`, `callback_only`, and `unavailable` prototype modes, plus coach-level provider mappings inside the selected engine.
-- Add safe prototype coach-management states for add, edit, preview, publish, unpublish, and unavailable behavior.
+- Add a separate, clearly labeled admin prototype with safe local coach-management states for add, edit, preview, publish, unpublish, reorder, and unavailable behavior.
+- Keep the public prototype read-only and free of admin controls or links.
 - Document the coach data shape, selected-coach context, callback payload, and interaction events for the separate CRM integration owner.
 - Add anonymous aggregate signup-click measurement without personal data or advertising cookies.
 - Prepare two placement-ready ad creative variants with equivalent claims and different destinations.
@@ -115,21 +117,23 @@ This path is informed by the Replit private-coaching model but improves it with 
 3. All class-registration actions use the verified filtered City catalog URL and disclose the City handoff.
 4. Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact are complete, linkable, and reachable through persistent responsive navigation.
 5. Founder/member profiles and bookable-coach status are separate; no founder is shown as available solely because of organizational membership.
-6. Authorized operators can add, edit, publish, unpublish, and mark a coach unavailable without redesigning the site.
-7. Every published available coach has a stable academy-branded page with verified biography, approved accessible social-proof video, current availability, direct booking, and human-callback options.
-8. The prototype supports external link, embed, callback-only, and unavailable business states without coupling the platform to Cal.com or any single provider.
-9. One business has one active booking provider; every bookable coach inherits it and supplies only the provider-side mapping required by that engine. The prototype does not mix booking providers among coaches in the same business.
-10. Booking and callback flows preserve the selected coach context; prototype behavior and fallback states are documented and tested without live appointment creation or production submissions.
-11. Every published coach name, title, credential, affiliation, biography, specialty, service area, video, email, provider mapping, and routing destination has human-confirmed authority and appropriate permissions.
-12. A documented integration contract lets the separate CRM owner replace prototype data and handlers without redesigning the public experience.
-13. About, FAQ, support, and contact content is preserved or improved from the current public site; no unsupported donation transaction or quantitative claim is introduced.
-14. The proposed club is not presented as available.
-15. No Meta Pixel, advertising cookies, visitor profiles, uploaded contact lists, or unnecessary new personal-data fields are introduced.
-16. Anonymous signup-click measurement contains no personal data and is documented.
-17. Two equivalent ad creative variants are prepared but not published; destination is the controlled variable.
-18. The $200 cap, 10-day duration, 30-mile radius, and adults 25-65+ audience are represented accurately in the campaign handoff.
-19. Automated responsive, accessibility, link, syntax, routing, and performance checks pass.
-20. Human preview acceptance remains required before deployment or ad launch.
+6. A separate operator surface lets authorized business owners or staff add, edit, preview, publish, unpublish, reorder, and mark a coach unavailable without redesigning the site.
+7. The public marketing site contains no admin navigation or management controls and never exposes unpublished coach records or organization booking settings.
+8. Every published available coach has a stable academy-branded page with verified biography, approved accessible social-proof video, current availability, direct booking, and human-callback options.
+9. A published but unavailable coach has no active booking action and provides a human callback or approved alternative; an unpublished coach is absent from public routes and payloads.
+10. The prototype supports external link, embed, callback-only, and unavailable business states without coupling the platform to Cal.com or any single provider.
+11. One business has one active booking provider; every bookable coach inherits it and supplies only the provider-side mapping required by that engine. The prototype does not mix booking providers among coaches in the same business.
+12. Booking and callback flows preserve the selected coach context; prototype behavior and fallback states are documented and tested without live appointment creation or production submissions.
+13. Every published coach name, title, credential, affiliation, biography, specialty, service area, video, email, provider mapping, and routing destination has human-confirmed authority and appropriate permissions.
+14. A documented integration contract lets the separate CRM owner replace prototype data and handlers without redesigning the public experience.
+15. About, FAQ, support, and contact content is preserved or improved from the current public site; no unsupported donation transaction or quantitative claim is introduced.
+16. The proposed club is not presented as available.
+17. No Meta Pixel, advertising cookies, visitor profiles, uploaded contact lists, or unnecessary new personal-data fields are introduced.
+18. Anonymous signup-click measurement contains no personal data and is documented.
+19. Two equivalent ad creative variants are prepared but not published; destination is the controlled variable.
+20. The $200 cap, 10-day duration, 30-mile radius, and adults 25-65+ audience are represented accurately in the campaign handoff.
+21. Automated responsive, accessibility, link, syntax, routing, and performance checks pass.
+22. Human preview acceptance remains required before deployment or ad launch.
 
 ## Approval effect
 
