@@ -145,5 +145,6 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 - Founder and bookable-coach platform decision: `decisions/SDSA-DEC-013.md`.
 - Provider-neutral prototype and CRM-boundary decision: `decisions/SDSA-DEC-014.md`.
 - Business-level booking-provider correction: `decisions/SDSA-DEC-015.md`.
+- Approval summary process rule: `decisions/SDSA-DEC-016.md`.
 - Implementation evidence: `evidence/BUILD_RECEIPT-SDSA-001.md`.
 - Source images and generated-image provenance: `README.md`.

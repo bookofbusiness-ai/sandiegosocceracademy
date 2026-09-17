@@ -68,6 +68,7 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 - Founder and Bookable-Coach Platform Decision Record: `decisions/SDSA-DEC-013.md`
 - Provider-Neutral Prototype Decision Record: `decisions/SDSA-DEC-014.md`
 - Business-Level Booking Configuration Decision Record: `decisions/SDSA-DEC-015.md`
+- Approval Summary Process Rule: `decisions/SDSA-DEC-016.md`
 - Canon Reconciliation: `CANON_RECONCILIATION.md`
 - Project Blueprint: `PROJECT_BLUEPRINT.md`
 - Build Receipt: `evidence/BUILD_RECEIPT-SDSA-001.md`

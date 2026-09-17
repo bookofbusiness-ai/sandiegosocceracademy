@@ -134,3 +134,5 @@ This path is informed by the Replit private-coaching model but improves it with 
 ## Approval effect
 
 Human approval will make this the canonical prototype target revision and authorize preparation of a bounded Build Assignment and Verification Contract. The initial bookable roster, profile and video facts, booking/callback destinations, private-session policies, and permissions may be supplied later, but each remains a publication gate for the affected coach page. Approval will not authorize production CRM or calendar wiring, production deployment, advertising publication, or spending.
+
+Every approval request for this target or a later material revision must include the self-contained decision summary required by `SDSA-DEC-016`.
