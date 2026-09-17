@@ -79,6 +79,8 @@ Increase enrollment for a new class expected to begin in approximately one month
 - Use two governed tracks: make the upcoming class the immediate enrollment campaign, and validate the subsidized club separately before presenting it as available.
 - Keep final class registration on the City's public website; the nonprofit site may serve as an explanatory funnel that sends families to the City system.
 - Run a controlled two-destination acquisition test: one otherwise equivalent ad lands on the academy class page before City registration, and the other goes directly to the City registration destination.
+- Target families within a 30-mile radius centered on Salt Creek Park.
+- Cap total advertising spend for the two-destination test at $200.
 
 ## Proposed
 
@@ -90,7 +92,7 @@ Increase enrollment for a new class expected to begin in approximately one month
 
 ## Unresolved
 
-- Advertising budget, audience radius, campaign duration, and success threshold.
+- Campaign duration and success threshold.
 - Direct City class URLs, if available; otherwise the general catalog remains the verified destination.
 - Whether the City listing's displayed minimum of 12 can be changed or should simply remain external source information while the campaign uses an internal floor of 6.
 - Whether Wednesday 4:30 PM-6:30 PM remains the current schedule.

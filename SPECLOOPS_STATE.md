@@ -18,7 +18,7 @@
 - **Campaign state:** Product Room framing
 - **Approved path:** freeze class offer -> define conversion plan -> approve launch revision -> issue Build Assignment -> execute and verify; explore the club as a separate governed track
 - **Buildability Gate:** `NOT_READY`
-- **Blockers:** acquisition budget, audience radius, duration, success threshold, direct City class links or catalog fallback, and public boundary for the proposed club
+- **Blockers:** acquisition duration, success threshold, direct City class links or catalog fallback, and public boundary for the proposed club
 
 ## Active quest
 
@@ -43,9 +43,9 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 
 ## Resume cursor
 
-- **Last accepted decision:** approve the controlled academy-site-versus-direct-City destination test structure
-- **Exact next action:** set the total advertising budget and geographic radius in Q3 of `questions/SDSA-QUEST-002.md`
-- **Why it is next:** budget and reachable local audience determine whether the split can produce enough signal before the October 7 class start
+- **Last accepted decision:** cap total acquisition-test spend at $200
+- **Exact next action:** approve or revise a 10-day equal split at $10 per variant per day in Q3 of `questions/SDSA-QUEST-002.md`
+- **Why it is next:** the proposed schedule uses the complete budget while preserving destination as the controlled variable and leaving time before the October 7 start
 
 ## Current artifacts
 
@@ -56,6 +56,8 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 - Decision Record: `decisions/SDSA-DEC-001.md`
 - Class Offer Decision Record: `decisions/SDSA-DEC-002.md`
 - Acquisition Test Decision Record: `decisions/SDSA-DEC-003.md`
+- Targeting Radius Decision Record: `decisions/SDSA-DEC-004.md`
+- Acquisition Budget Decision Record: `decisions/SDSA-DEC-005.md`
 - Canon Reconciliation: `CANON_RECONCILIATION.md`
 - Project Blueprint: `PROJECT_BLUEPRINT.md`
 - Build Receipt: `evidence/BUILD_RECEIPT-SDSA-001.md`

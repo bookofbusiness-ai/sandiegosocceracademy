@@ -23,10 +23,10 @@
 ## Q3: What is the paid-acquisition boundary?
 
 - **Status:** `PARTIAL`
-- **Known:** Facebook ads are desired to drive sign-ups. Final registration happens on the City's public website. The academy homepage may provide program context and a `Sign up now` action before handing off to the City. The user is considering a second ad that links directly to the City.
-- **Missing:** Total budget, geographic radius, audience, duration, approved claims, direct class URLs or catalog fallback, tracking consent, and success threshold.
-- **Recommendation:** Run a controlled two-destination test with the same audience, creative, schedule, and equal budget. Variant A lands on the academy's focused class page and measures the outbound City-registration click. Variant B goes directly to the same City registration destination. Compare City enrollment movement and cost per attributable enrollment where possible—not click-through rate alone. If direct class links cannot be obtained, prefer the academy funnel as the primary path because the general catalog adds search friction.
-- **Human decision:** Test structure approved on 2026-09-17. Spending, audience, duration, tracking, destination URLs, and success thresholds remain unapproved.
+- **Known:** Facebook ads are desired to drive sign-ups. Final registration happens on the City's public website. The academy homepage may provide program context and a `Sign up now` action before handing off to the City. A second ad will link directly to the City. The approved geography is a 30-mile radius centered on Salt Creek Park, and total spend is capped at $200.
+- **Missing:** Audience definition within the approved radius, duration, approved claims, direct class URLs or catalog fallback, tracking consent, and success threshold.
+- **Recommendation:** Run a controlled two-destination test with the same audience, creative, schedule, and equal budget. Use a 10-day test at $10 per variant per day, totaling $200. Variant A lands on the academy's focused class page and measures the outbound City-registration click. Variant B goes directly to the same City registration destination. Compare City enrollment movement and cost per attributable enrollment where possible—not click-through rate alone. If direct class links cannot be obtained, prefer the academy funnel as the primary path because the general catalog adds search friction.
+- **Human decision:** Test structure, 30-mile radius, and $200 total cap approved on 2026-09-17. Detailed audience, duration, tracking, destination URLs, and success thresholds remain unapproved.
 
 ## Q4: What club hypothesis should be validated first?
 
