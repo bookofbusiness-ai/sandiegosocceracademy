@@ -18,7 +18,7 @@
 - **Campaign state:** Product Room framing
 - **Approved path:** freeze class offer -> define conversion plan -> approve launch revision -> issue Build Assignment -> execute and verify; explore the club as a separate governed track
 - **Buildability Gate:** `NOT_READY`
-- **Blockers:** acquisition-test approval and parameters, direct City class links or catalog fallback, and public boundary for the proposed club
+- **Blockers:** acquisition budget, audience radius, duration, success threshold, direct City class links or catalog fallback, and public boundary for the proposed club
 
 ## Active quest
 
@@ -43,9 +43,9 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 
 ## Resume cursor
 
-- **Last accepted decision:** confirm the 2026 class year, an internal enrollment floor of 6, and the City website as the final registration system
-- **Exact next action:** approve or revise the controlled academy-site-versus-direct-City destination test in Q3 of `questions/SDSA-QUEST-002.md`
-- **Why it is next:** the website and direct-registration paths have different friction and measurement tradeoffs; the test must isolate destination as the variable before implementation
+- **Last accepted decision:** approve the controlled academy-site-versus-direct-City destination test structure
+- **Exact next action:** set the total advertising budget and geographic radius in Q3 of `questions/SDSA-QUEST-002.md`
+- **Why it is next:** budget and reachable local audience determine whether the split can produce enough signal before the October 7 class start
 
 ## Current artifacts
 
@@ -55,6 +55,7 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 - Active Question Ledger: `questions/SDSA-QUEST-002.md`
 - Decision Record: `decisions/SDSA-DEC-001.md`
 - Class Offer Decision Record: `decisions/SDSA-DEC-002.md`
+- Acquisition Test Decision Record: `decisions/SDSA-DEC-003.md`
 - Canon Reconciliation: `CANON_RECONCILIATION.md`
 - Project Blueprint: `PROJECT_BLUEPRINT.md`
 - Build Receipt: `evidence/BUILD_RECEIPT-SDSA-001.md`

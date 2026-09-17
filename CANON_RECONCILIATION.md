@@ -21,7 +21,7 @@
 | User-supplied City class screenshots | Direct offer evidence | `OBSERVED_CURRENT` | Establish two class names, ages, times, location, displayed dates, price, registration window, and capacity. The year and live enrollment are not visible. |
 | City of Chula Vista Fall 2026 program guide and catalog | Current official web source | `CORROBORATING` | Supports the 2026 inference and identifies the current registration system; it does not expose a verified direct class URL in the inspected result. |
 | Human class-offer confirmation | Direct human authority | `REFINED` | Confirms 2026, sets an internal campaign enrollment floor of 6, and keeps final registration on the City's public website. |
-| Academy-site versus direct-City ads | Human consideration | `PROPOSED` | Evaluate two otherwise comparable ads with destination as the controlled variable. |
+| Academy-site versus direct-City ads | Human-approved test structure | `CANONICAL` | Evaluate two otherwise comparable ads with destination as the controlled variable; operating parameters remain unresolved. |
 | Project Context and Working Spec | Project-owned state | `CANONICAL` for current campaign state | Defines the observed facts, proposals, boundaries, and unresolved decisions. |
 
 ## Conflicts and gaps
@@ -39,4 +39,4 @@
 
 ## Current canon
 
-The nonprofit relaunch and the intent to improve access are current. The existing website is unaccepted prototype evidence. The upcoming class is the approved primary enrollment campaign, its 2026 offer is reconstructed, and the City remains the final registration authority. The subsidized club remains a separate proposed strategic direction. No further implementation is authorized until the Product Room approves the acquisition test and its boundaries.
+The nonprofit relaunch and the intent to improve access are current. The existing website is unaccepted prototype evidence. The upcoming class is the approved primary enrollment campaign, its 2026 offer is reconstructed, and the City remains the final registration authority. The two-destination acquisition test structure is approved, but its spending and audience parameters are not. The subsidized club remains a separate proposed strategic direction. No further implementation is authorized until the Product Room completes the acquisition boundary.

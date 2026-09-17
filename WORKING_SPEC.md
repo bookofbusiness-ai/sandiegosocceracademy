@@ -30,6 +30,14 @@ Both are shown at Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vist
 
 Final registration remains on the City's public website. The academy website may act as a focused explanatory funnel with `Sign up now` actions that send families to the City system.
 
+## Approved acquisition test
+
+- **Variant A:** Facebook ad -> academy class landing experience -> `Sign up now` -> City registration.
+- **Variant B:** Facebook ad -> City registration directly.
+- Keep audience, creative, schedule, and budget allocation equal so destination is the controlled variable.
+- Measure academy-to-City outbound clicks for Variant A and reconcile City enrollment movement for both variants where source evidence permits.
+- Do not select a winner based on click-through rate alone; prefer attributable enrollment and cost per enrollment where available.
+
 ## Existing implementation evidence
 
 - Preserve the reference site's core navigation and contact paths.
@@ -49,7 +57,6 @@ Final registration remains on the City's public website. The academy website may
 
 ## Unresolved questions
 
-- Approval of the controlled homepage-funnel versus direct-City destination test.
 - Advertising budget, audience radius, duration, and success threshold.
 - Direct City class links or approval to use the general catalog fallback.
 - Current coach titles and affiliations.
@@ -74,4 +81,4 @@ See `evidence/BUILD_RECEIPT-SDSA-001.md`.
 
 ## Next checkpoint
 
-Resolve Q3 in `questions/SDSA-QUEST-002.md`: approve or revise the destination test and define its budget, audience, duration, and success measure. Do not change website code or create ads until Q3 is authoritative. Then prepare a named launch revision and bounded Build Assignment.
+Continue Q3 in `questions/SDSA-QUEST-002.md`: define the approved test's budget, audience radius, duration, and success measure. Do not change website code, create ads, or spend funds until Q3 is complete. Then prepare a named launch revision and bounded Build Assignment.

@@ -24,9 +24,9 @@
 
 - **Status:** `PARTIAL`
 - **Known:** Facebook ads are desired to drive sign-ups. Final registration happens on the City's public website. The academy homepage may provide program context and a `Sign up now` action before handing off to the City. The user is considering a second ad that links directly to the City.
-- **Missing:** Approval of the test design, total budget, geographic radius, audience, duration, approved claims, direct class URLs or catalog fallback, tracking consent, and success threshold.
+- **Missing:** Total budget, geographic radius, audience, duration, approved claims, direct class URLs or catalog fallback, tracking consent, and success threshold.
 - **Recommendation:** Run a controlled two-destination test with the same audience, creative, schedule, and equal budget. Variant A lands on the academy's focused class page and measures the outbound City-registration click. Variant B goes directly to the same City registration destination. Compare City enrollment movement and cost per attributable enrollment where possible—not click-through rate alone. If direct class links cannot be obtained, prefer the academy funnel as the primary path because the general catalog adds search friction.
-- **Human decision:** The two destinations are under consideration; test parameters are not yet approved.
+- **Human decision:** Test structure approved on 2026-09-17. Spending, audience, duration, tracking, destination URLs, and success thresholds remain unapproved.
 
 ## Q4: What club hypothesis should be validated first?
 
