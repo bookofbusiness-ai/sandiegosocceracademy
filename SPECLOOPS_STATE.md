@@ -18,16 +18,16 @@
 - **Campaign state:** Product Room content reconciliation
 - **Approved path:** freeze class offer -> define conversion plan -> approve launch revision -> issue Build Assignment -> execute and verify; explore the club as a separate governed track
 - **Buildability Gate:** `NEEDS_CONTENT_RECONCILIATION`
-- **Blockers:** current coach roster and profile facts; coach-specific inquiry routes and fallback; support/donation destinations; then human approval of named launch revision `SDSA-LAUNCH-v1`. The proposed club remains a separate non-blocking discovery track.
+- **Blockers:** scheduling architecture and coach-management approach; then human approval of named launch revision `SDSA-LAUNCH-v1`. The later bookable-coach roster and content gate publication of individual coach pages but do not block building the capability. The proposed club remains a separate non-blocking discovery track.
 
 ## Active quest
 
 - **Quest ID/title:** `SDSA-QUEST-002` Decide the relaunch path and club boundary
 - **Quest state:** Product Room
-- **Required decision areas remaining:** reconcile full-site people, profile, routing, and support content; approve the named full-site launch revision. The club hypothesis remains in the separate discovery track.
+- **Required decision areas remaining:** select the scheduling and coach-management architecture; approve the named full-site launch revision. Bookable-coach content, routing, and policy can be populated later and must be verified before publication. The club hypothesis remains in the separate discovery track.
 - **Optional refinements:** ad creative, sponsorship packages, club operations, analytics, CRM, online registration
-- **Current Question ID/status:** `Q5 / PARTIALLY_ANSWERED`
-- **Highest assigned Question ID:** `Q5`
+- **Current Question ID/status:** `Q6 / UNRESOLVED`
+- **Highest assigned Question ID:** `Q6`
 
 ## Build transition and return
 
@@ -43,9 +43,9 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 
 ## Resume cursor
 
-- **Last accepted decision:** the redesign covers the full website and preserves two pathways: park-district group registration and coach-selected private-training inquiries
-- **Exact next action:** confirm whether Jason Taylor, Jeff Taylor, Ashley Hernandez-Cavanagh, and Greg Coco are the current coach roster
-- **Why it is next:** the public site, Replit reference, and repository prototype disagree about the coach roster and none proves the requested coach-aware routing destinations
+- **Last accepted decision:** Jason Taylor, Jeff Taylor, Ashley Hernandez-Cavanagh, and Greg Coco are founders/members; private-coaching availability is a separately managed roster with coach-specific booking pages
+- **Exact next action:** decide whether SDSA should use academy-branded coach pages plus managed coach content and Cal.com-powered availability/booking, or build a first-party coach and scheduling system
+- **Why it is next:** the answer controls authentication, calendar synchronization, notifications, rescheduling, cancellation, payments, data handling, and build scope
 
 ## Current artifacts
 
@@ -65,6 +65,7 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 - Measurement Boundary Decision Record: `decisions/SDSA-DEC-010.md`
 - City Destination Decision Record: `decisions/SDSA-DEC-011.md`
 - Full-Site Scope Decision Record: `decisions/SDSA-DEC-012.md`
+- Founder and Bookable-Coach Platform Decision Record: `decisions/SDSA-DEC-013.md`
 - Canon Reconciliation: `CANON_RECONCILIATION.md`
 - Project Blueprint: `PROJECT_BLUEPRINT.md`
 - Build Receipt: `evidence/BUILD_RECEIPT-SDSA-001.md`

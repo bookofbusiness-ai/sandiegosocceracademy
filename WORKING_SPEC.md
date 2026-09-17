@@ -35,7 +35,8 @@ Final registration remains on the City's public website. The academy website may
 The rebuild is not limited to the homepage. It must provide distinct, linkable, responsive destinations for Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact.
 
 - **Group training:** explain verified park-district classes and hand families to the City registration system.
-- **Private training:** explain the service, present verified coach profiles, allow the family to select a preferred coach, and route the inquiry to that coach or a documented academy fallback.
+- **Private training:** explain the service, present a managed directory of coaches currently available for private sessions, and give each coach an individual academy-branded booking page with verified profile content, availability, video, direct booking, and a human-callback alternative.
+- **People:** present Jason Taylor, Jeff Taylor, Ashley Hernandez-Cavanagh, and Greg Coco as founders/members. Founder/member status and bookable-coach status are separate.
 - **Organization and trust:** preserve the nonprofit story, mission, values, methodology, FAQ, volunteering, sponsorship, donation concept, and general contact path without inventing unsupported facts or transaction destinations.
 
 The current public site supplies the broader content inventory. The Replit reference supplies the stronger private-training model. The repository prototype is useful implementation evidence but is not complete enough to be the approved target.
@@ -81,7 +82,8 @@ The destination returned both approved soccer class results during verification 
 - Lead with children, community, and growth rather than an empty stadium.
 - Present group programs, private coaching, methodology, coaches, mission, FAQ, community support, and contact through a complete responsive information architecture.
 - Preserve the existing n8n callback integration and exact payload mapping.
-- Treat the current generic callback as evidence only until preferred-coach selection and routing destinations are confirmed.
+- Treat the current generic callback as evidence only until human ownership, preferred-coach context, routing destinations, and fallback behavior are confirmed.
+- Model bookable coaches as managed content that can be added, edited, published, unpublished, or marked unavailable without redesigning the site.
 - Keep localhost verification non-transmitting.
 - Use a dependency-free static architecture with portable hosting.
 - Support system-aware light/dark themes and reduced motion.
@@ -95,8 +97,10 @@ The destination returned both approved soccer class results during verification 
 
 ## Unresolved questions
 
-- Current coach roster, titles, credentials, affiliations, biographies, specialties, direct-contact details, and availability.
-- Coach-specific inquiry routes and a general fallback route.
+- Initial bookable-coach roster, verified profile content, specialties, age ranges, service areas, availability, and video assets and permissions.
+- Scheduling architecture: embedded or API-connected Cal.com or another provider versus a first-party scheduler.
+- Coach-specific booking/callback routes and a general human fallback route.
+- Private-session pricing, payment timing, cancellation, rescheduling, and refund policies.
 - Authoritative volunteering, sponsorship, and donation destinations.
 - Club launch horizon, team/age-group scope, facilities, coaching, subsidy economics, and sponsorship model.
 - Hosting and production publication approval.
@@ -112,7 +116,9 @@ The destination returned both approved soccer class results during verification 
 - SEO metadata, canonical URL, sitemap, robots file, and organization structured data are present.
 - No stale session date is presented as current.
 - Group-registration actions reach the verified City destination and disclose the handoff.
-- Private-training inquiries include a preferred coach, reach the documented coach-specific or fallback route, and preserve honest success and error states.
+- Every published bookable coach has a stable academy-branded landing page with verified bio, approved accessible video, current availability, direct booking, and human-callback choices.
+- Coaches can be added, edited, published, unpublished, and marked unavailable without a site redesign.
+- Private-training bookings and callback requests preserve the selected coach context, reach the documented destination or fallback, and show honest success and error states.
 
 ## Current evidence
 
@@ -120,4 +126,4 @@ See `evidence/BUILD_RECEIPT-SDSA-001.md`.
 
 ## Next checkpoint
 
-Q3 is complete. Reconcile Q5 by confirming the current coach roster, profile facts, inquiry routes, fallback, and support destinations. Then review `specs/SDSA-LAUNCH-v1.md` as the proposed named target. Do not change website code, create ads, or spend funds until the target is approved and a bounded Build Assignment is issued.
+Q5 confirms the four founders/members and separates them from the later bookable-coach roster. Resolve Q6 by selecting the coach-management and scheduling architecture, then review `specs/SDSA-LAUNCH-v1.md`. Coach content, routing, media, and policy may be supplied later but must be verified before the affected profile is published. Do not change website code, create ads, or spend funds until the target is approved and a bounded Build Assignment is issued.

@@ -14,8 +14,8 @@ The near-term relaunch serves eight connected needs:
 
 1. Explain who the academy serves and why the nonprofit exists.
 2. Make the upcoming class offer easy to understand and act on.
-3. Explain private training and help families choose an appropriate verified coach.
-4. Route private-training inquiries to the selected coach or a documented fallback.
+3. Explain private training and help families choose from coaches currently published as available.
+4. Give each available coach an academy-branded page with verified bio, social-proof video, live availability, direct booking, and human callback.
 5. Establish trust through verified coaching profiles and a clear training method.
 6. Preserve the nonprofit story, About content, FAQ, community-support options, and contact paths.
 7. Convert interest into a trackable enrollment or inquiry workflow with appropriate privacy boundaries.
@@ -29,7 +29,8 @@ The near-term relaunch serves eight connected needs:
 - Persistent desktop navigation and compact mobile menu.
 - Split hero centered on real player development.
 - Distinct linkable destinations for Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact.
-- Coach profiles connect directly to preferred-coach private-training inquiries.
+- Founder/member profiles establish organizational leadership without implying private availability.
+- Bookable-coach profiles connect to individual booking pages and human callback.
 - Group-training actions use `Sign up now`; private-training actions use a distinct inquiry label that does not imply City registration.
 - Light/dark theme support and reduced-motion handling.
 
@@ -43,7 +44,7 @@ The near-term relaunch serves eight connected needs:
 
 ## Data model
 
-The site does not persist data locally. The callback form transmits:
+The current prototype does not persist data locally. Its callback form transmits:
 
 - parent or guardian name;
 - player name and age;
@@ -52,7 +53,10 @@ The site does not persist data locally. The callback form transmits:
 - email;
 - optional goals or requests;
 - selected coach or general academy fallback for private-training inquiries;
+- appointment slot, session type, and scheduling-provider reference when a booking is created;
 - submission timestamp.
+
+The managed coach model also needs publishable fields for role, biography, specialties, age ranges, session formats, service area, profile image, social-proof video, accessibility text, booking status, calendar source, and routing destination. The exact storage and editing interface depend on the scheduling and content-management decision.
 
 ## Security and privacy
 
@@ -69,7 +73,7 @@ The site does not persist data locally. The callback form transmits:
 - Web Share API with clipboard fallback.
 - No payment, CRM, analytics, CMS, or registration platform integration.
 
-The group-registration destination is the verified City catalog. The private-training workflow requires confirmed coach-specific destinations and a general fallback. Privacy-light campaign measurement is approved; Meta Pixel and advertising cookies are excluded.
+The group-registration destination is the verified City catalog. The private-training workflow requires a selected scheduling provider, confirmed coach-specific booking and callback destinations, and a general fallback. The preferred first-release architecture is an academy-branded coach page with an embedded or API-connected Cal.com schedule, subject to human approval. Privacy-light campaign measurement is approved; Meta Pixel and advertising cookies are excluded.
 
 ## Economics and club hypothesis
 
@@ -99,8 +103,8 @@ The club concept is intended to lower the cost of competitive soccer and attract
 ## Known gaps
 
 - Human approval of named revision `SDSA-LAUNCH-v1`.
-- Current coach roster and complete profile confirmation.
-- Coach-specific inquiry routing and fallback behavior.
+- Launch decision: scheduling provider and coach-management approach.
+- Deferred publication gates: initial bookable-coach roster; complete profile and video confirmation; coach-specific booking/callback routing; and private-session price, payment, cancellation, rescheduling, and refund policy.
 - Authoritative volunteering, sponsorship, and donation destinations.
 - Privacy/legal review if intake scope expands.
 - Human visual and content acceptance.
@@ -109,10 +113,11 @@ The club concept is intended to lower the cost of competitive soccer and attract
 
 ## Path to launch
 
-1. Reconcile the coach roster, profile facts, private-inquiry routes, fallback, and support destinations.
-2. Approve or revise `specs/SDSA-LAUNCH-v1.md`.
-3. Create a Verification Contract and Build Assignment referencing the exact approved revision.
-4. Rebuild or revise the full site against the approved target.
-5. Review the preview, then obtain explicit deployment and ad-launch authority.
-6. Deploy and verify the exact approved commit, both service paths, HTTPS, and both domain variants.
-7. Run the club discovery track and promote it to canon only after viability and human approval.
+1. Select the scheduling architecture and coach-management approach.
+2. Approve the platform capability while treating bookable-coach data and policy as later publication-gated content.
+3. Approve or revise `specs/SDSA-LAUNCH-v1.md`.
+4. Create a Verification Contract and Build Assignment referencing the exact approved revision.
+5. Rebuild or revise the full site against the approved target.
+6. Review the preview, then obtain explicit deployment and ad-launch authority.
+7. Deploy and verify the exact approved commit, both service paths, HTTPS, and both domain variants.
+8. Run the club discovery track and promote it to canon only after viability and human approval.

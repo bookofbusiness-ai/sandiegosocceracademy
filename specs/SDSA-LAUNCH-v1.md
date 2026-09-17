@@ -1,4 +1,4 @@
-# SDSA 2026 Class Relaunch — Named Target Revision
+# SDSA Full-Site Relaunch and 2026 Class Campaign — Named Target Revision
 
 **Revision:** `SDSA-LAUNCH-v1`
 **Status:** `PROPOSED_NEEDS_CONTENT_RECONCILIATION`
@@ -7,7 +7,7 @@
 
 ## Outcome
 
-Relaunch San Diego Soccer Academy as a complete nonprofit website with two clear pathways: group-training families understand the Fall 2026 park-district classes and register through the City of Chula Vista; private-training families compare verified coaches, select a preferred coach, and send an inquiry that can be routed accordingly.
+Relaunch San Diego Soccer Academy as a complete nonprofit website with two clear pathways: group-training families understand the Fall 2026 park-district classes and register through the City of Chula Vista; private-training families browse coaches currently available for private sessions, visit an individual academy-branded booking page, and either reserve a session or request a human callback.
 
 ## Public offer
 
@@ -24,7 +24,10 @@ Relaunch San Diego Soccer Academy as a complete nonprofit website with two clear
 - Present both age-group classes clearly before the registration handoff.
 - Explain that registration is completed on the City's website and may require an account.
 - Present private training as a parallel service path, not as a park-district registration flow.
-- Let families review verified coach profiles, select a preferred coach, and submit a private-training inquiry routed to that coach or a documented fallback.
+- Present the four confirmed founders/members as organizational leaders without implying that they are currently available for private coaching.
+- Maintain a separately managed directory of coaches currently available for private sessions.
+- Give each published private coach a stable academy-branded landing page with a verified bio, specialties and service details, current availability, approved social-proof video, direct booking, and human-callback option.
+- Allow authorized site operators to add, edit, publish, unpublish, and mark a private coach unavailable without redesigning the site.
 - Preserve the nonprofit access, confidence, discipline, belonging, story, values, and community-support mission.
 - Preserve or improve the full information architecture: Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact.
 - Give each major destination a distinct, linkable route or equivalent clearly separated destination with persistent responsive navigation.
@@ -43,16 +46,18 @@ This path uses the approved 2026 offer and makes the external City handoff expli
 
 ### Private training
 
-`Homepage or Private Training -> coach profiles -> preferred coach selection -> inquiry -> coach-specific or documented fallback routing`
+`Homepage or Private Training -> available coach directory -> coach booking page -> reserve a session or request a human callback`
 
-This path is informed by the Replit private-coaching model but improves it by making coach choice and routing explicit. The current generic callback workflow may be reused only after its payload and routing behavior are verified against this target.
+This path is informed by the Replit private-coaching model but improves it with managed availability, individual booking pages, explicit appointment booking, and a human fallback. The current generic callback workflow may be reused only after its ownership, payload, coach context, routing behavior, and fallback are verified against this target.
 
 ## Full-site content requirements
 
 - **Home:** communicate the nonprofit mission and the two pathways without making private training compete with the urgent class action.
 - **Programs:** show verified group-training options, methodology, current schedule, prices, location, and City-registration boundary.
-- **Private Training:** explain the service, set honest expectations, and lead into coach selection and inquiry.
-- **Coaches:** provide verified profiles, qualifications, specialties, availability or service area only where confirmed, and a clear private-training inquiry action.
+- **Private Training:** explain the service, set honest expectations, and lead to the directory of coaches currently available for private sessions.
+- **Founders/Members:** present Jason Taylor, Jeff Taylor, Ashley Hernandez-Cavanagh, and Greg Coco as organizational leadership without equating membership with private-coaching availability.
+- **Available Coaches:** provide a managed directory with verified summaries and clear links to individual booking pages.
+- **Coach booking page:** provide verified profile content, approved accessible social-proof video, current availability, direct booking, and human-callback options.
 - **About:** preserve the organization story, vision, values, access mission, and nonprofit identity.
 - **FAQ:** answer current questions about ages, skill levels, session format, locations, registration, private-training inquiries, nonprofit status, and contact.
 - **Get Involved:** preserve volunteering, community partnership, sponsorship, sharing, and donation concepts without inventing an unavailable transaction path.
@@ -80,7 +85,8 @@ This path is informed by the Replit private-coaching model but improves it by ma
 
 - Rebuild or revise the existing static website against this target.
 - Add the approved class content, full-site information architecture, calls to action, and City handoff.
-- Add verified coach profiles, preferred-coach selection, coach-aware inquiry routing, and a documented fallback route.
+- Add distinct founder/member profiles and a managed directory of bookable private coaches.
+- Add individual academy-branded coach pages, verified profile/video content, availability, direct booking, coach-aware callback routing, and a documented human fallback.
 - Add anonymous aggregate signup-click measurement without personal data or advertising cookies.
 - Prepare two placement-ready ad creative variants with equivalent claims and different destinations.
 - Verify responsive behavior, accessibility, content accuracy, destination behavior, privacy boundary, and performance.
@@ -90,7 +96,8 @@ This path is informed by the Replit private-coaching model but improves it by ma
 - Production deployment or DNS changes.
 - Publishing ads or spending funds.
 - Meta Pixel, advertising cookies, custom audiences, or direct targeting of minors.
-- A registration, payment, player-account, or CRM system.
+- A first-party park-district registration system, player account system, or CRM.
+- A first-party scheduling or payment engine unless separately approved; connected scheduling may be used after Q6.
 - Publishing the proposed club as an available program.
 - Fabricated availability, urgency, discounts, scholarships, results, or impact claims.
 
@@ -100,17 +107,20 @@ This path is informed by the Replit private-coaching model but improves it by ma
 2. Both age-group offers, schedules, dates, location, and prices match this revision.
 3. All class-registration actions use the verified filtered City catalog URL and disclose the City handoff.
 4. Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact are complete, linkable, and reachable through persistent responsive navigation.
-5. Private-training families can select a verified coach and submit an inquiry; successful routing and the fallback path are documented and tested without sending unauthorized production submissions.
-6. Every published coach name, title, credential, affiliation, biography, email, and routing destination has human-confirmed authority.
-7. About, FAQ, support, and contact content is preserved or improved from the current public site; no unsupported donation transaction or quantitative claim is introduced.
-8. The proposed club is not presented as available.
-9. No Meta Pixel, advertising cookies, visitor profiles, uploaded contact lists, or unnecessary new personal-data fields are introduced.
-10. Anonymous signup-click measurement contains no personal data and is documented.
-11. Two equivalent ad creative variants are prepared but not published; destination is the controlled variable.
-12. The $200 cap, 10-day duration, 30-mile radius, and adults 25-65+ audience are represented accurately in the campaign handoff.
-13. Automated responsive, accessibility, link, syntax, routing, and performance checks pass.
-14. Human preview acceptance remains required before deployment or ad launch.
+5. Founder/member profiles and bookable-coach status are separate; no founder is shown as available solely because of organizational membership.
+6. Authorized operators can add, edit, publish, unpublish, and mark a coach unavailable without redesigning the site.
+7. Every published available coach has a stable academy-branded page with verified biography, approved accessible social-proof video, current availability, direct booking, and human-callback options.
+8. Booking and callback flows preserve the selected coach context; successful routing and fallback behavior are documented and tested without unauthorized production submissions.
+9. Every published coach name, title, credential, affiliation, biography, specialty, service area, video, email, calendar source, and routing destination has human-confirmed authority and appropriate permissions.
+10. About, FAQ, support, and contact content is preserved or improved from the current public site; no unsupported donation transaction or quantitative claim is introduced.
+11. The proposed club is not presented as available.
+12. No Meta Pixel, advertising cookies, visitor profiles, uploaded contact lists, or unnecessary new personal-data fields are introduced.
+13. Anonymous signup-click measurement contains no personal data and is documented.
+14. Two equivalent ad creative variants are prepared but not published; destination is the controlled variable.
+15. The $200 cap, 10-day duration, 30-mile radius, and adults 25-65+ audience are represented accurately in the campaign handoff.
+16. Automated responsive, accessibility, link, syntax, routing, and performance checks pass.
+17. Human preview acceptance remains required before deployment or ad launch.
 
 ## Approval effect
 
-This revision is not approval-ready until the coach roster, profile facts, inquiry-routing destinations, fallback routing, and support/donation destinations are reconciled. Later human approval will make it the canonical target revision and authorize preparation of a bounded Build Assignment and Verification Contract. It will not by itself authorize production deployment, advertising publication, or spending.
+This revision is not approval-ready until the scheduling architecture and coach-management approach are selected in Q6. The initial bookable roster, profile and video facts, booking/callback destinations, private-session policies, and permissions may be supplied later, but each remains a publication gate for the affected coach page. Later human approval will make this the canonical target revision and authorize preparation of a bounded Build Assignment and Verification Contract. It will not by itself authorize production deployment, advertising publication, or spending.

@@ -41,10 +41,20 @@
 - **Status:** `PARTIALLY_ANSWERED`
 - **Known:** The rebuild must include the full website, not only the homepage. The current public site contains four coach profiles: Jason Taylor, Jeff Taylor, Ashley Hernandez-Cavanagh, and Greg Coco. The Replit reference and repository prototype contain three: Jason, Jeff, and Ashley. The Replit experience makes private training prominent and exposes coach emails, but its callback form is generic and does not demonstrate preferred-coach routing.
 - **Human direction:** Preserve two website pathways. Group training routes through the park district and ultimately to the City registration system. Private-training inquiries should be routed to coaches based on the family's selected coach profile.
-- **Missing:** Current coach roster; approved names, titles, credentials, affiliations, biographies, specialties, emails, service areas, and availability; routing destination for each coach; fallback when the preferred coach is unavailable; authoritative volunteering, sponsorship, and donation destinations.
+- **Missing:** Initial bookable-coach roster; approved names, titles, credentials, affiliations, biographies, specialties, emails, service areas, availability, video assets and permissions; booking and callback destination for each coach; fallback when a coach is unavailable; authoritative volunteering, sponsorship, and donation destinations. These may be supplied later and gate publication of the affected content rather than the underlying platform build.
 - **Recommendation:** Confirm the current roster first, then verify each profile and route. Keep a general academy fallback so a family is never stranded if a coach is unavailable or routing fails.
 - **Why it matters:** Publishing an outdated coach or misrouting family information would undermine trust and create a privacy and service failure.
+- **Human decision:** Jason Taylor, Jeff Taylor, Ashley Hernandez-Cavanagh, and Greg Coco are confirmed as current founders/members. This does not make them bookable private coaches. The initial bookable roster and coach-specific content will be provided later. Each available coach should have an individual academy-branded booking page with availability, biography, approved social-proof video, booking, and human-callback options.
+
+## Q6: What should power coach management, availability, and booking?
+
+- **Status:** `UNRESOLVED`
+- **Known:** Families need a San Diego Soccer Academy-branded page for each available coach. The organization must be able to add, edit, publish, unpublish, and mark coaches unavailable. Each page needs verified profile content, availability, video, direct booking, and a human-callback alternative.
+- **Decision required:** Whether a managed content layer should control coach profiles while Cal.com or another scheduling provider owns availability, calendar sync, appointment lifecycle, and notifications behind each academy-branded page, or whether SDSA builds and operates both systems itself.
+- **Recommendation:** Use academy-owned coach pages backed by a simple managed coach-content system, with an embedded or API-connected Cal.com schedule for the first release. Keep bios, videos, publication status, availability status, and calls to action under the SDSA brand, while Cal.com handles calendar synchronization, booking, rescheduling, cancellation, and notifications. Route `Request a callback` through the separately verified human workflow.
+- **Why it matters:** A first-party scheduler adds substantial operational and privacy scope. The connected-provider approach delivers the desired experience faster while preserving the option to replace the scheduling backend later.
+- **Human decision:** Pending.
 
 ## Resume rule
 
-Q1-Q3 are answered. Resume at Q5 by confirming the current coach roster and then the profile and routing details. Keep Q4 as a parallel discovery track that does not block the class relaunch. Do not change website code or produce launch ads until Q5 is reconciled, the named target is approved, and a Build Assignment is issued.
+Q1-Q3 are answered. Q5 establishes the founder/member versus bookable-coach boundary; bookable roster details remain deferred. Resume at Q6 by selecting the scheduling architecture. Keep Q4 as a parallel discovery track that does not block the class relaunch. Do not change website code or produce launch ads until the launch-critical questions are reconciled, the named target is approved, and a Build Assignment is issued.

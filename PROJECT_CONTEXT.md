@@ -34,6 +34,8 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 - The current public website includes broader organizational content than the prototype: four coach profiles, expanded About/Our Story content, volunteering and donation concepts, FAQ content, and contact information.
 - The Replit reference is oriented toward private 1-on-1 coaching and direct coach contact, but its form does not demonstrate selected-coach routing.
 - The requested rebuild has two primary public pathways: park-district group training with City registration, and private training with coach-profile selection and coach-aware inquiry routing.
+- Jason Taylor, Jeff Taylor, Ashley Hernandez-Cavanagh, and Greg Coco are confirmed as current founders/members. Founder/member status does not mean the person is currently available for private coaching.
+- The bookable private-coach roster will be supplied later and must be manageable independently from founder/member profiles.
 - The user reports low sign-ups for the upcoming class.
 - User-supplied City of Chula Vista listings establish two Wednesday class offers at Salt Creek Park Soccer Arena, with dates displayed as October 7-December 2 and no class November 25.
 - The user confirmed that the class listings are for 2026.
@@ -91,6 +93,9 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 - Use the browser-verified filtered City catalog URL that returns both approved soccer classes: `https://secure.rec1.com/CA/chula-vista-ca/catalog/index/70755b78039cd652919a0e4ea69d4d56?filter=c2VhcmNoPVNvY2NlciUyMFNraWxscyUyMCUyNiUyMEdhbWVzLVND`.
 - Treat the redesign as a complete website rebuild, not a homepage-only project. Preserve or improve Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact.
 - Maintain two explicit pathways: group training hands off to the City; private training supports coach selection and routes the inquiry according to that choice.
+- Separate organization founders/members from the roster of coaches currently available for private sessions.
+- Give each published private coach an individual academy-branded page with verified profile content, availability, an approved social-proof video, direct booking, and a human-callback alternative.
+- Support adding, editing, publishing, unpublishing, and marking a private coach unavailable without redesigning the website.
 
 ## Proposed
 
@@ -104,7 +109,9 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 
 - Whether the City listing's displayed minimum of 12 can be changed; until then it remains external source information and is not used as the campaign's success threshold.
 - Whether Wednesday 4:30 PM-6:30 PM remains the current schedule.
-- Current coach roster, profile facts, direct-contact details, private-training routing destination for each coach, and general fallback route.
+- Initial bookable-coach roster; verified profile facts, availability source, direct-contact or booking destinations, video assets and permissions, private-training routing destination for each coach, and general fallback route.
+- Whether availability and booking use Cal.com, another scheduling provider, or a first-party scheduling system.
+- Private-session pricing, payment timing, cancellation, rescheduling, and refund policies.
 - Authoritative volunteering, sponsorship, and donation destinations or payment link.
 - Club launch horizon, initial boys' and girls' age groups, seasonal format, expected roster sizes, coaching model, and facility plan.
 - Family price target, subsidy budget, scholarship policy, and sponsorship assumptions.
@@ -123,7 +130,7 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 - **Status:** Product Room content reconciliation
 - **Primary quest:** `SDSA-QUEST-002` Decide the relaunch path and club boundary
 - **Secondary historical quest:** `SDSA-QUEST-001` prior website candidate review
-- **Buildability blockers:** current coach roster and profiles, coach-specific private-inquiry routing and fallback, support/donation destinations, and approval of the revised full-site target
+- **Buildability blockers:** scheduling and coach-management architecture, followed by approval of the revised full-site target. Bookable-coach content and policies may arrive later but gate publication of each affected profile.
 
 ## Evidence and provenance
 
@@ -133,5 +140,6 @@ Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a compl
 - Extracted offer evidence: `evidence/CLASS_OFFER-SDSA-002.md`.
 - City destination evidence: `evidence/CITY_DESTINATION-SDSA-003.md`.
 - Full-site and Replit reconciliation evidence: `evidence/WEBSITE_RECONCILIATION-SDSA-004.md`.
+- Founder and bookable-coach platform decision: `decisions/SDSA-DEC-013.md`.
 - Implementation evidence: `evidence/BUILD_RECEIPT-SDSA-001.md`.
 - Source images and generated-image provenance: `README.md`.
