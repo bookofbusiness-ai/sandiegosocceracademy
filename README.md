@@ -2,6 +2,8 @@
 
 Production-ready static website for the San Diego Soccer Academy nonprofit.
 
+This repository also contains an explicitly labeled SpecLoops Core `v0.1.9-beta` release-candidate installation. Start with `SPECLOOPS.md`; exact candidate provenance and hashes are recorded in `.specloops/INSTALLATION.md`.
+
 ## Local preview
 
 ```sh

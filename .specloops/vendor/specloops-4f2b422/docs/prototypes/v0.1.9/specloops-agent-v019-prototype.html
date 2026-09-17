@@ -1,0 +1,1405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Clickable SpecLoops Agent interface prototype using fictional project data.">
+  <title>SpecLoops Agent - Interactive Prototype</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef2ed;
+      --paper: #fbfcf8;
+      --paper-2: #f4f6f1;
+      --paper-3: #e5ebe4;
+      --ink: #17352d;
+      --muted: #64736d;
+      --faint: #89968f;
+      --line: #d7ded7;
+      --accent: #2f6d57;
+      --accent-strong: #225642;
+      --accent-soft: #dbeae1;
+      --danger: #a5453d;
+      --danger-soft: #f4dedb;
+      --warning: #94651b;
+      --warning-soft: #f2e8d1;
+      --info: #426779;
+      --info-soft: #dce8ed;
+      --shadow: 0 18px 52px rgba(32, 57, 47, .09);
+      --radius: 18px;
+      --radius-sm: 11px;
+      --sidebar: 252px;
+      --header: 72px;
+      --font: "Avenir Next", Avenir, "SF Pro Display", "Segoe UI", sans-serif;
+    }
+
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #101713;
+      --paper: #18211d;
+      --paper-2: #1e2924;
+      --paper-3: #27352f;
+      --ink: #eef5f0;
+      --muted: #a5b4ac;
+      --faint: #798a81;
+      --line: #32433b;
+      --accent: #7eb59a;
+      --accent-strong: #9dc7b1;
+      --accent-soft: #263f34;
+      --danger: #ed988e;
+      --danger-soft: #442b29;
+      --warning: #e7bf72;
+      --warning-soft: #463a25;
+      --info: #90bacb;
+      --info-soft: #263b44;
+      --shadow: 0 18px 52px rgba(0, 0, 0, .24);
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--bg); }
+    body {
+      min-height: 100dvh;
+      margin: 0;
+      background:
+        radial-gradient(circle at 82% 10%, color-mix(in srgb, var(--accent-soft) 68%, transparent) 0, transparent 28rem),
+        var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, select, textarea { font: inherit; }
+    button, [data-route], [data-action], [data-tab] { -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.02; letter-spacing: -.045em; margin-bottom: 16px; }
+    h2 { font-size: clamp(1.45rem, 2.5vw, 2rem); line-height: 1.12; letter-spacing: -.03em; margin-bottom: 12px; }
+    h3 { font-size: 1.02rem; line-height: 1.25; letter-spacing: -.01em; margin-bottom: 8px; }
+    p { color: var(--muted); margin-bottom: 16px; }
+    small { color: var(--muted); }
+
+    .skip-link { position: fixed; left: 12px; top: -60px; z-index: 100; background: var(--ink); color: var(--paper); padding: 10px 14px; border-radius: var(--radius-sm); }
+    .skip-link:focus { top: 12px; }
+    :focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 72%, white); outline-offset: 3px; }
+
+    .app-shell { min-height: 100dvh; display: grid; grid-template-columns: var(--sidebar) minmax(0, 1fr); }
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      z-index: 20;
+      width: var(--sidebar);
+      padding: 18px 14px;
+      background: color-mix(in srgb, var(--paper) 94%, transparent);
+      border-right: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; padding: 8px 10px 14px; cursor: pointer; border-radius: var(--radius-sm); }
+    .brand:hover { background: var(--paper-2); }
+    .brand-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-weight: 800; letter-spacing: -.05em; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--paper) 12%, transparent); }
+    .brand strong { display: block; letter-spacing: -.02em; }
+    .brand small { display: block; font-size: 11px; }
+    .project-switcher { border: 1px solid var(--line); background: var(--paper-2); border-radius: var(--radius-sm); padding: 10px 12px; width: 100%; text-align: left; cursor: pointer; }
+    .project-switcher:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); transform: translateY(-1px); }
+    .project-switcher span { display: block; font-size: 11px; color: var(--muted); }
+    .project-switcher strong { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .nav-group { display: grid; gap: 4px; }
+    .nav-label { padding: 8px 12px 5px; color: var(--faint); font-size: 11px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+    .nav-item { display: flex; align-items: center; gap: 11px; width: 100%; border: 0; background: transparent; padding: 10px 12px; border-radius: var(--radius-sm); color: var(--muted); text-align: left; cursor: pointer; transition: .18s ease; }
+    .nav-item:hover { background: var(--paper-2); color: var(--ink); transform: translateX(2px); }
+    .nav-item.active { background: var(--accent-soft); color: var(--accent-strong); font-weight: 700; }
+    .nav-icon { width: 25px; height: 25px; border: 1px solid currentColor; border-radius: 8px; display: grid; place-items: center; font-size: 10px; font-weight: 800; opacity: .84; }
+    .sidebar-foot { margin-top: auto; display: grid; gap: 8px; }
+    .prototype-note { padding: 10px 12px; border-radius: var(--radius-sm); background: var(--paper-2); color: var(--muted); font-size: 12px; }
+
+    .workspace { grid-column: 2; min-width: 0; }
+    .topbar { height: var(--header); position: sticky; top: 0; z-index: 15; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 28px; background: color-mix(in srgb, var(--bg) 83%, transparent); backdrop-filter: blur(18px); border-bottom: 1px solid color-mix(in srgb, var(--line) 74%, transparent); }
+    .crumbs { display: flex; align-items: center; gap: 9px; min-width: 0; color: var(--muted); font-size: 13px; }
+    .crumbs strong { color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .top-actions { display: flex; align-items: center; gap: 8px; }
+    .content { width: min(1320px, 100%); margin: 0 auto; padding: 34px 34px 100px; }
+    .page-enter { animation: rise .34s cubic-bezier(.16,1,.3,1) both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 22px; margin-bottom: 28px; }
+    .page-head p { max-width: 720px; margin-bottom: 0; }
+    .page-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .eyebrow { color: var(--accent-strong); font-size: 12px; font-weight: 780; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 10px; }
+    .lede { font-size: 1.08rem; line-height: 1.62; }
+
+    .btn { min-height: 42px; border: 1px solid var(--line); background: var(--paper); border-radius: var(--radius-sm); padding: 0 15px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; cursor: pointer; transition: transform .16s ease, background .16s ease, border-color .16s ease; white-space: nowrap; }
+    .btn:hover { transform: translateY(-1px); border-color: color-mix(in srgb, var(--accent) 56%, var(--line)); }
+    .btn:active { transform: translateY(1px) scale(.99); }
+    .btn-primary { background: var(--accent-strong); color: #f7fbf8; border-color: var(--accent-strong); box-shadow: 0 8px 22px color-mix(in srgb, var(--accent) 22%, transparent); }
+    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-soft { background: var(--accent-soft); color: var(--accent-strong); border-color: transparent; }
+    .btn-ghost { background: transparent; }
+    .btn-danger { background: var(--danger-soft); color: var(--danger); border-color: transparent; }
+    .btn-sm { min-height: 34px; padding: 0 11px; font-size: 13px; }
+    .icon-btn { width: 42px; padding: 0; }
+
+    .grid { display: grid; gap: 16px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-asym { grid-template-columns: minmax(0, 1.6fr) minmax(300px, .8fr); }
+    .span-2 { grid-column: span 2; }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: 0 1px 0 color-mix(in srgb, var(--paper) 70%, transparent); }
+    .card.clickable { cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .card.clickable:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+    .card.tinted { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 18%, var(--line)); }
+    .card.danger { background: var(--danger-soft); border-color: color-mix(in srgb, var(--danger) 18%, var(--line)); }
+    .card.warning { background: var(--warning-soft); border-color: color-mix(in srgb, var(--warning) 16%, var(--line)); }
+    .card.info { background: var(--info-soft); border-color: color-mix(in srgb, var(--info) 16%, var(--line)); }
+    .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
+    .card p:last-child { margin-bottom: 0; }
+    .label { color: var(--muted); font-size: 12px; font-weight: 740; }
+    .metric { font-size: 2rem; line-height: 1; letter-spacing: -.05em; font-weight: 800; margin: 6px 0 10px; }
+    .metric.small { font-size: 1.45rem; }
+    .mini-metric { display: grid; gap: 3px; }
+    .mini-metric strong { font-size: 1.1rem; }
+    .status { display: inline-flex; align-items: center; min-height: 26px; padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; background: var(--paper-3); color: var(--muted); white-space: nowrap; }
+    .status.good { background: var(--accent-soft); color: var(--accent-strong); }
+    .status.attn { background: var(--warning-soft); color: var(--warning); }
+    .status.bad { background: var(--danger-soft); color: var(--danger); }
+    .status.info { background: var(--info-soft); color: var(--info); }
+    .status.neutral { background: var(--paper-3); color: var(--muted); }
+
+    .section-title { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 30px 0 14px; }
+    .section-title h2, .section-title h3 { margin: 0; }
+    .attention-list { display: grid; gap: 10px; }
+    .attention-row { display: grid; grid-template-columns: 38px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px; border-radius: var(--radius-sm); background: var(--paper-2); cursor: pointer; }
+    .attention-row:hover { background: var(--paper-3); }
+    .kind { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: var(--paper); border: 1px solid var(--line); font-size: 11px; font-weight: 800; color: var(--accent-strong); }
+    .attention-row strong { display: block; }
+    .attention-row small { display: block; }
+    .arrow { color: var(--faint); font-size: 20px; }
+
+    .progress-line { height: 7px; background: var(--paper-3); overflow: hidden; border-radius: 999px; }
+    .progress-line > span { display: block; height: 100%; width: var(--value, 50%); background: var(--accent); border-radius: inherit; transition: width .35s ease; }
+    .journey { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .journey-step { padding: 11px; border-radius: var(--radius-sm); background: var(--paper-2); color: var(--muted); font-size: 12px; font-weight: 700; }
+    .journey-step.done { background: var(--accent-soft); color: var(--accent-strong); }
+    .journey-step.current { box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent-strong); }
+
+    .domain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .domain-card { min-height: 162px; display: flex; flex-direction: column; justify-content: space-between; }
+    .domain-top { display: flex; justify-content: space-between; gap: 12px; }
+    .domain-counts { display: flex; gap: 14px; color: var(--muted); font-size: 12px; }
+    .domain-counts b { color: var(--ink); }
+
+    .tabs { display: flex; gap: 5px; flex-wrap: wrap; padding: 5px; border-radius: 13px; background: var(--paper-2); width: fit-content; margin-bottom: 18px; }
+    .tab { border: 0; background: transparent; color: var(--muted); padding: 8px 12px; border-radius: 9px; font-weight: 700; cursor: pointer; }
+    .tab:hover { color: var(--ink); }
+    .tab.active { background: var(--paper); color: var(--ink); box-shadow: 0 2px 12px rgba(36, 55, 47, .08); }
+
+    .timeline { position: relative; padding-left: 26px; }
+    .timeline:before { content: ""; position: absolute; left: 7px; top: 5px; bottom: 8px; width: 1px; background: var(--line); }
+    .timeline-item { position: relative; padding: 0 0 23px 13px; }
+    .timeline-item:before { content: ""; position: absolute; left: -23px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--paper); border: 3px solid var(--accent); }
+    .timeline-item time { color: var(--faint); font-size: 12px; }
+
+    .object-row { display: grid; grid-template-columns: minmax(0, 1.7fr) .8fr .75fr auto; gap: 12px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .object-row:last-child { border-bottom: 0; }
+    .object-row strong { display: block; }
+    .object-row small { display: block; }
+
+    .wizard-shell { min-height: 100dvh; display: grid; grid-template-columns: minmax(280px, .7fr) minmax(0, 1.3fr); }
+    .wizard-aside { position: sticky; top: 0; height: 100dvh; padding: 38px; background: var(--ink); color: var(--paper); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+    .wizard-aside:after { content: ""; position: absolute; width: 390px; height: 390px; right: -170px; bottom: -150px; border-radius: 50%; background: color-mix(in srgb, var(--accent) 52%, transparent); filter: blur(1px); }
+    .wizard-aside .brand { width: fit-content; color: var(--paper); padding-left: 0; }
+    .wizard-aside .brand:hover { background: transparent; }
+    .wizard-aside h1 { max-width: 540px; position: relative; z-index: 1; }
+    .wizard-aside p { color: color-mix(in srgb, var(--paper) 72%, transparent); max-width: 52ch; position: relative; z-index: 1; }
+    .wizard-main { min-height: 100dvh; display: grid; place-items: center; padding: 38px; }
+    .wizard-panel { width: min(760px, 100%); }
+    .choice-grid { display: grid; gap: 12px; }
+    .choice { display: grid; grid-template-columns: 45px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 17px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer; text-align: left; }
+    .choice:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .choice.selected { border-color: var(--accent); background: var(--accent-soft); }
+    .choice-number { width: 42px; height: 42px; border-radius: 12px; background: var(--paper-2); display: grid; place-items: center; font-weight: 800; color: var(--accent-strong); }
+    .choice strong { display: block; }
+    .choice small { display: block; margin-top: 3px; }
+    .wizard-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; }
+    .stepper { display: flex; gap: 8px; margin-bottom: 24px; }
+    .stepper span { height: 6px; flex: 1; border-radius: 999px; background: var(--paper-3); }
+    .stepper span.done { background: var(--accent); }
+
+    .field { display: grid; gap: 7px; margin-bottom: 16px; }
+    .field label { font-size: 13px; font-weight: 760; }
+    .field input, .field select, .field textarea { width: 100%; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: var(--radius-sm); padding: 12px 13px; }
+    .field textarea { min-height: 112px; resize: vertical; }
+    .field .help { font-size: 12px; color: var(--muted); }
+
+    .chat-layout { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(300px, .75fr); gap: 16px; }
+    .conversation { min-height: 560px; display: flex; flex-direction: column; }
+    .chat-feed { display: grid; gap: 14px; flex: 1; }
+    .message { max-width: 84%; padding: 14px 16px; border-radius: 16px; background: var(--paper-2); }
+    .message.agent { border-top-left-radius: 5px; }
+    .message.human { margin-left: auto; background: var(--accent-soft); border-top-right-radius: 5px; }
+    .message p:last-child { margin-bottom: 0; color: var(--ink); }
+    .decision-options { display: grid; gap: 9px; margin-top: 14px; }
+    .decision-option { display: flex; align-items: flex-start; gap: 10px; padding: 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); cursor: pointer; }
+    .decision-option:hover, .decision-option.selected { border-color: var(--accent); background: var(--accent-soft); }
+    .decision-option strong, .decision-option small { display: block; text-align: left; }
+    .radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--faint); margin-top: 2px; flex: 0 0 auto; }
+    .selected .radio { border: 5px solid var(--accent); background: var(--paper); }
+    .composer { display: flex; gap: 8px; margin-top: 16px; }
+    .composer input { flex: 1; min-width: 0; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: var(--radius-sm); padding: 11px 13px; }
+    .boundary { padding: 12px 14px; background: var(--paper-2); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; color: var(--muted); }
+
+    .revision-paper { max-width: 940px; margin: 0 auto; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .revision-head { padding: 24px 28px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; }
+    .revision-body { padding: 28px; }
+    .revision-body h3 { margin-top: 25px; }
+    .spec-block { padding: 16px; background: var(--paper-2); border-radius: var(--radius-sm); margin: 12px 0; }
+    .approval-bar { position: sticky; bottom: 14px; margin: 22px auto 0; max-width: 940px; padding: 12px 14px; background: color-mix(in srgb, var(--paper) 94%, transparent); border: 1px solid var(--line); border-radius: 15px; box-shadow: var(--shadow); backdrop-filter: blur(18px); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+    .flow-map { display: grid; grid-template-columns: repeat(6, minmax(120px, 1fr)); gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+    .flow-node { min-width: 122px; padding: 12px; border-radius: var(--radius-sm); background: var(--paper-2); border: 1px solid var(--line); }
+    .flow-node.active { background: var(--accent-soft); border-color: var(--accent); }
+    .flow-node strong { display: block; font-size: 13px; }
+    .flow-node small { display: block; margin-top: 4px; }
+
+    .proof-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .proof-card { padding: 17px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--paper); }
+    .proof-card h3 { display: flex; justify-content: space-between; gap: 10px; }
+    .evidence-list { display: grid; gap: 8px; margin-top: 13px; }
+    .evidence-item { padding: 10px 11px; border-radius: 10px; background: var(--paper-2); display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+
+    .role-card { min-height: 210px; display: flex; flex-direction: column; }
+    .role-card .btn { margin-top: auto; align-self: flex-start; }
+    .avatar { width: 46px; height: 46px; border-radius: 14px; background: var(--accent-soft); color: var(--accent-strong); display: grid; place-items: center; font-weight: 850; letter-spacing: -.04em; }
+
+    .mobile-top, .mobile-nav, .mobile-menu { display: none; }
+    .toast { position: fixed; z-index: 80; right: 22px; bottom: 22px; max-width: 360px; padding: 14px 16px; border-radius: var(--radius-sm); background: var(--ink); color: var(--paper); box-shadow: var(--shadow); transform: translateY(18px); opacity: 0; pointer-events: none; transition: .22s ease; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .modal-backdrop { position: fixed; inset: 0; z-index: 60; padding: 24px; background: rgba(11, 20, 16, .56); display: grid; place-items: center; backdrop-filter: blur(5px); }
+    .modal { width: min(560px, 100%); max-height: calc(100dvh - 48px); overflow: auto; background: var(--paper); border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); padding: 24px; }
+    .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+    .empty-state { text-align: center; padding: 54px 22px; background: var(--paper); border: 1px dashed var(--line); border-radius: var(--radius); }
+
+    @media (max-width: 1080px) {
+      :root { --sidebar: 218px; }
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .domain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .proof-grid { grid-template-columns: 1fr; }
+      .chat-layout { grid-template-columns: 1fr; }
+      .chat-layout > aside { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    }
+
+    @media (max-width: 820px) {
+      body { padding-bottom: 72px; }
+      .app-shell { display: block; }
+      .sidebar, .topbar { display: none; }
+      .workspace { display: block; }
+      .mobile-top { height: 62px; position: sticky; top: 0; z-index: 18; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; background: color-mix(in srgb, var(--bg) 86%, transparent); border-bottom: 1px solid var(--line); backdrop-filter: blur(18px); }
+      .mobile-top .brand { padding: 0; }
+      .mobile-top .brand small { display: none; }
+      .mobile-nav { display: grid; position: fixed; z-index: 30; inset: auto 10px 10px; grid-template-columns: repeat(5, 1fr); gap: 4px; padding: 6px; background: color-mix(in srgb, var(--paper) 94%, transparent); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); backdrop-filter: blur(18px); }
+      .mobile-nav button { min-height: 47px; border: 0; background: transparent; color: var(--muted); border-radius: 11px; font-size: 11px; font-weight: 750; cursor: pointer; }
+      .mobile-nav button.active { background: var(--accent-soft); color: var(--accent-strong); }
+      .mobile-menu { position: fixed; z-index: 31; left: 10px; right: 10px; bottom: 73px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; box-shadow: var(--shadow); }
+      .mobile-menu.show { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+      .content { padding: 24px 16px 90px; }
+      .page-head { align-items: flex-start; flex-direction: column; }
+      .page-actions { justify-content: flex-start; }
+      .grid-2, .grid-3, .grid-4, .grid-asym, .domain-grid { grid-template-columns: 1fr; }
+      .span-2 { grid-column: auto; }
+      .wizard-shell { display: block; }
+      .wizard-aside { position: relative; height: auto; min-height: 300px; padding: 26px 22px; }
+      .wizard-aside h1 { font-size: 2.15rem; }
+      .wizard-main { min-height: 0; padding: 30px 16px 94px; place-items: start stretch; }
+      .choice { grid-template-columns: 40px minmax(0, 1fr); }
+      .choice .arrow { display: none; }
+      .journey { grid-template-columns: 1fr; }
+      .object-row { grid-template-columns: 1fr auto; }
+      .object-row > :nth-child(2), .object-row > :nth-child(3) { display: none; }
+      .chat-layout > aside { display: grid; grid-template-columns: 1fr; }
+      .message { max-width: 94%; }
+      .revision-head, .approval-bar { align-items: flex-start; flex-direction: column; }
+      .revision-body { padding: 20px; }
+      .approval-bar { bottom: 82px; }
+    }
+
+    /* Feedback revision: calmer rhythm, in-place guidance, meaningful domain maps. */
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    .metric, .usage-table { font-variant-numeric: tabular-nums; }
+    .section-title { margin-top: 38px; margin-bottom: 20px; flex-wrap: wrap; }
+    .section-divider { border-top: 1px dashed var(--line); padding-top: 32px; margin-top: 38px; }
+    .card-head { flex-wrap: wrap; }
+    .card-head > div { min-width: 0; }
+    .card, .proof-card { min-width: 0; }
+    .card > p { max-width: 65ch; }
+    .chat-layout > aside { display: grid; align-content: start; gap: 18px; }
+    .composer { flex-wrap: wrap; }
+    .composer input { flex-basis: 100%; }
+    .btn { white-space: normal; text-align: center; padding-top: 8px; padding-bottom: 8px; }
+    .btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .sidebar { overflow-y: auto; }
+    [data-theme="dark"] .btn-primary { color: #122d23; }
+    .section-intro { max-width: 65ch; }
+    .campaign-grid { gap: 22px; }
+    .campaign-grid .card { padding: 26px; }
+    .campaign-grid .card-head { min-height: 38px; }
+    .summary-card { padding: clamp(24px, 3vw, 38px); }
+    .summary-card h2 { max-width: 26ch; font-size: clamp(1.6rem, 2.7vw, 2.3rem); margin: 14px 0 18px; }
+    .summary-footer { display: flex; flex-wrap: wrap; gap: 12px 22px; padding-top: 22px; margin-top: 24px; border-top: 1px solid var(--line); }
+    .next-card { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 28px; }
+    .next-card .btn { margin-top: auto; }
+    .help-pair { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; }
+    .help-pair > .btn { min-width: 0; }
+    .help-button { display: inline-grid; place-items: center; vertical-align: middle; flex: 0 0 auto; width: 26px; height: 26px; padding: 0; border: 0; background: transparent; cursor: help; color: var(--muted); border-radius: 50%; }
+    .help-button span { border: 1px solid currentColor; border-radius: 50%; font: 600 12px Georgia, serif; width: 16px; height: 16px; line-height: 15px; }
+    .help-button:hover, .help-button[aria-expanded="true"] { background: var(--accent-soft); color: var(--accent-strong); }
+    #context-help { position: fixed; z-index: 95; width: min(310px, calc(100vw - 24px)); padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--ink); color: var(--paper); box-shadow: var(--shadow); font-size: 13px; line-height: 1.55; }
+    #context-help strong { display: block; margin-bottom: 5px; }
+    .theme-icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .drawer-backdrop { padding: 0; place-items: stretch end; }
+    .drawer { width: min(510px, 100%); height: 100dvh; max-height: 100dvh; border-radius: 22px 0 0 22px; padding: 30px; animation: rise .24s ease; }
+    .drawer .attention-row { margin: 18px 0; padding: 18px; border: 1px solid var(--line); }
+    .drawer .attention-row small { margin-top: 7px; }
+    .drawer .attention-row .kind { align-self: start; }
+    .domain-map { padding: 28px; background-image: radial-gradient(var(--line) .7px, transparent .7px); background-size: 18px 18px; }
+    .map-root { display: block; width: min(400px,100%); margin: 16px auto 26px; padding: 20px; background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 14px; text-align: center; }
+    .map-root strong { display: block; font-size: 20px; }
+    .map-branches { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; position: relative; padding-top: 22px; border-top: 1px solid var(--accent); }
+    .map-branch { position: relative; }
+    .map-branch:before { content: ''; height: 22px; width: 1px; background: var(--accent); position: absolute; top: -22px; left: 50%; }
+    .map-branch h3 { padding: 12px; text-align: center; background: var(--paper-2); border: 1px solid var(--line); border-radius: 10px; }
+    .map-object { width: 100%; display: flex; flex-direction: column; gap: 10px; text-align: left; margin: 12px 0; padding: 17px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; cursor: pointer; }
+    .map-object:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+    .map-object .status { align-self: flex-start; white-space: normal; }
+    .map-object small { line-height: 1.5; }
+    .map-journey { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; counter-reset: journey; }
+    .map-journey .map-object { min-height: 190px; margin: 0; counter-increment: journey; }
+    .map-journey .map-object:before { content: '0' counter(journey) ' →'; color: var(--accent-strong); font-size: 12px; font-weight: 750; }
+    .domain-context { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(220px,1fr); gap: 28px; margin: 24px 0; }
+    .context-facts { display: grid; gap: 12px; }
+    .context-facts p { margin: 0; }
+    .loop-strip { margin: 24px 0 0; padding: 18px 0 0; border-top: 1px dashed var(--line); font-size: 13px; color: var(--muted); }
+    .gap-facts { margin: 24px 0; gap: 20px; }
+    .gap-actions { border-top: 1px dashed var(--line); padding-top: 24px; margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .gap-actions .btn { flex: 1 1 170px; }
+    .gap-comparison .spec-block { padding: 22px; margin: 0; }
+    .gap-comparison p { margin-top: 10px; }
+    .usage-table-wrap { overflow-x: auto; }
+    .usage-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+    .usage-table th { color: var(--muted); font-size: 12px; font-weight: 700; }
+    .usage-table th, .usage-table td { padding: 18px 12px; border-bottom: 1px solid var(--line); }
+    .usage-table td:first-child, .usage-table th:first-child { padding-left: 0; }
+    .usage-table td small { display: block; }
+    .usage-table .numeric { text-align: right; white-space: nowrap; }
+    .usage-table tfoot { font-weight: 750; }
+    .connection-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .connection-row p { margin: 6px 0 0; }
+    .sample-note { font-size: 13px; color: var(--muted); margin: 18px 0; }
+    .setting-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+    .setting-row p { margin-bottom: 0; }
+    .role-card { gap: 12px; }
+    .role-card .card-head, .role-card h2, .role-card p { margin-bottom: 0; }
+    .role-card .btn { margin-top: 8px; }
+    .modal-actions { flex-wrap: wrap; }
+    @media (max-width: 1120px) {
+      .grid-asym { grid-template-columns: minmax(0, 1fr); }
+      .map-branches, .map-journey { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .page-head { align-items: flex-start; flex-direction: column; }
+      .page-actions { justify-content: flex-start; }
+    }
+    @media (max-width: 820px) {
+      .map-branches, .map-journey, .domain-context { grid-template-columns: 1fr; }
+      .domain-map { padding: 20px; }
+      .map-branches { gap: 28px; }
+      .drawer { border-radius: 0; padding: 24px 20px; }
+      .drawer .attention-row { padding: 14px; }
+      .help-button { width: 32px; height: 32px; }
+      .toast { bottom: 88px; left: 16px; right: 16px; }
+      .card-head { gap: 12px; }
+      .connection-row { flex-wrap: wrap; }
+      .section-title { align-items: flex-start; }
+      .approval-bar { position: static; }
+      .usage-table { min-width: 620px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *:before, *:after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="app"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="modal-root"></div>
+  <div id="context-help" role="tooltip" hidden></div>
+
+  <script>
+    // All project content in this prototype is fictional sample data.
+    const state = {
+      route: 'home',
+      previousRoute: 'home',
+      theme: localStorage.getItem('sl-theme') || 'light',
+      mobileMenu: false,
+      wizardStep: 0,
+      startPath: 'start',
+      sessionChoice: 'founder',
+      themeChoice: 'session-zero',
+      secondaryCampaigns: ['security-review'],
+      decisionChoice: '',
+      decisionCaptured: false,
+      checkpointState: 'ready',
+      revisionTab: 'summary',
+      revisionApproved: false,
+      assignmentSent: false,
+      receiptAvailable: false,
+      adapter: 'github',
+      buildTab: 'assignment',
+      receiptTab: 'overview',
+      atlasDomain: 'Product',
+      atlasTab: 'objects',
+      specialist: 'Verifier',
+      specialistTab: 'brief',
+      historyFilter: 'all',
+      evidenceFilter: 'all',
+      modal: null,
+      helpEnabled: true,
+      efficiencyTab: 'human',
+      usagePeriod: 'month',
+      receiptOutcome: 'review',
+      gapOutcome: 'review',
+      activity: []
+    };
+
+    document.documentElement.dataset.theme = state.theme;
+
+    const project = {
+      name: 'Northstar Care',
+      short: 'NC',
+      primaryCampaign: 'MVP Build',
+      quest: 'Patient onboarding',
+      revision: 'MVP Definition R3',
+      owner: 'Maya Alvarez',
+      repository: 'northstar-care/app'
+    };
+
+    const nav = [
+      ['home', 'HM', 'Home'],
+      ['product-room', 'PR', 'Product Room'],
+      ['atlas', 'AT', 'Project Atlas'],
+      ['build', 'BL', 'Build'],
+      ['briefing', 'BR', 'Briefing']
+    ];
+
+    const moreNav = [
+      ['campaigns', 'Campaigns'],
+      ['specialists', 'Specialists'],
+      ['gaps', 'Gaps and evidence'],
+      ['history', 'History'],
+      ['efficiency', 'Efficiency'],
+      ['settings', 'Settings']
+    ];
+
+    const routeTitles = {
+      home: 'Home', onboarding: 'Choose a path', 'onboarding-start': 'Start new', 'onboarding-resume': 'Resume existing', 'onboarding-invite': 'Join a project',
+      'session-zero': 'Session Zero', campaigns: 'Campaigns', atlas: 'Project Atlas', 'atlas-domain': 'Atlas domain',
+      'product-room': 'Product Room', checkpoint: 'Draft checkpoint', revision: 'Exact revision review', approval: 'Approval recorded',
+      build: 'Build', 'build-assignment': 'Build Assignment', adapter: 'Delivery Adapter', 'verification-contract': 'Verification Contract', receipt: 'Build Receipt',
+      briefing: 'Product Briefing', specialists: 'Specialists', 'specialist-detail': 'Specialist view', history: 'History', gaps: 'Gaps', evidence: 'Evidence', efficiency: 'Efficiency', settings: 'Settings', 'project-details': 'Project details'
+    };
+
+    function safeRoute(route) {
+      return routeTitles[route] ? route : 'home';
+    }
+
+    function activePrimary() {
+      if (['checkpoint', 'revision', 'approval'].includes(state.route)) return 'product-room';
+      if (['build-assignment', 'adapter', 'verification-contract', 'receipt'].includes(state.route)) return 'build';
+      if (state.route === 'atlas-domain') return 'atlas';
+      return state.route;
+    }
+
+    function status(label, kind = 'neutral') {
+      return `<span class="status ${kind}">${label}</span>`;
+    }
+
+    function routeButton(label, route, style = 'btn', extra = '') {
+      return `<button class="${style}" data-route="${route}" ${extra}>${label}</button>`;
+    }
+
+    function pageHead(eyebrow, title, body, actions = '') {
+      return `<header class="page-head"><div>${eyebrow ? `<div class="eyebrow">${eyebrow}</div>` : ''}<h1>${title}</h1><p class="lede">${body}</p></div>${actions ? `<div class="page-actions">${actions}</div>` : ''}</header>`;
+    }
+
+    function brand() {
+      return `<div class="brand" data-route="home" role="button" tabindex="0" aria-label="Go to home"><div class="brand-mark">SL</div><div><strong>SpecLoops</strong><small>One world. Many perspectives.</small></div></div>`;
+    }
+
+    function shell(content) {
+      const active = activePrimary();
+      return `<div class="app-shell">
+        <aside class="sidebar" aria-label="Primary navigation">
+          ${brand()}
+          <button class="project-switcher" data-route="project-details"><span>Current project</span><strong>${project.name}</strong></button>
+          <nav class="nav-group">
+            <div class="nav-label">Workspace</div>
+            ${nav.map(([r, icon, label]) => `<button class="nav-item ${active === r ? 'active' : ''}" data-route="${r}"><span class="nav-icon">${icon}</span><span>${label}</span></button>`).join('')}
+          </nav>
+          <nav class="nav-group">
+            <div class="nav-label">Explore</div>
+            ${moreNav.map(([r, label], i) => `<button class="nav-item ${state.route === r ? 'active' : ''}" data-route="${r}"><span class="nav-icon">${String(i + 1).padStart(2, '0')}</span><span>${label}</span></button>`).join('')}
+          </nav>
+          <div class="sidebar-foot">
+            <div class="prototype-note"><strong>Interactive prototype</strong><br>All data is fictional.</div>
+            <button class="btn btn-soft" data-action="save-pause">Save and pause</button>
+          </div>
+        </aside>
+        <section class="workspace">
+          <div class="mobile-top">${brand()}<div class="top-actions"><button class="btn btn-ghost btn-sm" data-action="toggle-help" aria-pressed="${state.helpEnabled}">Help ${state.helpEnabled?'on':'off'}</button>${themeButton()}</div></div>
+          <header class="topbar">
+            <div class="crumbs"><span>${project.name}</span><span>/</span><strong>${routeTitles[state.route]}</strong></div>
+            <div class="top-actions">
+              <button class="btn btn-ghost btn-sm" data-action="prototype-info">Prototype data</button>
+              <button class="btn btn-ghost btn-sm" data-action="toggle-help" aria-pressed="${state.helpEnabled}">Help ${state.helpEnabled?'on':'off'}</button>
+              ${themeButton()}
+              <button class="btn btn-soft" data-action="save-pause">Save and pause</button>
+            </div>
+          </header>
+          <main id="main" class="content page-enter">${content}</main>
+        </section>
+        <nav class="mobile-nav" aria-label="Mobile primary navigation">
+          ${nav.slice(0, 4).map(([r, icon, label]) => `<button class="${active === r ? 'active' : ''}" data-route="${r}">${icon}<br>${label === 'Product Room' ? 'Room' : label}</button>`).join('')}
+          <button data-action="mobile-more" class="${state.mobileMenu ? 'active' : ''}">•••<br>More</button>
+        </nav>
+        <div class="mobile-menu ${state.mobileMenu ? 'show' : ''}">
+          ${[['briefing','Briefing'], ...moreNav].map(([r, label]) => `<button class="btn btn-ghost" data-route="${r}">${label}</button>`).join('')}
+        </div>
+      </div>`;
+    }
+
+    function homeScreen() {
+      return `${pageHead('Project home', `Good morning, Maya.`, 'Here’s where Northstar Care stands, and where your attention will make a difference.', `${routeButton('Full briefing', 'briefing', 'btn')}`)}
+        <div class="grid grid-asym">
+          <section class="card tinted summary-card">
+            <div class="card-head"><span class="label">Your project briefing</span>${status('Sample workspace','good')}</div>
+            <h2>${state.decisionCaptured ? 'Your next draft is ready for review.' : 'One product choice brings your next draft into focus.'}</h2>
+            <p>${state.decisionCaptured ? 'The recovery decision is recorded. Review the named revision before authorizing the next transition.' : 'Decide how patients recover access when a passkey isn’t available. That completes the product decisions for your next draft.'}</p>
+            <p>${state.receiptOutcome === 'accepted' ? 'You accepted the returned build. The decision and supporting proof remain in History.' : state.receiptOutcome === 'correction' ? 'A correction request is recorded for the build. The assignment now needs revision.' : state.receiptAvailable ? 'Your coding agent returned work. One mobile consent difference needs your review.' : state.assignmentSent ? 'The assignment is with your coding agent. The prototype can simulate a returned receipt when you are ready.' : 'Your next build has not been sent. Product approval comes first.'}</p>
+            <div class="summary-footer"><span><strong>${state.decisionCaptured ? '0' : '1'}</strong> product decision left</span><span><strong>${state.gapOutcome === 'review' ? '1' : '0'}</strong> UX review open</span><button class="btn btn-ghost btn-sm" data-action="attention-drawer">See what needs attention →</button></div>
+          </section>
+          <section class="card next-card">
+            <span class="label">Recommended next</span>
+            <h2>${nextAction().label}</h2>
+            <p>${!state.decisionCaptured ? 'Compare three options, understand the trade-offs, and make one clear decision.' : !state.revisionApproved ? 'Read the exact named revision before granting approval.' : !state.assignmentSent ? 'Package the approved intent, boundaries, and required proof for your coding agent.' : !state.receiptAvailable ? 'The assignment is sent. Simulate the returned work to continue this prototype journey.' : state.receiptOutcome==='review' ? 'Inspect implementation, behavioral, and conformance proof before deciding.' : state.receiptOutcome==='correction' ? 'Refine the assignment around the failed mobile criterion.' : 'See how the accepted result changed the shared project model.'}</p>
+            <small>Human authorization stays explicit at each consequential transition.</small>
+            <button class="btn btn-primary" data-route="${nextAction().route}">${nextAction().label} →</button>
+            <button class="btn btn-ghost btn-sm" data-action="attention-drawer">Other items needing attention</button>
+          </section>
+        </div>
+
+        <div class="section-title"><h2>Current journey</h2><button class="btn btn-ghost btn-sm" data-route="campaigns">Manage campaigns</button></div>
+        <section class="card">
+          <div class="card-head"><div><span class="label">Primary campaign</span><h2>${project.primaryCampaign}</h2><p>${project.quest}</p></div>${status('Active', 'good')}</div>
+          <div class="journey" aria-label="Campaign journey">
+            <div class="journey-step done">Understand</div><div class="journey-step ${state.decisionCaptured?'done':'current'}">Decide</div><div class="journey-step ${state.decisionCaptured?'done':''}">Checkpoint</div><div class="journey-step ${state.revisionApproved?'done':state.decisionCaptured?'current':''}">Approve</div><div class="journey-step ${state.receiptOutcome==='accepted'?'done':state.revisionApproved?'current':''}">Build and verify</div>
+          </div>
+          <div class="grid grid-4" style="margin-top:18px">
+            <div class="mini-metric"><span class="label">Decision readiness</span><strong>${state.decisionCaptured?'Decisions complete':'1 decision remains'}</strong></div>
+            <div class="mini-metric"><span class="label">Checkpoint</span><strong>${state.decisionCaptured?'Ready for review':'Waiting for decision'}</strong></div>
+            <div class="mini-metric"><span class="label">Authority</span><strong>Product Room only</strong></div>
+            <div class="mini-metric"><span class="label">Recommended next</span><strong>${nextAction().label}</strong></div>
+          </div>
+        </section>
+
+        <div class="section-title"><h2>Your project at a glance</h2><button class="btn btn-ghost btn-sm" data-route="atlas">Open full Atlas</button></div>
+        <div class="grid grid-4">
+          <div class="card clickable" data-action="open-domain" data-domain="Product"><span class="label">Product</span><div class="metric small">Healthy</div><p>18 canonical decisions, one open.</p></div>
+          <div class="card warning clickable" data-action="open-domain" data-domain="User Experience"><span class="label">User Experience</span><div class="metric small">Attention</div><p>One mobile consent gap.</p></div>
+          <div class="card clickable" data-action="open-domain" data-domain="Architecture"><span class="label">Architecture</span><div class="metric small">Healthy</div><p>Target state remains current.</p></div>
+          <div class="card info clickable" data-action="open-domain" data-domain="Quality"><span class="label">Quality</span><div class="metric small">${state.receiptOutcome==='accepted'?'Verified':state.receiptAvailable?'Review':'Waiting'}</div><p>${state.receiptOutcome==='accepted'?'Returned proof accepted by the human reviewer.':state.receiptAvailable?'Returned proof needs human review.':'Proof requirements are defined before build.'}</p></div>
+        </div>
+
+        <div class="section-title"><h2>Recent change</h2><button class="btn btn-ghost btn-sm" data-route="history">View history</button></div>
+        <div class="grid grid-2">
+          <div class="card"><div class="card-head"><h3>Observed in repository</h3>${status('Evidence', 'info')}</div><p>Passkey enrollment now emits a recovery-code event. Verified against commit <strong>7f2c1ab</strong>.</p><button class="btn btn-sm" data-route="evidence">Inspect evidence</button></div>
+          <div class="card"><div class="card-head"><h3>Briefing available</h3>${status('Today', 'good')}</div><p>Five specialist perspectives have been synthesized into one decision-ready update.</p><button class="btn btn-sm" data-route="briefing">Read briefing</button></div>
+        </div>`;
+    }
+
+    function onboardingScreen() {
+      return `<div class="wizard-shell">
+        <aside class="wizard-aside">${brand()}<div><div class="eyebrow" style="color:#c9e0d2">Choose your path</div><h1>Bring a project into focus.</h1><p>Start fresh, reconstruct an existing world, or join a team with the right authority already attached.</p></div><p>Fictional prototype data. Nothing will be connected or changed.</p></aside>
+        <main class="wizard-main"><div class="wizard-panel"><h2>How are you entering this project?</h2><p class="lede">This describes your relationship to the project. You will choose what you want to accomplish next.</p>
+          <div class="choice-grid">
+            <button class="choice" data-route="onboarding-start"><span class="choice-number">01</span><span><strong>Start New</strong><small>Shape an idea into a buildable first version.</small></span><span class="arrow">→</span></button>
+            <button class="choice" data-route="onboarding-resume"><span class="choice-number">02</span><span><strong>Resume Existing</strong><small>Reconstruct current reality, then resolve what matters.</small></span><span class="arrow">→</span></button>
+            <button class="choice" data-route="onboarding-invite"><span class="choice-number">03</span><span><strong>Invite or Join</strong><small>Enter a shared project with role and authority intact.</small></span><span class="arrow">→</span></button>
+          </div><div class="wizard-nav"><button class="btn" data-route="home">Return home</button><button class="btn btn-ghost" data-action="prototype-info">How this prototype works</button></div>
+        </div></main>
+      </div>`;
+    }
+
+    function pathWizard(kind) {
+      const configs = {
+        'onboarding-start': { title: 'Start New', body: 'Name the idea and enter Session Zero. SpecLoops will build the Atlas only as decisions become necessary.', route: 'session-zero', cta: 'Begin Session Zero', fields: [['Project name','Northstar Care'],['One sentence idea','A calmer way for care teams to guide patient onboarding.']] },
+        'onboarding-resume': { title: 'Resume Existing', body: 'Connect what already exists. SpecLoops will inspect reality first, create a provisional Atlas, and ask only material questions.', route: 'atlas', cta: 'Preview provisional Atlas', fields: [['Repository or project URL','github.com/northstar-care/app'],['What should stay untouched?','Production data and current authentication flows']] },
+        'onboarding-invite': { title: 'Invite or Join', body: 'Join with a role and an explicit authority envelope. Your lane is visible before any project action begins.', route: 'home', cta: 'Join Northstar Care', fields: [['Invite code','NORTH-7K2P'],['Your role','Product Owner']] }
+      };
+      const c = configs[kind];
+      return `<div class="wizard-shell"><aside class="wizard-aside">${brand()}<div><div class="eyebrow" style="color:#c9e0d2">${c.title}</div><h1>${c.body.split('.')[0]}.</h1><p>${c.body}</p></div><p>The human authorizes the transition, not manually transports the project.</p></aside>
+        <main class="wizard-main"><div class="wizard-panel"><div class="stepper"><span class="done"></span><span class="done"></span><span></span></div><h2>${c.title}</h2><p>These values are sample data and can be changed.</p>
+          ${c.fields.map(([label, value], i) => `<div class="field"><label for="field-${i}">${label}</label>${i === 1 ? `<textarea id="field-${i}">${value}</textarea>` : `<input id="field-${i}" value="${value}">`}<span class="help">Used to seed the project context. Nothing is submitted.</span></div>`).join('')}
+          ${kind === 'onboarding-resume' ? `<div class="card tinted"><h3>Reality-first reconstruction</h3><p>Repository, docs, architecture, workflows, deployment context, and existing decisions will be marked observed, inferred, or unknown before promotion.</p></div>` : ''}
+          ${kind === 'onboarding-invite' ? `<div class="card"><div class="card-head"><h3>Authority envelope</h3>${status('Product Owner','good')}</div><p>May propose and approve product decisions. Cannot merge code, deploy, or override a security blocker.</p></div>` : ''}
+          <div class="wizard-nav"><button class="btn" data-route="onboarding">Back</button><button class="btn btn-primary" data-route="${c.route}">${c.cta}</button></div>
+        </div></main></div>`;
+    }
+
+    function sessionZeroScreen() {
+      const steps = [
+        { title: 'Your role in this world', body: 'This changes how SpecLoops frames choices and which actions require another person.', options: [['founder','Founder or product owner','I can authorize product intent and approve exact revisions.'],['advisor','Advisor or collaborator','I can propose and comment, but not approve.'],['builder','Builder','I can receive authorized work and return evidence.']] },
+        { title: 'What outcome matters first?', body: 'Choose the smallest meaningful finish line for this campaign.', options: [['prototype','A testable patient onboarding prototype','Prove the core journey with a small group.'],['pilot','A clinic-ready pilot','Include staff workflows, permissions, and basic operations.'],['plan','A decision-ready product plan','Finish with a robust spec, no implementation handoff.']] },
+        { title: 'Where does risk live?', body: 'This helps shape the Verification Contract before anyone builds.', options: [['privacy','Patient privacy and consent','Treat consent evidence and access boundaries as first-class.'],['ux','Trust and usability','Require mobile and assisted-flow visual proof.'],['integration','Existing clinical systems','Treat data mapping and failure recovery as primary risks.']] },
+        { title: 'Session Zero is ready', body: 'SpecLoops can now seed the Atlas and recommend a primary Campaign Theme.', options: [] }
+      ];
+      const s = steps[state.wizardStep];
+      return `<div class="wizard-shell"><aside class="wizard-aside">${brand()}<div><div class="eyebrow" style="color:#c9e0d2">Session Zero</div><h1>Build the first useful map, not an exhaustive questionnaire.</h1><p>Each answer creates structured project objects with provenance. You can pause after any decision.</p></div><p>Ask until buildable, not exhaustive.</p></aside>
+        <main class="wizard-main"><div class="wizard-panel"><div class="stepper">${steps.map((_,i) => `<span class="${i <= state.wizardStep ? 'done' : ''}"></span>`).join('')}</div><p class="label">${state.wizardStep + 1} of ${steps.length}</p><h2>${s.title}</h2><p class="lede">${s.body}</p>
+          ${s.options.length ? `<div class="choice-grid">${s.options.map(([id,title,body],i) => `<button class="choice ${state.sessionChoice === id ? 'selected' : ''}" data-action="session-choice" data-value="${id}"><span class="choice-number">${String(i+1).padStart(2,'0')}</span><span><strong>${title}</strong><small>${body}</small></span><span class="arrow">→</span></button>`).join('')}</div>` : `<div class="card tinted"><div class="card-head"><h3>Atlas seed</h3>${status('Ready','good')}</div><div class="grid grid-2"><div><span class="label">Product intent</span><p>Patient onboarding prototype</p></div><div><span class="label">Primary risk</span><p>Privacy and consent</p></div><div><span class="label">Authority</span><p>Product Owner</p></div><div><span class="label">Recommended theme</span><p>Session Zero / MVP</p></div></div></div>`}
+          <div class="wizard-nav"><button class="btn" data-action="wizard-back" ${state.wizardStep === 0 ? 'disabled' : ''}>Back</button>${state.wizardStep < steps.length - 1 ? `<button class="btn btn-primary" data-action="wizard-next">Continue</button>` : `<button class="btn btn-primary" data-route="campaigns">Choose Campaign Theme</button>`}</div>
+        </div></main></div>`;
+    }
+
+    function campaignsScreen() {
+      const campaigns = [
+        ['session-zero','Session Zero / MVP','Take an idea from concept to a buildable first prototype.','Product, UX, Architecture, Quality'],
+        ['modernize','Refactor and Modernize','Compare current implementation with a safer target state.','Architecture, Engineering, Quality'],
+        ['code-review','Code and Architecture Review','Inspect and report with no implementation authority.','Engineering, Security, Architecture'],
+        ['production','Production Readiness','Prove the product can operate safely and reliably.','Quality, Operations, Security']
+      ];
+      return `${pageHead('Campaigns', 'Choose what this project is trying to accomplish.', 'A Campaign Theme is a packaged operating playbook. One primary campaign owns the next-action journey; secondary campaigns advise without hijacking it.', routeButton('Continue to Atlas','atlas','btn btn-primary'))}
+        <section class="card tinted summary-card" style="margin-bottom:28px"><div class="card-head"><div><span class="label">Current primary campaign</span><h2>${campaigns.find(c=>c[0]===state.themeChoice)?.[1] || 'Session Zero / MVP'}</h2></div>${status('Owns next action','good')}</div><p>Outcome: a testable patient onboarding prototype with an approved specification and explicit proof requirements.</p><div class="summary-footer"><span><strong>Next:</strong> ${nextAction().label}</span><button class="btn btn-primary btn-sm" data-route="${nextAction().route}">Continue campaign →</button></div></section>
+        <div class="section-title"><h2>Campaign library</h2><span class="label">Select one primary</span></div>
+        <div class="grid grid-2 campaign-grid">${campaigns.map(([id,name,body,domains]) => `<article class="card clickable ${state.themeChoice === id ? 'tinted' : ''}" data-action="select-campaign" data-value="${id}"><div class="card-head"><h3>${name}</h3>${state.themeChoice === id ? status('Primary','good') : status('Available')}</div><p>${body}</p><small>${domains}</small></article>`).join('')}</div>
+        <div class="section-title section-divider"><h2>Secondary campaigns</h2><span class="label">Advisory unless they raise a governed blocker</span></div>
+        <div class="grid grid-3">
+          ${[['security-review','Security Review','One finding this week'],['ux-review','UX Redesign','Not active'],['cost-review','Cost Optimization','Not active']].map(([id,name,body]) => `<article class="card clickable ${state.secondaryCampaigns.includes(id) ? 'info' : ''}" data-action="toggle-secondary" data-value="${id}"><div class="card-head"><h3>${name}</h3>${status(state.secondaryCampaigns.includes(id) ? 'Secondary' : 'Add')}</div><p>${body}</p></article>`).join('')}
+        </div>`;
+    }
+
+    const domains = [
+      ['Product','Healthy','good','18','1','Vision, users, outcomes, requirements'],
+      ['User Experience','Attention','attn','12','1','Journeys, interaction, accessibility'],
+      ['Design','Healthy','good','9','0','System, visual language, interface'],
+      ['Architecture','Healthy','good','15','0','System, data, AI, integrations'],
+      ['Engineering','Review','info','24','2','Implementation, dependencies, performance'],
+      ['Security and Privacy','Blocked','bad','11','1','Identity, authorization, privacy, risk'],
+      ['Quality','Attention','attn','17','2','Criteria, tests, evidence, bugs'],
+      ['Operations','Stale','neutral','8','1','Runtime, observability, cost, incidents'],
+      ['Economics','Unknown','neutral','6','3','Monetization, usage cost, unit economics']
+    ];
+
+    function atlasScreen() {
+      return `${pageHead('Project Atlas', 'The living model of Northstar Care.', 'Decided → Exists → Evidence → Gap → Next. The overview shows where attention is needed without reducing the project to a fake health score.', `${routeButton('Gaps and evidence','gaps','btn')}${routeButton('Open Product Room','product-room','btn btn-primary')}`)}
+        <div class="grid grid-asym">
+          <section class="card"><div class="card-head"><div><span class="label">Attention view</span><h2>Four domains need review</h2></div>${status('Current','good')}</div><div class="attention-list">
+            <div class="attention-row" data-action="open-domain" data-domain="Security and Privacy"><span class="kind">SP</span><div><strong>Security has a governed blocker</strong><small>Recovery flow authority is unresolved</small></div><span class="arrow">→</span></div>
+            <div class="attention-row" data-action="open-domain" data-domain="User Experience"><span class="kind">UX</span><div><strong>One journey differs from approved intent</strong><small>Mobile consent path needs human review</small></div><span class="arrow">→</span></div>
+            <div class="attention-row" data-action="open-domain" data-domain="Operations"><span class="kind">OP</span><div><strong>Runtime evidence is stale</strong><small>Last verified against release 0.7.4</small></div><span class="arrow">→</span></div>
+          </div></section>
+          <aside class="card tinted"><span class="label">Core loop</span><h2>Intent and reality stay distinct.</h2><p>When they disagree, SpecLoops creates a Gap Object. Neither side silently wins.</p><button class="btn btn-primary" data-route="gaps">Review gaps</button></aside>
+        </div>
+        <div class="section-title"><h2>Atlas domains</h2><button class="btn btn-ghost btn-sm" data-route="history">See how the Atlas changed</button></div>
+        <div class="domain-grid">${domains.map(([name,label,kind,objects,gaps,desc]) => `<article class="card domain-card clickable" data-action="open-domain" data-domain="${name}"><div class="domain-top"><div><h3>${name}</h3><p>${desc}</p></div>${status(label,kind)}</div><div class="domain-counts"><span><b>${objects}</b> objects</span><span><b>${gaps}</b> gaps</span></div></article>`).join('')}</div>`;
+    }
+
+    const domainModels = {
+      Product: { title: 'What Northstar Care helps people do', skill: 'Product clarity', role: 'Architect', scope: 'Patients and care teams · patient onboarding MVP', question: 'Which recovery path should the next draft include?', groups: [
+        ['Patient access', [['PR-01','Accept a clinic invitation','Verified','Invitation and expiry tests'],['PR-02','Recover account access','Decision needed','Three options in Product Room']]],
+        ['Consent and intake', [['PR-03','Choose what to share','Review','Mobile consent comparison'],['PR-04','Complete guided intake','Verified','Desktop and mobile journey tests']]],
+        ['Care-team workspace', [['PR-05','Track onboarding progress','Decided','Approved product requirement'],['PR-06','Receive a consented packet','Verified','Packet delivery integration test']]]
+      ]},
+      'User Experience': { title: 'The patient’s onboarding journey', skill: 'Experience review', role: 'Verifier', scope: 'First-time patient · mobile 390px and desktop · keyboard access', question: 'Does consent stay clear when its action moves below the disclosure?', groups: [
+        ['Arrive', [['UX-01','Open your invitation','Verified','Clinic identity and expired-link states'],['UX-02','Confirm it’s you','Verified','Passkey success and error states']]],
+        ['Decide', [['UX-03','Recover access if needed','Decision needed','Recovery options await a human choice'],['UX-04','Read and give consent','Review','Primary action placement differs at 390px']]],
+        ['Finish', [['UX-05','Complete your intake','Verified','Validation and screen-reader checks'],['UX-06','See what happens next','Decided','Completion message and care-team handoff']]]
+      ]},
+      Design: { title: 'The interface system', skill: 'Visual consistency', role: 'Verifier', scope: 'Shared components, visual hierarchy, and accessible states', question: 'Do the mobile and desktop states preserve the same hierarchy?', groups: [
+        ['Foundations', [['DS-01','Color and type','Decided','Approved warm sage palette']]],
+        ['Components', [['DS-02','Fields and actions','Verified','Component state gallery']]],
+        ['Patterns', [['DS-03','Consent hierarchy','Review','390px comparison against design intent']]]
+      ]},
+      Architecture: { title: 'How the system fits together', skill: 'System design', role: 'Architect', scope: 'Web experience → application services → durable project records', question: 'Will onboarding remain independent of clinical and billing systems?', groups: [
+        ['Experience layer', [['AR-01','Patient and care-team web apps','Verified','Repository module boundaries']]],
+        ['Service layer', [['AR-02','Identity, consent, and intake','Verified','API boundary tests']]],
+        ['Data layer', [['AR-03','Consent records and audit trail','Decided','Versioned data contract']]]
+      ]},
+      Engineering: { title: 'The implementation workstreams', skill: 'Delivery review', role: 'Implementer', scope: 'Onboarding components, service endpoints, and integration dependencies', question: 'Which changes remain before the scoped work is ready?', groups: [
+        ['Interface', [['EN-01','Onboarding screens','Review','Twelve changed files in BA-014']]],
+        ['Services', [['EN-02','Single-use recovery links','Verified','Expiry and replay tests']]],
+        ['Integration', [['EN-03','Packet delivery dependency','Review','Compatibility review pending']]]
+      ]},
+      'Security and Privacy': { title: 'Where trust is established', skill: 'Privacy review', role: 'Auditor', scope: 'Identity, consent, permissions, and patient data boundaries', question: 'Who may assist recovery without gaining access to patient data?', groups: [
+        ['Identity', [['SP-01','Recovery permissions','Decision needed','Authority review in Product Room']]],
+        ['Consent', [['SP-02','Explicit sharing consent','Verified','Consent record version and timestamp']]],
+        ['Data protection', [['SP-03','Least-privilege packet access','Verified','Authorization test matrix']]]
+      ]},
+      Quality: { title: 'How we know the experience works', skill: 'Acceptance review', role: 'Verifier', scope: 'Acceptance criteria, test results, and evidence-backed reviews', question: 'Is the observed mobile difference acceptable to the product owner?', groups: [
+        ['Function', [['QA-01','Recovery and intake behavior','Verified','34 unit tests and 8 integration tests']]],
+        ['Experience', [['QA-02','Mobile consent placement','Review','Screenshots and browser evidence']]],
+        ['Access', [['QA-03','Keyboard and screen reader','Verified','Accessibility scan and manual sample']]]
+      ]},
+      Operations: { title: 'How the project runs', skill: 'Runtime review', role: 'Operations', scope: 'Deployment, runtime health, observability, and service usage', question: 'What must be refreshed after a separately authorized deployment?', groups: [
+        ['Release', [['OP-01','Deployment approval','Decided','Separate human authorization required']]],
+        ['Observe', [['OP-02','Latency and error snapshot','Stale','Last sample predates the latest build']]],
+        ['Respond', [['OP-03','Incident and rollback plan','Decided','Operations checklist']]]
+      ]},
+      Economics: { title: 'Where value and cost meet', skill: 'Cost review', role: 'Operations', scope: 'AI usage, service costs, budgets, and patient-onboarding unit economics', question: 'What does an onboarding journey cost, and which costs are still unknown?', groups: [
+        ['AI work', [['EC-01','Model and token usage','Sample','Fictional provider usage ledger']]],
+        ['Services', [['EC-02','Connected service spend','Sample','Illustrative connection inventory']]],
+        ['Unit economics', [['EC-03','Cost per completed intake','Unknown','Volume assumptions need review']]]
+      ]}
+    };
+
+    function domainItems(name = state.atlasDomain) {
+      return domainModels[name].groups.flatMap(group => group[1]).map(item => {
+        if (item[0] === 'PR-02' && state.decisionCaptured) return [item[0], item[1], 'Decided', decisionLabel()];
+        if (item[0] === 'UX-04' && state.gapOutcome === 'accepted') return [item[0], item[1], 'Decided', 'Human accepted the observed placement with provenance'];
+        if (item[0] === 'UX-04' && state.gapOutcome === 'correction') return [item[0], item[1], 'Correction', 'Assignment marked revision required'];
+        return item;
+      });
+    }
+
+    function domainObjectButton(item) {
+      return `<button class="map-object" data-action="domain-object" data-value="${item[0]}"><strong>${item[1]}</strong>${status(item[2], item[2]==='Verified'?'good':item[2]==='Review'||item[2]==='Decision needed'?'attn':'neutral')}<small>${item[3]}</small></button>`;
+    }
+
+    function atlasDomainScreen() {
+      const name = state.atlasDomain;
+      const model = domainModels[name] || domainModels.Product;
+      return `${pageHead('Project Atlas / ' + name, model.title, 'A map of our current understanding—not a separate version of the project. Select an item to see its intent, evidence, and next step.', routeButton('Back to Atlas','atlas','btn'))}
+        <div class="tabs">${[['objects','Items'],['map',name==='User Experience'?'Journey map':'Map'],['activity','Changes']].map(([t,label]) => `<button class="tab ${state.atlasTab===t?'active':''}" data-tab="atlas" data-value="${t}">${label}</button>`).join('')}</div>
+        ${state.atlasTab==='objects' ? `<section class="card"><h2>${name} items</h2>${domainItems().map(item => `<div class="object-row"><strong>${item[1]}<small>${item[0]} · ${item[3]}</small></strong>${status(item[2],item[2]==='Verified'?'good':'info')}<span>${model.skill}</span><button class="btn btn-sm" data-action="domain-object" data-value="${item[0]}">Inspect</button></div>`).join('')}</section>` : ''}
+        ${state.atlasTab==='map' ? `<section class="card domain-map"><div class="card-head"><h2>${name==='User Experience'?'From invitation to a completed intake':name+' map'}</h2><span class="label">Current sample understanding</span></div>
+          ${name==='User Experience' ? `<div class="map-journey">${domainItems().map(domainObjectButton).join('')}</div><p class="sample-note">Recovery is an alternate path when sign-in fails. Consent is always required before sharing data.</p>` : `<div class="map-root"><strong>${name==='Product'?'Northstar Care':name}</strong><small>${model.scope}</small></div><div class="map-branches">${model.groups.map(([group,items])=>`<section class="map-branch"><h3>${group}</h3>${items.map(domainObjectButton).join('')}</section>`).join('')}</div>`}
+          <p class="loop-strip">Every item follows: <strong>Decided → Exists → Evidence → Gap → Next.</strong> A map shows relationships; proof tells us what is real.</p></section>` : ''}
+        ${state.atlasTab==='activity' ? `<section class="card"><h2>Changes in ${name}</h2><p>Recorded changes to this domain’s items and supporting proof—not a transcript of conversations.</p><div class="timeline">${domainItems().slice(0,3).map((item,i)=>`<div class="timeline-item"><strong>${item[1]} · ${item[2]}</strong><p>${item[3]}. Attached to ${item[0]} by the ${model.skill.toLowerCase()} perspective.</p><time>Sample record · ${['Today, 10:42 AM','Yesterday, 3:18 PM','September 14, 11:06 AM'][i]}</time><div><button class="btn btn-sm" data-action="domain-object" data-value="${item[0]}">Inspect change</button></div></div>`).join('')}</div></section>` : ''}
+        <section class="card domain-context"><div><span class="label">Focused skill context</span><h2>${model.skill}</h2><p>${model.scope}</p><div class="boundary">This focused skill contributes to the shared Atlas through the ${guideName(model.role)} perspective. It can inspect and propose; it cannot silently change approved intent or implement work.</div></div><div class="context-facts"><div><span class="label">Current question</span><p>${model.question}</p></div><div><span class="label">Working from</span><p>Project decisions, linked evidence, and the current domain items.</p></div><button class="btn" data-action="open-specialist" data-value="${model.role}">View ${guideName(model.role)}</button></div></section>`;
+    }
+
+    function productRoomScreen() {
+      return `${pageHead('Product Room', state.decisionCaptured?'Your product decisions are ready for review.':'One decision remains before the draft checkpoint.', 'Choose the intended recovery experience. SpecLoops will record the decision and update the draft, but this room cannot change code, run tests, merge work, or deploy.', `${routeButton('Decision ledger','history','btn')}${routeButton('Project Atlas','atlas','btn')}`)}
+        <div class="chat-layout">
+          <section class="card conversation">
+            <div class="chat-feed">
+              <div class="message agent"><strong>SpecLoops</strong><p>When a patient cannot use a passkey, which fallback should Northstar Care support in the first prototype?</p>
+                <div class="decision-options">
+                  ${[['email','Email recovery link','Familiar and fast, but depends on mailbox access.'],['code','Printed recovery code','Private and offline, but adds onboarding burden.'],['support','Care-team assisted recovery','High trust, but creates an operational dependency.']].map(([id,title,body]) => `<button type="button" class="decision-option ${state.decisionChoice === id ? 'selected' : ''}" data-action="decision-choice" data-value="${id}"><span class="radio"></span><span><strong>${title}</strong><small>${body}</small></span></button>`).join('')}
+                </div>
+              </div>
+              ${state.decisionCaptured ? `<div class="message human"><p><strong>Decision:</strong> ${decisionLabel()}</p></div><div class="message agent"><p>Captured. This resolves the last required product decision for the current quest. I can now create a named draft checkpoint for your exact-revision review.</p></div>` : ''}
+            </div>
+            <div class="composer"><input aria-label="Ask SpecLoops" placeholder="Ask why, compare options, or add context"><button class="btn" data-action="ask-why">Ask why</button><button class="btn btn-primary" data-action="capture-decision" ${state.decisionChoice ? '' : 'disabled'}>${state.decisionCaptured ? 'Decision captured' : 'Confirm decision'}</button></div>
+          </section>
+          <aside>
+            <section class="card tinted"><div class="card-head"><h3>Decision readiness</h3>${status(state.decisionCaptured ? 'Clear' : '1 remains', state.decisionCaptured ? 'good' : 'attn')}</div><div class="metric">${state.decisionCaptured ? 'Clear' : 'One'}</div><p>${state.decisionCaptured ? 'Required discovery is complete. Approval has not yet been granted.' : 'One human choice blocks the draft checkpoint.'}</p>${state.decisionCaptured ? `<button class="btn btn-primary" data-route="checkpoint">Create draft checkpoint</button>` : ''}</section>
+            <section class="card"><h3>Current authority</h3><p>May record product decisions and prepare a non-approved draft.</p><div class="boundary">Product Room cannot authorize implementation or silently fix what verification finds.</div></section>
+            <section class="card"><h3>What this unlocks</h3><p>Named draft → exact revision review → human approval → Build Assignment.</p></section>
+          </aside>
+        </div>`;
+    }
+
+    function checkpointScreen() {
+      const saving = state.checkpointState === 'saving';
+      const ready = state.checkpointState === 'ready';
+      return `${pageHead('Draft checkpoint', ready ? 'Your product definition is complete.' : 'Saving the named draft checkpoint.', 'Decision readiness and persistence are shown separately so progress never implies approval.', routeButton('Back to Product Room','product-room','btn'))}
+        <div class="grid grid-2">
+          <section class="card tinted"><span class="label">Decision readiness</span><div class="metric">Complete</div><p>All required decisions for patient onboarding are resolved.</p>${status('Discovery clear','good')}</section>
+          <section class="card"><span class="label">Checkpoint persistence</span><div class="metric">${saving ? 'Verifying' : 'Ready'}</div><p>${saving ? 'Writing a named, content-addressed draft and checking internal consistency.' : 'MVP Definition R3 is ready for exact-revision review.'}</p><div class="progress-line"><span style="--value:${saving ? '72%' : '100%'}"></span></div></section>
+        </div>
+        <section class="card" style="margin-top:16px"><div class="card-head"><div><span class="label">Named draft</span><h2>${project.revision}</h2></div>${status('Not approved','attn')}</div><div class="grid grid-3"><div class="mini-metric"><span class="label">Decisions</span><strong>28 resolved</strong></div><div class="mini-metric"><span class="label">Acceptance criteria</span><strong>14 defined</strong></div><div class="mini-metric"><span class="label">Open assumptions</span><strong>2 visible</strong></div></div><div style="margin-top:20px">${saving ? `<button class="btn" data-action="finish-checkpoint">Finish verification</button>` : `<button class="btn btn-primary" data-route="revision">Review exact revision</button>`}</div></section>
+        <section class="card info" style="margin-top:16px"><h3>Authority remains unchanged</h3><p>A draft checkpoint preserves a reviewable revision. It does not approve the specification, grant Build Room authority, or send work to a builder.</p></section>`;
+    }
+
+    function revisionScreen() {
+      const tabs = ['summary','requirements','acceptance','authority','changes'];
+      const content = {
+        summary: `<h2>Patient onboarding MVP</h2><p>The first version helps a patient receive an invitation, confirm identity, grant explicit consent, and complete a guided intake from mobile or desktop.</p><div class="spec-block"><strong>Outcome</strong><p>A clinic can invite a patient and receive a complete, consented onboarding packet without manual re-entry.</p></div><div class="spec-block"><strong>Non-goals</strong><p>No billing, clinical diagnosis, scheduling, or EHR write-back in this revision.</p></div>`,
+        requirements: `<h2>Canonical requirements</h2>${['Invite links expire after 72 hours','Consent is explicit before data transfer','Passkey is preferred, email recovery is supported','Mobile and desktop paths preserve the same decisions','Care-team escalation is visible and auditable'].map((x,i)=>`<div class="object-row"><strong>${x}<small>RQ-${String(i+38).padStart(3,'0')}</small></strong>${status('Canonical','good')}<span>Human decided</span><button class="btn btn-sm" data-route="evidence">Trace</button></div>`).join('')}`,
+        acceptance: `<h2>Acceptance criteria</h2>${['Invitation opens the correct clinic-branded flow','Consent record includes text revision and timestamp','Recovery link is single-use and expires','390px layout has no overlap or clipped action','Screen reader announces validation errors'].map((x,i)=>`<div class="object-row"><strong>${x}<small>AC-${String(i+14).padStart(3,'0')}</small></strong>${status('Required','info')}<span>Proof defined</span><button class="btn btn-sm" data-route="verification-contract">Proof</button></div>`).join('')}`,
+        authority: `<h2>Authority envelope</h2><div class="grid grid-2"><div class="spec-block"><strong>Authorized after approval</strong><p>Implement only the patient onboarding quest within the named paths and acceptance criteria.</p></div><div class="spec-block"><strong>Not authorized</strong><p>Do not redesign unrelated screens, change production data, alter billing, or deploy without separate approval.</p></div></div><div class="boundary">The human authorizes the transition, not manually transports the project.</div>`,
+        changes: `<h2>Changes since R2</h2><div class="timeline"><div class="timeline-item"><strong>Recovery method decided</strong><p>Email link with care-team escalation.</p><time>Today, 10:42 AM</time></div><div class="timeline-item"><strong>Consent criterion tightened</strong><p>Mobile and desktop must preserve the same explicit decision.</p><time>Today, 10:19 AM</time></div><div class="timeline-item"><strong>Non-goal clarified</strong><p>EHR write-back remains outside this revision.</p><time>Yesterday, 4:08 PM</time></div></div>`
+      };
+      return `${pageHead('Exact revision review', project.revision, 'Review the artifact you are approving. Approval applies only to this named revision and its visible authority envelope.', routeButton('Back to checkpoint','checkpoint','btn'))}
+        <div class="revision-paper"><div class="revision-head"><div><strong>${project.revision}</strong><small style="display:block">${state.revisionApproved?'Approved':'Draft, not approved'} • Content fingerprint 84b7…c21e</small></div>${status('Exact revision','info')}</div><div class="revision-body"><div class="tabs">${tabs.map(t=>`<button class="tab ${state.revisionTab===t?'active':''}" data-tab="revision" data-value="${t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div>${content[state.revisionTab]}</div></div>
+        <div class="approval-bar"><div><strong>Ready to authorize this exact revision?</strong><small style="display:block">Approval creates product authority, not build authority.</small></div><div class="page-actions"><button class="btn" data-action="request-change">Request change</button><button class="btn btn-primary" data-action="approve-revision">Approve revision</button></div></div>`;
+    }
+
+    function approvalScreen() {
+      return `${pageHead('Approval recorded', 'MVP Definition R3 is approved.', 'The approved product intent is now ready to become a bounded Build Assignment. You still choose when and how that transition occurs.', routeButton('Return home','home','btn'))}
+        <div class="grid grid-asym"><section class="card tinted"><div class="card-head"><div><span class="label">Approved revision</span><h2>${project.revision}</h2></div>${status('Approved','good')}</div><div class="grid grid-3"><div><span class="label">Authorized by</span><p><strong>${project.owner}</strong></p></div><div><span class="label">Approved at</span><p><strong>Today, 11:06 AM</strong></p></div><div><span class="label">Scope</span><p><strong>Patient onboarding</strong></p></div></div></section><aside class="card"><h2>Next transition</h2><p>Create the outbound contract that tells a builder what is authorized and what proof must return.</p><button class="btn btn-primary" data-route="build-assignment">Send to Build</button></aside></div>
+        <section class="card info" style="margin-top:16px"><h3>Approval boundary</h3><p>This approval promotes the revision to canonical product intent. It does not merge code, execute tests, open a pull request, or deploy.</p></section>`;
+    }
+
+    function buildScreen() {
+      const executionState = !state.assignmentSent ? 'Waiting for assignment' : !state.receiptAvailable ? 'Coding agent working' : 'Work returned';
+      const receiptState = !state.receiptAvailable ? 'Not returned' : state.receiptOutcome==='review' ? 'Review needed' : state.receiptOutcome==='accepted' ? 'Accepted' : 'Revision required';
+      return `${pageHead('Build', 'Prepare work for your coding agent. Review what came back.', 'Approved intent becomes a bounded work package. Before work starts, you define what proof must return. Your coding agent builds; SpecLoops checks the receipt; you decide the outcome.', `${routeButton(state.assignmentSent?'Open assignment':'Prepare assignment','build-assignment','btn btn-primary')}${routeButton('Delivery adapters','adapter','btn')}`)}
+        <section class="card"><div class="flow-map"><div class="flow-node ${state.revisionApproved?'active':''}"><strong>Approved intent</strong><small>${state.revisionApproved?'MVP Definition R3':'Approval required'}</small></div><div class="flow-node ${state.assignmentSent?'active':''}"><strong>Build Assignment</strong><small>${state.assignmentSent?'Published':'Draft ready'}</small></div><div class="flow-node ${state.assignmentSent&&!state.receiptAvailable?'active':''}"><strong>Execution</strong><small>${executionState}</small></div><div class="flow-node ${state.receiptAvailable?'active':''}"><strong>Build Receipt</strong><small>${state.receiptAvailable?'Returned':'Waiting'}</small></div><div class="flow-node ${state.receiptAvailable&&state.receiptOutcome==='review'?'active':''}"><strong>Verification</strong><small>${state.receiptAvailable?'Proof checked':'Not started'}</small></div><div class="flow-node ${state.receiptOutcome!=='review'?'active':''}"><strong>Human review</strong><small>${state.receiptOutcome==='review'?'Accept or return':state.receiptOutcome==='accepted'?'Accepted':'Revision required'}</small></div></div></section>
+        <div class="grid grid-2" style="margin-top:24px"><article class="card clickable" data-route="build-assignment"><div class="card-head"><h2>Build Assignment BA-014</h2>${status(state.assignmentSent?'Published':'Draft',state.assignmentSent?'good':'info')}</div><p>Approved scope, boundaries, acceptance criteria, and required proof for patient onboarding.</p><button class="btn btn-sm" data-route="build-assignment">Open assignment</button></article><article class="card ${state.receiptAvailable?'tinted':''}"><div class="card-head"><h2>Build Receipt BR-014</h2>${status(receiptState,state.receiptOutcome==='accepted'?'good':state.receiptAvailable?'attn':'neutral')}</div><p>${state.receiptAvailable?'Implementation and behavioral proof passed. One conformance item needs human review.':'A receipt appears here after the coding agent returns the work and evidence.'}</p>${state.receiptAvailable?'<button class="btn btn-sm" data-route="receipt">Review returned work</button>':state.assignmentSent?'<button class="btn btn-primary btn-sm" data-action="simulate-return">Simulate returned work</button>':'<button class="btn btn-sm" data-route="build-assignment">Prepare assignment first</button>'}</article></div>
+        <section class="card info" style="margin-top:24px"><h3>Verification boundary</h3><p>SpecLoops may read code, diffs, tests, screenshots, configuration, CI, and runtime evidence to establish what is real. Reading code to verify reality is not the same as writing code to change reality. Product Room never silently fixes implementation.</p></section>
+        <div class="section-title section-divider"><h2>Where the work goes</h2><button class="btn btn-ghost btn-sm" data-route="adapter">Configure adapter</button></div><section class="card"><div class="card-head"><div><span class="label">Selected delivery adapter</span><h2>${adapterName()}</h2></div>${status('Prototype selection','good')}</div><p>GitHub is the sample default, not the product boundary. The same assignment and receipt objects can move through GitLab, Jira, Linear, webhooks, files, or a customer workflow.</p></section>`;
+    }
+
+    function buildAssignmentScreen() {
+      const tabs = ['assignment','scope','contract','delivery'];
+      const panels = {
+        assignment: `<div class="grid grid-2"><div class="spec-block"><strong>Source</strong><p>${project.revision}, approved by ${project.owner}</p></div><div class="spec-block"><strong>Target</strong><p>${project.repository}, branch feat/patient-onboarding</p></div></div><h3>Outcome</h3><p>Deliver a testable patient onboarding flow that preserves consent, recovery, and accessibility decisions across desktop and mobile.</p>`,
+        scope: `<h3>Authorized paths</h3><div class="evidence-list"><div class="evidence-item"><span>app/onboarding/**</span>${status('In scope','good')}</div><div class="evidence-item"><span>components/consent/**</span>${status('In scope','good')}</div><div class="evidence-item"><span>tests/onboarding/**</span>${status('In scope','good')}</div><div class="evidence-item"><span>billing/**</span>${status('Protected','bad')}</div><div class="evidence-item"><span>production deployment</span>${status('Not authorized','bad')}</div></div>`,
+        contract: `<h3>Proof required on return</h3><div class="proof-grid"><div class="proof-card"><h3>Implementation ${status('Required','info')}</h3><p>Diff, commit, changed paths, self-description.</p></div><div class="proof-card"><h3>Behavioral ${status('Required','info')}</h3><p>Unit, integration, browser, and runtime proof.</p></div><div class="proof-card"><h3>Conformance ${status('Required','info')}</h3><p>UX, accessibility, security, architecture, and organization rules.</p></div></div><button class="btn btn-sm" data-route="verification-contract" style="margin-top:14px">Open full contract</button>`,
+        delivery: `<h3>Delivery Adapter</h3><p>Publish the exact same governed objects through the workflow the customer already uses.</p><div class="card tinted"><div class="card-head"><strong>GitHub pull request</strong>${status('Default','good')}</div><p>Open a draft PR with the assignment, criteria, and receipt template. SpecLoops reads returned evidence without becoming the code author.</p><button class="btn btn-sm" data-route="adapter">Change adapter</button></div>`
+      };
+      return `${pageHead('Build Assignment', 'Tell your coding agent what to build.', 'BA-014 packages the approved patient-onboarding scope, clear completion criteria, and the proof your builder must return. Nothing is sent until you authorize it.', `${routeButton('Back to Build','build','btn')}${routeButton('Verification Contract','verification-contract','btn')}`)}
+        <section class="card"><div class="card-head"><div><span class="label">Assignment state</span><h2>${state.receiptOutcome==='correction'?'Revision required':state.assignmentSent?'Published to builder':'Ready to publish'}</h2></div>${status(state.receiptOutcome==='correction'?'Revision required':state.assignmentSent?'Sent':'Draft',state.receiptOutcome==='correction'?'attn':state.assignmentSent?'good':'info')}</div>${state.receiptOutcome==='correction'?`<div class="card warning"><strong>Criterion AC-017 needs correction</strong><p>Keep the primary consent action beside the decision context at 390px and return updated mobile proof.</p><button class="btn btn-sm" data-tab="build" data-value="contract">Review proof requirement</button></div>`:''}<div class="tabs">${tabs.map(t=>`<button class="tab ${state.buildTab===t?'active':''}" data-tab="build" data-value="${t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div>${panels[state.buildTab]}</section>
+        <div class="approval-bar"><div><strong>${state.receiptOutcome==='correction'?'Prepare corrected assignment':state.assignmentSent?'Assignment published':`Publish through ${adapterName()}?`}</strong><small style="display:block">The adapter transports authority. It does not create it.</small></div>${state.receiptOutcome==='correction'?`<button class="btn btn-primary" data-action="republish-correction">Send corrected assignment</button>`:state.assignmentSent?`<button class="btn btn-primary" data-route="build">View build status</button>`:`<button class="btn btn-primary" data-action="publish-assignment">Publish assignment</button>`}</div>`;
+    }
+
+    function adapterScreen() {
+      const adapters = [['github','GitHub pull request','Default sample transport'],['gitlab','GitLab merge request','Same objects, different workflow'],['jira','Jira issue and evidence bundle','Enterprise work management'],['webhook','Custom webhook','Customer-owned orchestration']];
+      return `${pageHead('Delivery Adapter', 'Meet the customer where work already moves.', 'GitHub pull requests are the default example, not a lock-in. Build Assignment and Build Receipt remain vendor-neutral SpecLoops objects.', routeButton('Back to Build','build','btn'))}
+        <div class="grid grid-2">${adapters.map(([id,name,body])=>`<article class="card clickable ${state.adapter===id?'tinted':''}" data-action="select-adapter" data-value="${id}"><div class="card-head"><h2>${name}</h2>${status(state.adapter===id?'Selected':'Available',state.adapter===id?'good':'neutral')}</div><p>${body}</p><button class="btn btn-sm" data-action="select-adapter" data-value="${id}">${state.adapter===id?'Selected':'Use adapter'}</button></article>`).join('')}</div>
+        <section class="card info" style="margin-top:16px"><h3>Protocol boundary</h3><p>The adapter moves assignments, proof requirements, evidence links, and receipts. The underlying authority, lifecycle, and verification model stay consistent across vendors.</p></section>`;
+    }
+
+    function verificationContractScreen() {
+      return `${pageHead('Verification Contract', 'Define the proof before the build begins.', 'The assignment tells the builder what must come back. SpecLoops may independently inspect the repository, CI, screenshots, runtime, or human QA to validate the receipt.', routeButton('Back to assignment','build-assignment','btn'))}
+        <div class="proof-grid">
+          <article class="proof-card"><h3>Implementation proof ${status('4 required','info')}</h3><p>Did the builder actually make the authorized change?</p><div class="evidence-list"><div class="evidence-item"><span>Commit SHA</span><strong>Required</strong></div><div class="evidence-item"><span>Changed paths</span><strong>Required</strong></div><div class="evidence-item"><span>Diff summary</span><strong>Required</strong></div><div class="evidence-item"><span>Scope deviations</span><strong>Required</strong></div></div></article>
+          <article class="proof-card"><h3>Behavioral proof ${status('5 required','info')}</h3><p>Does the software behave as specified?</p><div class="evidence-list"><div class="evidence-item"><span>Unit tests</span><strong>Pass</strong></div><div class="evidence-item"><span>Integration tests</span><strong>Pass</strong></div><div class="evidence-item"><span>Browser flow</span><strong>Pass</strong></div><div class="evidence-item"><span>Mobile screenshots</span><strong>Required</strong></div></div></article>
+          <article class="proof-card"><h3>Conformance proof ${status('6 required','info')}</h3><p>Did the work follow project and organization rules?</p><div class="evidence-list"><div class="evidence-item"><span>UX standards</span><strong>Required</strong></div><div class="evidence-item"><span>Accessibility</span><strong>Required</strong></div><div class="evidence-item"><span>Security policy</span><strong>Required</strong></div><div class="evidence-item"><span>Architecture constraints</span><strong>Required</strong></div></div></article>
+        </div>
+        <section class="card tinted" style="margin-top:16px"><h2>Why define proof first?</h2><p>“Done” means more than the coding agent saying it finished. The builder supplies a minimum self-description; SpecLoops independently checks or assembles evidence from connected truth owners.</p><button class="btn btn-primary" data-route="build-assignment">Back to assignment</button></section>`;
+    }
+
+    function receiptScreen() {
+      if (!state.receiptAvailable) return `${pageHead('Build Receipt', 'No returned work yet.', 'A Build Receipt appears after the coding agent returns its work summary and the proof required by the Verification Contract.', routeButton('Back to Build','build','btn'))}<section class="empty-state"><h2>${state.assignmentSent?'The assignment is in progress.':'Send a Build Assignment first.'}</h2><p>${state.assignmentSent?'Use the Build screen to simulate returned work in this prototype.':'Approve the exact revision, prepare the assignment, and explicitly publish it.'}</p><button class="btn btn-primary" data-route="${state.assignmentSent?'build':'product-room'}">${state.assignmentSent?'View build status':'Return to Product Room'}</button></section>`;
+      const panels = {
+        overview: `<div class="proof-grid"><div class="proof-card"><h3>Implementation ${status('Passed','good')}</h3><div class="metric small">4 / 4</div><p>Changed paths and commit match the authorized scope.</p><button class="btn btn-sm" data-tab="receipt" data-value="implementation">Inspect</button></div><div class="proof-card"><h3>Behavioral ${status('Passed','good')}</h3><div class="metric small">5 / 5</div><p>Tests and browser evidence satisfy the contract.</p><button class="btn btn-sm" data-tab="receipt" data-value="behavioral">Inspect</button></div><div class="proof-card"><h3>Conformance ${status('Needs review','attn')}</h3><div class="metric small">5 / 6</div><p>Mobile consent placement needs human review.</p><button class="btn btn-sm" data-tab="receipt" data-value="conformance">Inspect</button></div></div>`,
+        implementation: `<h2>Implementation proof</h2><div class="evidence-list"><div class="evidence-item"><span>Commit 7f2c1ab</span>${status('Matched','good')}</div><div class="evidence-item"><span>12 changed files</span>${status('Within scope','good')}</div><div class="evidence-item"><span>No protected paths changed</span>${status('Pass','good')}</div><div class="evidence-item"><span>Builder self-description</span>${status('Present','good')}</div></div>`,
+        behavioral: `<h2>Behavioral proof</h2><div class="evidence-list"><div class="evidence-item"><span>AC-014 · Invitation flow</span>${status('PASS','good')}</div><div class="evidence-item"><span>AC-015 · Consent record</span>${status('PASS','good')}</div><div class="evidence-item"><span>AC-016 · Recovery expiry</span>${status('PASS','good')}</div><div class="evidence-item"><span>AC-018 · Screen-reader errors</span>${status('PASS','good')}</div><div class="evidence-item"><span>AC-019 · Runtime sample</span>${status('NOT_RUN','neutral')}</div></div>`,
+        conformance: `<h2>Conformance proof</h2><div class="evidence-list"><div class="evidence-item"><span>Accessibility scan</span>${status('PASS','good')}</div><div class="evidence-item"><span>Security policy</span>${status('PASS','good')}</div><div class="evidence-item"><span>Architecture constraints</span>${status('PASS','good')}</div><div class="evidence-item"><span>AC-017 · Primary consent placement</span>${status('BLOCKED','attn')}</div><div class="evidence-item"><span>Organization package policy</span>${status('PASS','good')}</div></div><div class="card warning" style="margin-top:14px"><h3>Human review requested</h3><p>The mobile action is visible and functional, but its placement differs from the approved UX principle. Evidence does not decide whether the difference is acceptable.</p><button class="btn btn-sm" data-route="gaps">Review difference</button></div>`
+      };
+      return `${pageHead('Build Receipt', state.receiptOutcome==='accepted'?'BR-014: Accepted by you.':state.receiptOutcome==='correction'?'BR-014: Correction requested.':'Review what your coding agent returned.', 'BR-014 contains the work summary and supporting proof. Check it against the assignment, then accept it or request a correction. This is a separate returned-build sample.', `${routeButton('Back to Build','build','btn')}${routeButton('Verification Contract','verification-contract','btn')}`)}
+        <section class="card"><div class="card-head"><div><span class="label">Overall result</span><h2>${state.receiptOutcome==='review'?'One mobile UX review needs your judgment':state.receiptOutcome==='accepted'?'Acceptance recorded':'Waiting for corrected work'}</h2></div>${status(state.receiptOutcome==='review'?'Returned':state.receiptOutcome==='accepted'?'Accepted':'Correction requested',state.receiptOutcome==='accepted'?'good':'info')}</div><div class="tabs">${['overview','implementation','behavioral','conformance'].map(t=>`<button class="tab ${state.receiptTab===t?'active':''}" data-tab="receipt" data-value="${t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div>${panels[state.receiptTab]}</section>
+        <div class="approval-bar"><div><strong>Human outcome required</strong><small style="display:block">Accept the implementation, return it for correction, or keep the review open.</small></div><div class="page-actions"><button class="btn btn-danger" data-action="return-build">Return for correction</button><button class="btn btn-primary" data-action="accept-build" ${state.receiptOutcome==='accepted'?'disabled':''}>${state.receiptOutcome==='accepted'?'Receipt accepted':'Accept receipt'}</button></div></div>`;
+    }
+
+    function briefingScreen() {
+      return `${pageHead('Product Briefing', 'What changed, what matters, what needs your decision.', 'A concise synthesis from the shared Atlas. Specialist detail remains available one click deeper.', `${routeButton('Specialist views','specialists','btn')}<button class="btn btn-primary" data-action="share-briefing">Share briefing</button>`)}
+        <div class="grid grid-asym"><section class="card tinted"><span class="label">Executive summary</span><h2>${state.receiptOutcome==='accepted'?'Patient onboarding proof is accepted; review the Atlas update.':state.receiptAvailable?'Patient onboarding returned with one evidence-backed UX review open.':state.revisionApproved?'Patient onboarding is approved and ready to become a bounded build assignment.':'One product decision remains before the named draft can be approved.'}</h2><p>${state.receiptOutcome==='accepted'?'The accepted difference and supporting proof now appear in the shared project model and History.':state.receiptAvailable?'Implementation and behavioral proof passed. Mobile consent placement is the only unresolved conformance item.':state.revisionApproved?'The intent is stable. Define proof, choose the delivery adapter, and explicitly authorize the assignment.':'Choose the recovery experience. SpecLoops will preserve the decision in the draft; Product Room will not change code.'}</p><div class="grid grid-3"><div><span class="label">Decisions needed</span><div class="metric small">${state.decisionCaptured?'0':'1'}</div></div><div><span class="label">Open reviews</span><div class="metric small">${state.gapOutcome==='review'&&state.receiptAvailable?'1':'0'}</div></div><div><span class="label">Current stage</span><div class="metric small">${nextAction().label}</div></div></div></section><aside class="card"><h3>Recommended next</h3><p>${!state.decisionCaptured?'Resolve the recovery decision in Product Room.':!state.revisionApproved?'Review and approve the exact named revision.':!state.assignmentSent?'Prepare the assignment and Verification Contract.':!state.receiptAvailable?'Wait for or simulate returned work.':state.receiptOutcome==='review'?'Review the mobile consent proof and decide.':'Inspect how the Atlas changed.'}</p><button class="btn btn-primary" data-route="${nextAction().route}">${nextAction().label}</button></aside></div>
+        <div class="section-title"><h2>Since your last briefing</h2><button class="btn btn-ghost btn-sm" data-route="history">Full timeline</button></div>
+        <div class="grid grid-2"><div class="card"><div class="card-head"><h3>Product and delivery</h3>${status('3 changes','info')}</div><p>One decision resolved, one exact revision approved, one Build Receipt returned.</p></div><div class="card"><div class="card-head"><h3>Risk and quality</h3>${status('1 attention','attn')}</div><p>No new security risk. One UX conformance gap needs judgment.</p></div></div>
+        <div class="section-title"><h2>Perspectives behind this briefing</h2><button class="btn btn-ghost btn-sm" data-route="specialists">See all</button></div>
+        <div class="grid grid-3"><div class="card clickable" data-action="open-specialist" data-value="Implementer"><h3>Build guide</h3><p>Build complete. No protected paths changed.</p></div><div class="card clickable" data-action="open-specialist" data-value="Verifier"><h3>Quality guide</h3><p>14 criteria proved, one conformance review.</p></div><div class="card clickable" data-action="open-specialist" data-value="Architect"><h3>Architecture guide</h3><p>No material drift from the target state.</p></div></div>`;
+    }
+
+    const roles = [
+      ['Implementer','IM','Delivery progress, bugs, blockers, and spend.','Build complete, receipt returned'],
+      ['Auditor','AU','Code quality, dependencies, APIs, and standards.','Two dependency updates advised'],
+      ['Operations','OP','Runtime health, errors, usage, cost, and anomalies.','Evidence stale after release 0.7.4'],
+      ['Verifier','VE','Requirements, acceptance proof, and approved scope.','One conformance review needed'],
+      ['Architect','AR','System evolution, drift, constraints, and target state.','No material architecture drift']
+    ];
+
+    function specialistsScreen() {
+      return `${pageHead('Specialists', 'A focused guide for every kind of question.', 'Five perspectives work from one shared Atlas. Each has a clear role and limits. These friendlier display names are provisional; the underlying responsibilities are unchanged.', routeButton('Read synthesized briefing','briefing','btn btn-primary'))}
+        <div class="grid grid-3">${roles.map(([name,initials,body,result])=>`<article class="card role-card clickable" data-action="open-specialist" data-value="${name}"><div class="card-head"><div class="avatar">${initials}</div>${status(name==='Verifier'?'Attention':'Current',name==='Verifier'?'attn':'good')}</div><h2>${guideName(name)}</h2><p>${body}</p><small>${result}</small><button class="btn btn-sm" data-action="open-specialist" data-value="${name}">Open perspective</button></article>`).join('')}</div>
+        <section class="card info" style="margin-top:16px"><h3>How the guides work</h3><p>Observe → Propose → Attach evidence → Classify → Escalate if needed → Governed promotion. Specialists can raise the flag. Governance decides what the flag means.</p></section>`;
+    }
+
+    function specialistDetailScreen() {
+      const role = state.specialist;
+      const details = {
+        Implementer: ['Build delivery','Implementation is complete for BA-014. Twelve files changed, no protected paths touched.','One non-blocking cleanup note'],
+        Auditor: ['Code and standards','Dependencies are current enough for this quest. Two minor upgrades are recommended after acceptance.','Two recommendations'],
+        Operations: ['Runtime and cost','The current runtime snapshot predates the latest build. Refresh after deployment authority is granted.','Evidence stale'],
+        Verifier: ['Requirement adherence','All acceptance criteria have evidence. One UX conformance difference needs human judgment.','One decision required'],
+        Architect: ['System evolution','The change stays within the approved modular boundary and adds no new coupling.','No material drift']
+      }[role];
+      return `${pageHead(`${guideName(role)} / specialist perspective`, details[0], details[1], `${routeButton('All specialists','specialists','btn')}${routeButton('Open evidence','evidence','btn btn-primary')}`)}
+        <div class="grid grid-asym"><section class="card"><div class="card-head"><h2>What this guide sees</h2>${status(details[2], role==='Verifier'||role==='Operations'?'attn':'good')}</div><p>${details[1]}</p><div class="tabs">${['brief','findings','evidence','mandate'].map(t=>`<button class="tab ${state.specialistTab===t?'active':''}" data-tab="specialist" data-value="${t}">${({brief:'Overview',findings:'What needs attention',evidence:'Supporting proof',mandate:'Role and limits'})[t]}</button>`).join('')}</div>${specialistPanel(role)}</section><aside class="card tinted"><h3>Role and limits</h3><p>${guideName(role)} may inspect, classify, and propose within this domain. It cannot silently rewrite canonical truth or exceed its authority envelope.</p><button class="btn btn-sm" data-route="history">View provenance</button></aside></div>`;
+    }
+
+    function specialistPanel(role) {
+      if (state.specialistTab === 'brief') return `<div class="spec-block"><strong>What matters</strong><p>${role === 'Verifier' ? 'The work appears functionally complete. Human judgment is needed on one visible UX difference.' : 'No immediate blocker. Keep the finding attached to the shared Atlas.'}</p></div>`;
+      if (state.specialistTab === 'findings') return `<div class="object-row"><strong>Primary finding<small>Evidence-backed proposal</small></strong>${status(role==='Verifier'?'Attention':'Informational',role==='Verifier'?'attn':'info')}<span>Fresh today</span><button class="btn btn-sm" data-route="gaps">Inspect</button></div>`;
+      if (state.specialistTab === 'evidence') return `<div class="evidence-list"><div class="evidence-item"><span>Repository observation</span>${status('Current','good')}</div><div class="evidence-item"><span>Build Receipt BR-014</span>${status('Linked','good')}</div><div class="evidence-item"><span>Human decision record</span>${status('Linked','good')}</div></div>`;
+      return `<div class="boundary">This perspective is authoritative only for its own finding record. Promotion into canonical project truth requires a governed flow.</div>`;
+    }
+
+    function historyPanel() {
+      const samples = [
+        {title:'Sample build receipt returned',body:'Quality guide attached proof and opened the mobile consent review.',kind:'evidence',time:'Sample history · Today, 1:28 PM'},
+        {title:'Sample assignment delivered',body:'A separate returned-build example uses the GitHub adapter. No real work was sent.',kind:'build',time:'Sample history · Today, 11:19 AM'},
+        {title:'Prior revision approved',body:'Maya authorized a prior sample revision. Your current Product Room draft has its own approval step.',kind:'decisions',time:'Sample history · Yesterday, 11:06 AM'}
+      ];
+      const rows=[...state.activity,...samples].filter(item=>state.historyFilter==='all'||item.kind===state.historyFilter);
+      return `<section class="card"><div class="timeline">${rows.map(item=>`<div class="timeline-item"><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.body)}</p><time>${escapeHtml(item.time)}</time></div>`).join('')}</div></section>`;
+    }
+
+    function historyScreen() {
+      const filters = ['all','decisions','build','evidence'];
+      return `${pageHead('History', 'How did we get here?', 'Current truth stays clear while every material decision, observation, implementation, verification, and supersession remains traceable.', routeButton('Project Atlas','atlas','btn'))}
+        <div class="tabs">${filters.map(t=>`<button class="tab ${state.historyFilter===t?'active':''}" data-tab="history" data-value="${t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div>${historyPanel()}`;
+    }
+
+    function gapsScreen() {
+      return `${pageHead('Gaps and evidence', 'Review where the result differs from the plan.', 'Start with the evidence. Then decide whether to accept the difference or ask for a specific correction. Neither the plan nor the implementation silently wins.', `${routeButton('Evidence library','evidence','btn')}${routeButton('Open Product Room','product-room','btn btn-primary')}`)}
+        <div class="grid grid-asym"><section class="card warning"><div class="card-head"><div><span class="label">Decision required</span><h2>Mobile consent action placement</h2></div>${status('Attention','attn')}</div><div class="grid grid-2 gap-comparison"><div class="spec-block"><strong>What we agreed</strong><p>The primary consent action remains visible with the decision context at mobile width.</p></div><div class="spec-block"><strong>What was built</strong><p>The action remains visible but moves below the policy disclosure at 390px.</p></div></div><div class="grid grid-3 gap-facts"><div><span class="label">Evidence</span><p><strong>2 screenshots, 1 test</strong></p></div><div><span class="label">Impact</span><p><strong>UX conformance</strong></p></div><div><span class="label">Authority</span><p><strong>Human decision</strong></p></div></div><div class="gap-actions"><button class="btn" data-route="evidence">1. Inspect evidence</button><button class="btn btn-danger" data-action="return-build">Request a correction</button><button class="btn btn-primary" data-action="accept-gap">Accept difference</button></div><p class="sample-note">Review status: <strong>${state.gapOutcome==='review'?'Awaiting your decision':state.gapOutcome==='accepted'?'Difference accepted · recorded in History':'Correction requested · recorded in History'}</strong></p></section><aside class="card"><h3>Recommended next action</h3><p>Compare both mobile screenshots. If the hierarchy remains clear, accept the implementation and update the UX object with provenance. Otherwise return BA-014 with a precise criterion.</p></aside></div>
+        <div class="section-title"><h2>Other open gaps</h2><span class="label">Sorted by consequence</span></div><div class="grid grid-2"><div class="card clickable" data-action="gap-info"><div class="card-head"><h3>Runtime evidence is stale</h3>${status('Attention','attn')}</div><p>Operations evidence predates the latest approved revision.</p></div><div class="card clickable" data-action="gap-info"><div class="card-head"><h3>Microsoft SSO remains unverified</h3>${status('Deferred','neutral')}</div><p>Out of scope for the current MVP campaign.</p></div></div>`;
+    }
+
+    function evidenceScreen() {
+      const filters = ['all','repository','tests','visual','human'];
+      const items = [
+        ['Desktop onboarding flow','Visual proof','Current','visual'],['390px consent flow','Visual proof','Review','visual'],['Unit test suite','Behavioral proof','Pass','tests'],['Commit 7f2c1ab','Implementation proof','Current','repository'],['Approval of MVP Definition R3','Human authority','Canonical','human'],['Accessibility scan','Conformance proof','Pass','tests']
+      ].filter(x => state.evidenceFilter === 'all' || x[3] === state.evidenceFilter);
+      return `${pageHead('Evidence', 'Proof of reality, attached to the objects it supports.', 'Evidence informs truth but does not create authority. Each item records source, freshness, confidence, and the version of reality it describes.', routeButton('Back to gaps','gaps','btn'))}
+        <div class="tabs">${filters.map(t=>`<button class="tab ${state.evidenceFilter===t?'active':''}" data-tab="evidence" data-value="${t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div>
+        <section class="card">${items.map(([title,type,result])=>`<div class="object-row"><strong>${title}<small>${type}</small></strong>${status(result,result==='Review'?'attn':'good')}<span>Fresh today</span><button class="btn btn-sm" data-action="evidence-detail" data-title="${title}">Inspect</button></div>`).join('')}</section>`;
+    }
+
+    const sampleUsage = {
+      month: [['Atlas AI','Reasoning model · fictional',820000,310000,94000,8.14],['Harbor Models','Review model · fictional',460000,180000,66000,4.26],['Local engine','Local summarizer · fictional',180000,0,22000,0]],
+      week: [['Atlas AI','Reasoning model · fictional',210000,80000,24000,2.02],['Harbor Models','Review model · fictional',125000,42000,18000,1.16],['Local engine','Local summarizer · fictional',42000,0,6000,0]]
+    };
+
+    const money = value => '$' + value.toFixed(2);
+    const number = value => value.toLocaleString('en-US');
+    function efficiencyScreen() {
+      const rows = sampleUsage[state.usagePeriod];
+      const totals = rows.reduce((a,r)=>a.map((v,i)=>v+r[i+2]),[0,0,0,0]);
+      const human = `<div class="grid grid-4"><div class="card"><span class="label">Human decisions</span><div class="metric">28</div><p>Resolved across this campaign.</p></div><div class="card"><span class="label">Required turns avoided</span><div class="metric">6–9</div><p>Estimate, medium confidence.</p></div><div class="card"><span class="label">Rework risk</span><div class="metric small">Lower</div><p>Proof requirements set before build.</p></div><div class="card"><span class="label">Next commitment</span><div class="metric small">5–10 min</div><p>One evidence review.</p></div></div>
+        <div class="grid grid-asym" style="margin-top:24px"><section class="card"><h2>Where attention went</h2><div class="evidence-list">${[['Product decisions','54%'],['Exact revision review','18%'],['Evidence review','16%'],['Navigation and context','12%']].map(([label,val])=>`<div class="evidence-item"><span>${label}</span><strong>${val}</strong></div>`).join('')}</div><p class="sample-note">Illustrative outcomes, not measured usage or guaranteed savings.</p></section><aside class="card tinted"><h3>Time is only half the picture</h3><p>See the AI work behind the decisions: providers, token usage, estimated costs, and connections.</p><button class="btn" data-tab="efficiency" data-value="ai">See AI usage &amp; spend</button></aside></div>`;
+      const ai = `<div class="section-title"><h2>AI usage &amp; spend</h2><div class="tabs" style="margin-bottom:0">${[['week','Last 7 days'],['month','This month']].map(([id,label])=>`<button class="tab ${state.usagePeriod===id?'active':''}" data-tab="usage-period" data-value="${id}">${label}</button>`).join('')}</div></div>
+        <div class="grid grid-4"><div class="card tinted"><span class="label">Estimated AI spend</span><div class="metric">${money(totals[3])}</div><p>Fictional usage, USD.</p></div><div class="card"><span class="label">Input tokens</span><div class="metric">${number(totals[0])}</div><p>Includes cached input.</p></div><div class="card"><span class="label">Output tokens</span><div class="metric">${number(totals[2])}</div><p>Generated responses.</p></div><div class="card"><span class="label">Cached input</span><div class="metric">${number(totals[1])}</div><p>Subset of input, not extra tokens.</p></div></div>
+        <section class="card" style="margin-top:24px"><div class="card-head"><div><h2>Where the AI spend goes</h2><p>Fictional providers and models. These are not current vendor prices.</p></div><button class="btn btn-sm" data-action="export-usage">Download sample CSV</button></div><div class="usage-table-wrap"><table class="usage-table"><caption class="sample-note">Sample ledger · ${state.usagePeriod==='month'?'September 2026':'September 10–16, 2026'}</caption><thead><tr><th>Provider / model</th><th class="numeric">Input</th><th class="numeric">Cached input</th><th class="numeric">Output</th><th class="numeric">Est. spend</th><th>Details</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td><strong>${r[0]}</strong><small>${r[1]}</small></td><td class="numeric">${number(r[2])}</td><td class="numeric">${number(r[3])}</td><td class="numeric">${number(r[4])}</td><td class="numeric">${money(r[5])}</td><td><button class="btn btn-sm" data-action="usage-detail" data-value="${i}">Inspect</button></td></tr>`).join('')}</tbody><tfoot><tr><th>Total</th><td class="numeric">${number(totals[0])}</td><td class="numeric">${number(totals[1])}</td><td class="numeric">${number(totals[2])}</td><td class="numeric">${money(totals[3])}</td><td></td></tr></tfoot></table></div></section>
+        <div class="grid grid-2" style="margin-top:24px"><section class="card"><h3>Monthly budget visibility</h3><p><strong>$12.40 of $40.00</strong> illustrative AI budget · 31% used this month.</p><div class="progress-line" role="meter" aria-label="Sample monthly budget" aria-valuemin="0" aria-valuemax="40" aria-valuenow="12.4"><span style="--value:31%"></span></div><p class="sample-note">An alert threshold is not a spending cap. This prototype cannot limit or charge an account.</p><button class="btn btn-sm" data-action="budget-detail">How budget alerts work</button></section><section class="card"><h3>What isn’t included</h3><p>Hosting, GitHub subscription fees, human labor, taxes, and unreported external builder usage. A zero local API charge does not mean zero hardware cost.</p><button class="btn btn-sm" data-tab="efficiency" data-value="connections">Review connections</button></section></div>`;
+      const connections = `<section class="card"><h2>What’s connected in this example</h2><p>No real accounts are connected. This inventory illustrates what a live workspace would make visible.</p>${[['Atlas AI','Product decisions and synthesis','Usage available'],['Harbor Models','Independent code and evidence review','Usage available'],['Local engine','Local summaries; no metered API fee','Local sample'],['GitHub','Assignments and receipts; subscription fees excluded','Workflow only'],['External coding agent','Builder-owned execution; usage has not been reported','Spend unknown']].map(([name,desc,label])=>`<div class="connection-row"><div><h3>${name}</h3><p>${desc}</p></div><div class="page-actions">${status(label,label==='Spend unknown'?'attn':'info')}<button class="btn btn-sm" data-action="connection-detail" data-value="${name}">Details</button></div></div>`).join('')}</section><p class="sample-note">Unknown spend is not zero spend. Live connectors would need explicit authorization and reported usage.</p>`;
+      return `${pageHead('Efficiency', 'Understand the time and AI behind your progress.', 'Keep human effort, AI usage, and estimated spend visible together. Every number and connection on this page is fictional sample data.',routeButton('Current campaign','campaigns','btn'))}
+        <div class="tabs">${[['human','Your time'],['ai','AI usage & spend'],['connections','Connections']].map(([id,label])=>`<button class="tab ${state.efficiencyTab===id?'active':''}" data-tab="efficiency" data-value="${id}">${label}</button>`).join('')}</div>
+        ${state.efficiencyTab==='human'?human:state.efficiencyTab==='ai'?ai:connections}`;
+    }
+
+    function settingsScreen() {
+      return `${pageHead('Settings', 'Project behavior, people, and proof rules.', 'Configure how this project operates without blurring product authority, implementation authority, or external source-of-truth boundaries.', routeButton('Project details','project-details','btn'))}
+        <div class="grid grid-2"><section class="card"><h2>Project standards</h2><div class="field"><label for="ux-policy">User-facing changes</label><select id="ux-policy"><option>Require desktop and mobile visual proof</option></select><span class="help">Inherited into the Verification Contract for UI work.</span></div><div class="field"><label for="release-policy">Deployment authority</label><select id="release-policy"><option>Separate explicit approval required</option></select></div><button class="btn btn-primary" data-action="save-settings">Save standards</button></section><section class="card"><h2>Roles and authority</h2><div class="object-row"><strong>${project.owner}<small>Product Owner</small></strong>${status('Approver','good')}<span>Product authority</span><button class="btn btn-sm" data-action="person-detail">View</button></div><div class="object-row"><strong>Jon Bell<small>Implementer</small></strong>${status('Builder','info')}<span>Scoped execution</span><button class="btn btn-sm" data-action="person-detail">View</button></div><button class="btn" data-action="invite-person" style="margin-top:14px">Invite collaborator</button></section></div>
+        <div class="section-title"><h2>Connected truth owners</h2></div><div class="grid grid-3"><div class="card"><h3>GitHub</h3><p>Commits, branches, pull requests, repository reality.</p>${status('Connected','good')}</div><div class="card"><h3>SpecLoops</h3><p>Campaign state, permissions, indexes, synthesized views.</p>${status('Active','good')}</div><div class="card"><h3>Observability</h3><p>Runtime health, errors, latency, and usage.</p>${status('Needs refresh','attn')}</div></div>`;
+    }
+
+    function projectDetailsScreen() {
+      return `${pageHead('Project details', project.name, 'The durable project brain lives with the project. SpecLoops makes that brain interactive and operational.', `${routeButton('Settings','settings','btn')}${routeButton('Switch project','onboarding','btn btn-primary')}`)}
+        <div class="grid grid-2"><section class="card"><h2>Identity</h2><div class="field"><label>Project name</label><input value="${project.name}"></div><div class="field"><label>Repository</label><input value="${project.repository}"></div><div class="field"><label>Project owner</label><input value="${project.owner}"></div><button class="btn btn-primary" data-action="save-settings">Save details</button></section><section class="card tinted"><h2>Current operating context</h2><div class="evidence-list"><div class="evidence-item"><span>Primary campaign</span><strong>${project.primaryCampaign}</strong></div><div class="evidence-item"><span>Current quest</span><strong>${project.quest}</strong></div><div class="evidence-item"><span>Approved revision</span><strong>${project.revision}</strong></div><div class="evidence-item"><span>Delivery adapter</span><strong>GitHub PR</strong></div></div></section></div>`;
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    function guideName(role) {
+      return ({Implementer:'Build guide',Auditor:'Review guide',Operations:'Operations guide',Verifier:'Quality guide',Architect:'Architecture guide'})[role] || role;
+    }
+
+    function nextAction() {
+      if (!state.decisionCaptured) return {label:'Choose recovery',route:'product-room'};
+      if (!state.revisionApproved) return {label:'Review exact revision',route:'checkpoint'};
+      if (!state.assignmentSent) return {label:'Prepare build',route:'build-assignment'};
+      if (!state.receiptAvailable) return {label:'Await returned work',route:'build'};
+      if (state.receiptOutcome === 'review') return {label:'Review returned work',route:'receipt'};
+      if (state.receiptOutcome === 'correction') return {label:'Revise assignment',route:'build-assignment'};
+      return {label:'Review Atlas update',route:'atlas'};
+    }
+
+    function adapterName() {
+      return ({github:'GitHub pull request',gitlab:'GitLab merge request',jira:'Jira issue',webhook:'custom webhook'})[state.adapter];
+    }
+
+    function decisionLabel() {
+      return ({email:'Use an email recovery link, with care-team escalation if the mailbox is unavailable.',code:'Use a printed, single-use recovery code provided during onboarding.',support:'Use care-team assisted recovery with an identity check and an audit record.'})[state.decisionChoice] || 'Recovery method not yet decided.';
+    }
+
+    function themeButton() {
+      const dark = state.theme === 'dark';
+      return `<button class="btn btn-ghost icon-btn" data-action="toggle-theme" aria-label="Switch to ${dark?'light':'dark'} mode" title="Switch to ${dark?'light':'dark'} mode"><svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true">${dark?'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4L19 5"/>':'<path d="M20.4 14A8.5 8.5 0 0 1 10 3.6 8.5 8.5 0 1 0 20.4 14Z"/>'}</svg></button>`;
+    }
+
+    const helpCopy = {
+      'decision ledger':'A history of product choices, who made them, and which revision they affect. It does not grant permission to write code.',
+      'project atlas':'The shared project model: what was decided, what exists, what proves it, and what needs attention.',
+      'decision readiness':'Whether the required product choices are complete. It is separate from saving a draft or approving it.',
+      'checkpoint':'A saved, named draft that you can review. Saving it does not approve it.',
+      'draft checkpoint':'A saved, named draft that you can review. Saving it does not approve it.',
+      'checkpoint persistence':'Whether the named draft has actually been saved and checked—not how many decisions remain.',
+      'current authority':'What this room is allowed to do now. Product Room can record intent, not change code or deploy.',
+      'authority':'Who may authorize this action, and the limits of that permission.',
+      'recommended next':'The next action that moves your primary campaign forward. Other perspectives can advise without taking over.',
+      'current journey':'Your primary campaign’s path from decisions to approval, building, and verification.',
+      'primary campaign':'The main outcome you are pursuing. It owns the next recommended action.',
+      'campaign library':'Choose an operating playbook for the outcome you want: a first build, a review, modernization, or readiness.',
+      'secondary campaigns':'Supporting reviews that advise the primary campaign. A governed blocker may still require a decision.',
+      'focused skill context':'What this focused skill is examining, the information it uses, and the limits of its authority.',
+      'changes':'Recorded changes to domain items and their evidence—not a raw conversation transcript.',
+      'map':'A structural view of the current domain. Select a node to inspect its state, evidence, and next step.',
+      'journey map':'The patient’s path through the experience, including alternate paths, decision points, and known gaps.',
+      'build assignment':'The work package for your builder: approved scope, limits, completion criteria, and required proof.',
+      'create assignment':'Prepare a work package for your coding agent. Creating a draft does not send it or authorize deployment.',
+      'verification contract':'The proof required before work can be reviewed: what changed, how it behaves, and whether it follows the rules.',
+      'build receipt':'The returned work summary and evidence. A receipt can arrive before a human accepts the work.',
+      'delivery adapters':'Connections that carry the same assignment and receipt through GitHub or another workflow.',
+      'delivery adapter':'The transport for assignments and receipts. It carries authority; it does not create it.',
+      'implementation proof':'Evidence of the actual change: commits, changed files, scope, and builder notes.',
+      'behavioral proof':'Tests and observations showing whether the software does what was specified.',
+      'conformance proof':'Evidence that the work follows UX, accessibility, security, architecture, and organization rules.',
+      'hybrid receipt model':'The builder describes the work; SpecLoops also inspects independent sources to validate or assemble the proof.',
+      'role and limits':'What this guide may inspect and propose. It cannot silently change approved project intent.',
+      'supporting proof':'Source material behind a finding, tied to a version of the work.',
+      'evidence':'Material that supports a claim, such as tests, screenshots, commits, or a recorded human decision.',
+      'evidence library':'Inspect the source, freshness, and meaning of each proof item before making a decision.',
+      'accept difference':'Record an explicit human decision to accept the observed UX difference. It does not automatically accept the entire build.',
+      'accept receipt':'Record human acceptance of the returned work and any explicitly acknowledged difference. This does not deploy it.',
+      'return for correction':'Keep the existing receipt and request a bounded correction with a clear reason.',
+      'request a correction':'Describe the specific change needed. The original intent, receipt, and evidence stay in History.',
+      'input tokens':'Units of text or context sent to a model. The displayed total includes cached input.',
+      'output tokens':'Units generated by a model in its response. Output costs can differ from input costs.',
+      'cached input':'Previously processed input reused by a provider. It is a subset of input tokens, not additional usage.',
+      'estimated ai spend':'Illustrative usage cost for this prototype. It is not a live bill or a current pricing quote.',
+      'connections':'Which sample services provide workflow state and which provide usage. Unknown costs are shown explicitly.',
+      'required turns avoided':'A directional estimate of human back-and-forth avoided—not a measured or guaranteed saving.',
+      'save and pause':'Save this prototype’s state in this browser and return Home. Resume restores your place; no server or live source is involved.',
+      'your project briefing':'A concise summary of decisions, returned work, and the next action, drawn from the same project context.'
+    };
+
+    function enhanceHelp() {
+      if (!state.helpEnabled) return;
+      document.querySelectorAll('#app h2, #app h3, #app .label, #app .page-actions > button, #app .tab, #app [data-action="accept-gap"], #app [data-action="return-build"], #app [data-action="accept-build"]').forEach(el=>{
+        const key = el.textContent.trim().toLowerCase();
+        if (!helpCopy[key] || el.closest('[data-action], [data-route]') && el.tagName!=='BUTTON') return;
+        const info = document.createElement('button');
+        info.className='help-button'; info.dataset.action='context-help'; info.dataset.help=key;
+        info.type='button'; info.setAttribute('aria-label','About '+el.textContent.trim()); info.setAttribute('aria-expanded','false');
+        info.innerHTML='<span aria-hidden="true">i</span>';
+        if (el.tagName==='BUTTON') {
+          const wrap=document.createElement('span'); wrap.className='help-pair';
+          el.replaceWith(wrap); wrap.append(el,info);
+        } else el.append(' ',info);
+      });
+    }
+
+    let helpAnchor = null;
+    function closeHelp() {
+      document.getElementById('context-help').hidden=true;
+      if(helpAnchor){helpAnchor.setAttribute('aria-expanded','false');helpAnchor.removeAttribute('aria-describedby');}
+      helpAnchor=null;
+    }
+
+    function showHelp(button) {
+      closeHelp(); helpAnchor=button;
+      const box=document.getElementById('context-help'),key=button.dataset.help;
+      box.innerHTML=`<strong>${escapeHtml(key[0].toUpperCase()+key.slice(1))}</strong>${escapeHtml(helpCopy[key])}`;
+      box.hidden=false;button.setAttribute('aria-expanded','true');button.setAttribute('aria-describedby','context-help');
+      const rect=button.getBoundingClientRect();
+      box.style.left=Math.max(12,Math.min(rect.left,innerWidth-box.offsetWidth-12))+'px';
+      box.style.top=(rect.bottom+box.offsetHeight+12>innerHeight?Math.max(12,rect.top-box.offsetHeight-8):rect.bottom+8)+'px';
+    }
+
+    function savePrototype() {
+      try { const {modal,...saved}=state;localStorage.setItem('sl-feedback-v2',JSON.stringify(saved));return true; } catch { return false; }
+    }
+
+    function recordActivity(title,body,kind='decisions') {
+      state.activity.unshift({title,body,kind,time:new Date().toLocaleString()});
+    }
+
+    function attentionMarkup() {
+      return `<p>Choose an item without losing the project overview. These are independent review examples in a fictional workspace.</p><div class="attention-list">
+        <button class="attention-row" data-route="${state.decisionCaptured?'checkpoint':'product-room'}"><span class="kind">01</span><span><strong>${state.decisionCaptured?'Review your named draft':'Choose the recovery experience'}</strong><small>${state.decisionCaptured?'Your product choice is captured. Approval is a separate step.':'Compare three options, then confirm your product decision.'}</small></span><span>→</span></button>
+        <button class="attention-row" data-route="gaps"><span class="kind">02</span><span><strong>Review mobile consent placement</strong><small>${state.gapOutcome==='review'?'Compare intent and observed behavior before deciding.':'Decision recorded. View the difference and its history.'}</small></span><span>→</span></button>
+        <button class="attention-row" data-route="receipt"><span class="kind">03</span><span><strong>${state.receiptOutcome==='accepted'?'Accepted build receipt':state.receiptOutcome==='correction'?'Correction request recorded':'Review returned work'}</strong><small>Inspect implementation, behavior, and conformance proof.</small></span><span>→</span></button></div>`;
+    }
+
+    function openDomainObject(id) {
+      const item=domainItems().find(x=>x[0]===id); if(!item)return;
+      const model=domainModels[state.atlasDomain];
+      openModal('detail',{title:item[1],body:`<p>${item[0]} · ${escapeHtml(state.atlasDomain)} · ${status(item[2],item[2]==='Verified'?'good':'info')}</p><div class="spec-block"><strong>Decided</strong><p>${escapeHtml(item[1])} belongs to the ${escapeHtml(model.scope.toLowerCase())} scope.</p></div><div class="spec-block"><strong>Exists &amp; evidence</strong><p>${escapeHtml(item[3])}. ${item[2]==='Verified'?'Sample proof supports this item.':'This item is not yet independently verified.'}</p></div><div class="spec-block"><strong>Gap &amp; next</strong><p>${escapeHtml(item[2]==='Verified'?'No open gap in this sample. Keep its proof linked to the current revision.':model.question)}</p></div><div class="modal-actions"><button class="btn" data-action="close-modal">Back to map</button><button class="btn btn-primary" data-route="${item[2]==='Decision needed'?'product-room':state.atlasDomain==='Economics'?'efficiency':item[2]==='Review'?'gaps':'evidence'}">${item[2]==='Decision needed'?'Resolve decision':state.atlasDomain==='Economics'?'See usage & spend':item[2]==='Review'?'Review difference':'View evidence'}</button></div>`});
+    }
+
+    function showCardDetail(card) {
+      const title=card.querySelector('h2,h3,.label')?.textContent.trim() || 'Project context';
+      const copy=card.cloneNode(true);copy.querySelectorAll('button,.help-button').forEach(x=>x.remove());
+      openModal('generic',{title:escapeHtml(title),body:escapeHtml(copy.textContent.trim().replace(/\s+/g,' '))+'<br><br>This is fictional prototype context, not a live project observation.'});
+    }
+
+    function renderRoute() {
+      switch (state.route) {
+        case 'onboarding': return onboardingScreen();
+        case 'onboarding-start': case 'onboarding-resume': case 'onboarding-invite': return pathWizard(state.route);
+        case 'session-zero': return sessionZeroScreen();
+        case 'home': return shell(homeScreen());
+        case 'campaigns': return shell(campaignsScreen());
+        case 'atlas': return shell(atlasScreen());
+        case 'atlas-domain': return shell(atlasDomainScreen());
+        case 'product-room': return shell(productRoomScreen());
+        case 'checkpoint': return shell(checkpointScreen());
+        case 'revision': return shell(revisionScreen());
+        case 'approval': return shell(approvalScreen());
+        case 'build': return shell(buildScreen());
+        case 'build-assignment': return shell(buildAssignmentScreen());
+        case 'adapter': return shell(adapterScreen());
+        case 'verification-contract': return shell(verificationContractScreen());
+        case 'receipt': return shell(receiptScreen());
+        case 'briefing': return shell(briefingScreen());
+        case 'specialists': return shell(specialistsScreen());
+        case 'specialist-detail': return shell(specialistDetailScreen());
+        case 'history': return shell(historyScreen());
+        case 'gaps': return shell(gapsScreen());
+        case 'evidence': return shell(evidenceScreen());
+        case 'efficiency': return shell(efficiencyScreen());
+        case 'settings': return shell(settingsScreen());
+        case 'project-details': return shell(projectDetailsScreen());
+        default: return shell(homeScreen());
+      }
+    }
+
+    function render(options = {}) {
+      closeHelp();
+      const focus=document.activeElement;
+      const focusAction=focus?.dataset?.action;
+      const focusValue=focus?.dataset?.value;
+      document.getElementById('app').innerHTML = renderRoute();
+      if(state.route==='home' && state.paused){
+        document.querySelector('#main').insertAdjacentHTML('afterbegin',`<section class="card info" style="margin-bottom:24px"><div class="setting-row"><div><h3>Your place is saved in this browser</h3><p>Resume at ${routeTitles[state.pauseRoute] || 'Home'}. This prototype does not check live sources.</p></div><button class="btn btn-primary" data-action="resume-prototype">Resume where I paused</button></div></section>`);
+      }
+      if(state.route==='settings'){
+        document.querySelector('#main .page-head').insertAdjacentHTML('afterend',`<section class="card" style="margin-bottom:24px"><div class="setting-row"><div><h2>Contextual help</h2><p>Small information icons explain unfamiliar terms. Hover, focus, or tap to read.</p></div><button class="btn" data-action="toggle-help" aria-pressed="${state.helpEnabled}">Help ${state.helpEnabled?'on':'off'}</button></div></section><section class="card" style="margin-bottom:24px"><div class="setting-row"><div><h2>AI connections and spending</h2><p>See the sample services, token usage, estimated costs, and reporting gaps.</p></div><button class="btn" data-action="open-connections">Review connections</button></div></section>`);
+      }
+      document.getElementById('modal-root').innerHTML = state.modal ? modalMarkup(state.modal) : '';
+      document.getElementById('app').inert=!!state.modal;
+      document.body.style.overflow=state.modal?'hidden':'';
+      document.querySelectorAll('#app .card:not([data-route]):not([data-action])').forEach(card=>{
+        if(!card.querySelector('button,input,select,textarea,[data-route],[data-action],.card')){
+          card.dataset.cardAction='inspect';card.classList.add('clickable');card.tabIndex=0;card.setAttribute('role','button');
+        }
+      });
+      document.querySelectorAll('#app [data-route],#app [data-action]').forEach(el=>{
+        if(el.tagName!=='BUTTON'&&el.tagName!=='A'){el.tabIndex=0;el.setAttribute('role','button');}
+      });
+      enhanceHelp();
+      document.querySelectorAll('.tabs').forEach(group=>{
+        group.setAttribute('role','group');
+        group.querySelectorAll('.tab').forEach(tab=>tab.setAttribute('aria-pressed',tab.classList.contains('active')));
+      });
+      document.title = `${routeTitles[state.route]} - SpecLoops Prototype`;
+      savePrototype();
+      if(state.modal) document.querySelector('.modal [data-action="close-modal"]')?.focus({preventScroll:true});
+      else if(focusAction){
+        const candidate=[...document.querySelectorAll('[data-action]')].find(el=>el.dataset.action===focusAction&&el.dataset.value===focusValue&&el.getClientRects().length);
+        candidate?.focus({preventScroll:true});
+      }
+      if (!options.keepScroll) window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function navigate(route, push = true) {
+      state.previousRoute = state.route;
+      state.route = safeRoute(route);
+      state.modal=null;
+      state.mobileMenu = false;
+      const params=new URLSearchParams();
+      if(state.route==='atlas-domain')params.set('domain',state.atlasDomain);
+      if(state.route==='specialist-detail')params.set('role',state.specialist);
+      const hash='#'+state.route+(params.size?'?'+params:'');
+      if(push && location.hash!==hash)history.pushState(null,'',hash);
+      render();
+      document.querySelector('#main h1')?.setAttribute('tabindex','-1');
+      document.querySelector('#main h1')?.focus({preventScroll:true});
+    }
+
+    function toast(message) {
+      const el = document.getElementById('toast');
+      el.textContent = message;
+      el.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
+    }
+
+    function openModal(type, payload = {}) {
+      state.modal = { type, ...payload };
+      render({ keepScroll: true });
+    }
+
+    function modalMarkup(modal) {
+      const header=title=>`<div class="modal-head"><div><div class="eyebrow">${modal.type==='attention'?'Your attention':'Sample workspace'}</div><h2 id="dialog-title">${title}</h2></div><button class="btn icon-btn" data-action="close-modal" aria-label="Close dialog">×</button></div>`;
+      let content='';
+      if(modal.type==='attention')content=header('What needs you next')+attentionMarkup();
+      else if(modal.type==='pause')content=header('Save your place and take a break.')+`<p>Save your choices, current screen, and review outcomes in this browser. You can resume from Home. No data is sent to a server.</p><div class="spec-block"><strong>Resume point</strong><p>${routeTitles[state.route]} in ${project.name}</p></div><div class="modal-actions"><button class="btn" data-action="close-modal">Keep working</button><button class="btn btn-primary" data-action="confirm-pause">Save and pause</button></div>`;
+      else if(modal.type==='outcome'){
+        const correction=modal.action==='correction',gap=modal.action==='gap';
+        content=header(correction?'Request a specific correction':gap?'Accept this UX difference?':'Accept the returned work?')+`<p>${correction?'The existing receipt stays in History. Record exactly what should change; no correction is sent to an external builder in this prototype.':gap?'Record an explicit exception for mobile consent placement. This does not accept the entire build.':'You are accepting the sample build, including the visible mobile consent difference. Acceptance does not merge code or deploy.'}</p><div class="field"><label for="outcome-reason">Reason for your decision</label><textarea id="outcome-reason">${correction?'Keep the primary consent action beside the decision context at 390px and return updated mobile proof.':'The consent action remains visible and understandable; accept the placement difference with the linked evidence.'}</textarea><small id="outcome-error" role="alert"></small></div><div class="modal-actions"><button class="btn" data-action="close-modal">Keep review open</button><button class="btn btn-primary" data-action="confirm-outcome" data-value="${modal.action}">${correction?'Record correction request':'Confirm acceptance'}</button></div>`;
+      } else if(modal.type==='evidence')content=header(escapeHtml(modal.title||'Evidence item'))+`<p>Fictional proof linked to the patient-onboarding example. This prototype illustrates the evidence record; it does not contain a live repository or test report.</p><div class="grid grid-2"><div class="spec-block"><strong>Source</strong><p>${escapeHtml(modal.title||'Sample source')}</p></div><div class="spec-block"><strong>Authority</strong><p>Evidence supports a decision; it does not authorize a transition.</p></div></div><button class="btn" data-action="close-modal">Done</button>`;
+      else content=header(modal.title||'Project context')+(modal.type==='detail'?modal.body:`<p>${modal.body||'Fictional project context.'}</p><div class="modal-actions"><button class="btn btn-primary" data-action="close-modal">Done</button></div>`);
+      return `<div class="modal-backdrop ${modal.type==='attention'?'drawer-backdrop':''}" role="dialog" aria-modal="true" aria-labelledby="dialog-title"><div class="modal ${modal.type==='attention'?'drawer':''}">${content}</div></div>`;
+    }
+
+    document.addEventListener('click', event => {
+      const target=event.target.closest('[data-route], [data-action], [data-tab]');
+      if(!target){
+        const card=event.target.closest('[data-card-action]');
+        if(card&&!event.target.closest('button,input,select,textarea,a'))showCardDetail(card);
+        else if(!event.target.closest('#context-help'))closeHelp();
+        return;
+      }
+      if(target.disabled)return;
+      event.preventDefault();
+      if(target.dataset.action==='context-help'){
+        if(helpAnchor===target&&!document.getElementById('context-help').hidden){closeHelp();return;}
+        showHelp(target);return;
+      }
+      closeHelp();
+      if(target.dataset.route)return navigate(target.dataset.route);
+      if(target.dataset.tab){
+        const map={revision:'revisionTab',build:'buildTab',receipt:'receiptTab',atlas:'atlasTab',specialist:'specialistTab',history:'historyFilter',evidence:'evidenceFilter',efficiency:'efficiencyTab','usage-period':'usagePeriod'};
+        if(map[target.dataset.tab])state[map[target.dataset.tab]]=target.dataset.value;
+        render({keepScroll:true});
+        [...document.querySelectorAll('[data-tab]')].find(el=>el.dataset.tab===target.dataset.tab&&el.dataset.value===target.dataset.value)?.focus({preventScroll:true});
+        return;
+      }
+      const action=target.dataset.action,value=target.dataset.value;
+      if(action==='toggle-theme'){state.theme=state.theme==='light'?'dark':'light';document.documentElement.dataset.theme=state.theme;try{localStorage.setItem('sl-theme',state.theme);}catch{}render({keepScroll:true});}
+      else if(action==='toggle-help'){state.helpEnabled=!state.helpEnabled;render({keepScroll:true});toast('Contextual help '+(state.helpEnabled?'on. Hover, focus, or tap an information icon.':'off. Turn it back on here or in Settings.'));}
+      else if(action==='mobile-more'){state.mobileMenu=!state.mobileMenu;render({keepScroll:true});}
+      else if(action==='attention-drawer')openModal('attention');
+      else if(action==='domain-object')openDomainObject(value);
+      else if(action==='save-pause')openModal('pause');
+      else if(action==='close-modal'){state.modal=null;render({keepScroll:true});}
+      else if(action==='confirm-pause'){
+        state.modal=null;state.pauseRoute=state.route;state.paused=true;
+        if(savePrototype()){navigate('home');toast('Saved in this browser. Resume from Home.');}
+        else{state.paused=false;render({keepScroll:true});toast('Browser storage is unavailable. Keep this tab open to preserve your session.');}
+      }
+      else if(action==='resume-prototype'){state.paused=false;navigate(state.pauseRoute||'home');toast('Prototype state restored. No live sources were checked.');}
+      else if(action==='prototype-info')openModal('generic',{title:'Fictional sample workspace',body:'All people, metrics, repositories, models, and connections are invented. The draft journey and returned-build review are separate examples. Nothing is connected, sent, billed, or deployed.'});
+      else if(action==='session-choice'){state.sessionChoice=value;render({keepScroll:true});}
+      else if(action==='wizard-next'){state.wizardStep=Math.min(3,state.wizardStep+1);render();}
+      else if(action==='wizard-back'){state.wizardStep=Math.max(0,state.wizardStep-1);render();}
+      else if(action==='select-campaign'){state.themeChoice=value;render({keepScroll:true});toast('Primary campaign updated in the sample workspace.');}
+      else if(action==='toggle-secondary'){state.secondaryCampaigns=state.secondaryCampaigns.includes(value)?state.secondaryCampaigns.filter(x=>x!==value):[...state.secondaryCampaigns,value];render({keepScroll:true});}
+      else if(action==='open-domain'){state.atlasDomain=target.dataset.domain||'Product';state.atlasTab='map';navigate('atlas-domain');}
+      else if(action==='decision-choice'){if(state.decisionChoice!==value){state.decisionCaptured=false;state.revisionApproved=false;state.assignmentSent=false;}state.decisionChoice=value;render({keepScroll:true});}
+      else if(action==='capture-decision'){if(!state.decisionChoice)return;state.decisionCaptured=true;recordActivity('Recovery decision captured',decisionLabel());render({keepScroll:true});toast('Decision captured in this prototype.');}
+      else if(action==='ask-why')openModal('generic',{title:'Why this choice matters',body:'Email recovery depends on mailbox access. Printed codes work offline but must be kept safe. Care-team assistance needs a trusted verification process. Your choice changes the requirements and proof expected from the builder.'});
+      else if(action==='finish-checkpoint'){state.checkpointState='ready';render({keepScroll:true});toast('Named draft checkpoint verified in the sample.');}
+      else if(action==='request-change'){state.revisionTab='changes';render({keepScroll:true});toast('Review the changes, or return to Product Room to change the recovery decision.');}
+      else if(action==='approve-revision'){
+        if(!state.decisionCaptured){navigate('product-room');toast('Resolve the product decision before approving this draft.');return;}
+        state.revisionApproved=true;recordActivity('Exact revision approved',project.revision+' approved by '+project.owner+'. No code execution authorized.');navigate('approval');
+      }
+      else if(action==='publish-assignment'){
+        if(!state.revisionApproved){navigate('revision');toast('Review and approve the exact revision first.');return;}
+        state.assignmentSent=true;recordActivity('Sample assignment published','Simulated delivery through '+adapterName()+'. No external work was sent.','build');render({keepScroll:true});toast('Assignment sent in the simulation only.');
+      }
+      else if(action==='simulate-return'){
+        if(!state.assignmentSent)return;
+        state.receiptAvailable=true;state.receiptOutcome='review';state.gapOutcome='review';
+        recordActivity('Build Receipt BR-014 returned','The coding-agent simulation returned implementation, behavioral, and conformance proof. AC-017 needs human review.','evidence');
+        navigate('receipt');toast('Returned work added to the prototype. Review the proof before deciding.');
+      }
+      else if(action==='republish-correction'){
+        state.receiptOutcome='review';state.gapOutcome='review';state.receiptAvailable=false;state.assignmentSent=true;
+        recordActivity('Corrected assignment published','AC-017 now requires the primary consent action beside the decision context at 390px. No external work was sent.','build');
+        navigate('build');toast('Corrected assignment sent in the simulation.');
+      }
+      else if(action==='select-adapter'){state.adapter=value;render({keepScroll:true});toast('Delivery adapter selected for the sample.');}
+      else if(action==='open-specialist'){state.specialist=value;state.specialistTab='brief';navigate('specialist-detail');}
+      else if(action==='evidence-detail')openModal('evidence',{title:target.dataset.title});
+      else if(action==='accept-build')openModal('outcome',{action:'accept'});
+      else if(action==='return-build')openModal('outcome',{action:'correction'});
+      else if(action==='accept-gap')openModal('outcome',{action:'gap'});
+      else if(action==='confirm-outcome'){
+        const reason=document.getElementById('outcome-reason').value.trim();
+        if(reason.length<8){document.getElementById('outcome-error').textContent='Add a short reason so the decision can be understood later.';return;}
+        if(value==='correction'){state.receiptOutcome='correction';state.gapOutcome='correction';}
+        else if(value==='gap')state.gapOutcome='accepted';
+        else{state.receiptOutcome='accepted';state.gapOutcome='accepted';}
+        recordActivity(value==='correction'?'Correction requested for BR-014':value==='gap'?'Mobile consent difference accepted':'Build Receipt BR-014 accepted',reason,value==='gap'?'decisions':'build');
+        state.modal=null;render({keepScroll:true});toast('Decision recorded in History. No external action was taken.');
+      }
+      else if(action==='open-connections'){state.efficiencyTab='connections';navigate('efficiency');}
+      else if(action==='usage-detail'){
+        const r=sampleUsage[state.usagePeriod][Number(value)];
+        openModal('generic',{title:r[0]+' · sample usage',body:`${r[1]}. ${number(r[2])} input tokens, including ${number(r[3])} cached input, and ${number(r[4])} output tokens. Illustrative usage charge: ${money(r[5])}. No live account or current vendor pricing is used. Reporting window: ${state.usagePeriod==='week'?'last 7 days':'this month'}.`});
+      }
+      else if(action==='connection-detail')openModal('generic',{title:escapeHtml(value)+' · sample connection',body:value==='External coding agent'?'Builder execution is outside this prototype. Usage has not been reported; cost is unknown, not zero. In a live project, the builder would need to supply usage or authorize a scoped connector.':value==='GitHub'?'Workflow-only example: carries assignments and receipt links. It does not report model tokens or GitHub subscription fees. No repository is actually connected.':'Illustrative connection only. Usage is fictional, no credentials are stored, and no account has been connected. Live connection would require separate authorization.'});
+      else if(action==='budget-detail')openModal('generic',{title:'Budget alerts, not spending authority',body:'Example: alert the project owner at 80% of a $40 monthly AI budget. A notification is not a provider-side hard cap, and it cannot authorize more spending. All values here are fictional.'});
+      else if(action==='export-usage'){
+        const rows=sampleUsage[state.usagePeriod];
+        const csv=['Fictional SpecLoops usage - not a bill','Provider,Model,Input tokens,Cached input subset,Output tokens,Estimated USD',...rows.map(r=>r.join(','))].join('\n');
+        const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const link=document.createElement('a');
+        link.href=url;link.download='specloops-sample-usage-'+state.usagePeriod+'.csv';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Fictional usage CSV downloaded.');
+      }
+      else if(action==='share-briefing')openModal('generic',{title:'Briefing share preview',body:'In a live workspace, this would share a permission-aware briefing with its evidence links. No public link is created by this local prototype.'});
+      else if(action==='save-settings')toast('Sample settings acknowledged. No external configuration changed.');
+      else if(action==='person-detail')openModal('generic',{title:'Authority details',body:'Role defines the lane. Object-level authority defines the action. Sensitive transitions remain explicitly gated.'});
+      else if(action==='invite-person')openModal('generic',{title:'Invite collaborator',body:'A live invitation would bind a project role and authority before sending. No invitation is sent in this sample.'});
+      else if(action==='gap-info')openModal('generic',{title:'Review context',body:'A stale runtime snapshot must be refreshed after an authorized deployment. Microsoft SSO is deferred outside this MVP. Neither is silently treated as verified.'});
+    });
+
+    document.addEventListener('pointerover',event=>{
+      const button=event.target.closest('.help-button');if(button&&event.pointerType!=='touch')showHelp(button);
+    });
+    document.addEventListener('pointerout',event=>{
+      if(event.target.closest('.help-button')&&!event.relatedTarget?.closest('.help-button,#context-help'))closeHelp();
+    });
+    document.addEventListener('focusin',event=>{if(event.target.matches('.help-button'))showHelp(event.target);});
+    document.addEventListener('focusout',event=>{if(event.target.matches('.help-button')&&!event.relatedTarget?.closest('#context-help'))closeHelp();});
+    window.addEventListener('resize',closeHelp);
+    window.addEventListener('scroll',closeHelp,true);
+    document.addEventListener('keydown',event=>{
+      if(event.key==='Escape'){
+        closeHelp();
+        if(state.modal){state.modal=null;render({keepScroll:true});}
+        return;
+      }
+      if(event.key==='Tab'&&state.modal){
+        const nodes=[...document.querySelectorAll('.modal button:not(:disabled),.modal input,.modal textarea,.modal select')].filter(el=>el.getClientRects().length);
+        if(nodes.length&&event.shiftKey&&document.activeElement===nodes[0]){event.preventDefault();nodes.at(-1).focus();}
+        else if(nodes.length&&!event.shiftKey&&document.activeElement===nodes.at(-1)){event.preventDefault();nodes[0].focus();}
+      }
+      if((event.key==='Enter'||event.key===' ')&&event.target.matches('[role="button"]:not(button)')){
+        event.preventDefault();event.target.click();
+      }
+    });
+
+    try{
+      const saved=JSON.parse(localStorage.getItem('sl-feedback-v2')||'null');
+      if(saved)Object.keys(state).forEach(key=>{if(key!=='modal'&&saved[key]!==undefined)state[key]=saved[key];});
+      if(saved?.paused){state.paused=true;state.pauseRoute=saved.pauseRoute;}
+    }catch{}
+    function readHash(){
+      const [route,query='']=location.hash.slice(1).split('?');
+      const params=new URLSearchParams(query);
+      if(routeTitles[route])state.route=route;
+      if(domainModels[params.get('domain')])state.atlasDomain=params.get('domain');
+      if(roles.some(r=>r[0]===params.get('role')))state.specialist=params.get('role');
+      state.modal=null;render();
+    }
+    window.addEventListener('popstate',readHash);
+    window.addEventListener('hashchange',readHash);
+    document.documentElement.dataset.theme=state.theme;
+    readHash();
+  </script>
+</body>
+</html>
