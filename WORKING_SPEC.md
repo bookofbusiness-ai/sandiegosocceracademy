@@ -26,7 +26,7 @@ The enrollment track is the approved primary campaign. The two-track boundary is
 | Intro Soccer Skills & Games-SC | 6-9 | Wednesday, 4:30-5:30 PM | Oct 7-Dec 2, 2026; no class Nov 25 | $85 resident / $106 non-resident | City listing: 12 minimum / 36 maximum |
 | Beginner II Soccer Skills & Games-SC | 10-14 | Wednesday, 5:30-6:30 PM | Oct 7-Dec 2, 2026; no class Nov 25 | $85 resident / $106 non-resident | City listing: 12 minimum / 36 maximum |
 
-Both are shown at Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vista, with registration displayed as September 8 at 8:00 AM through October 30. The user confirmed the year is 2026 and set an internal enrollment floor of 6. The City listing's displayed minimum of 12 remains external source information and must not be silently rewritten.
+Both are shown at Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vista, with registration displayed as September 8 at 8:00 AM through October 30. The user confirmed the year is 2026. The City listing's displayed minimum of 12 remains external source information and must not be silently rewritten. A previously recorded internal threshold of 6 was later rejected.
 
 Final registration remains on the City's public website. The academy website may act as a focused explanatory funnel with `Sign up now` actions that send families to the City system.
 
@@ -40,6 +40,7 @@ Final registration remains on the City's public website. The academy website may
 - Keep audience, creative, schedule, and budget allocation equal so destination is the controlled variable.
 - Measure academy-to-City outbound clicks for Variant A and reconcile City enrollment movement for both variants where source evidence permits.
 - Do not select a winner based on click-through rate alone; prefer attributable enrollment and cost per enrollment where available.
+- Do not impose a fixed registration threshold; evaluate the test by registrations produced and cost per registration within the approved $200 cap.
 
 ## Existing implementation evidence
 
@@ -60,7 +61,6 @@ Final registration remains on the City's public website. The academy website may
 
 ## Unresolved questions
 
-- Whether the success threshold of 6 registrations applies across the campaign or separately to each class.
 - Direct City class links or approval to use the general catalog fallback.
 - Current coach titles and affiliations.
 - Donation destination.
@@ -84,4 +84,4 @@ See `evidence/BUILD_RECEIPT-SDSA-001.md`.
 
 ## Next checkpoint
 
-Continue Q3 in `questions/SDSA-QUEST-002.md`: determine whether the enrollment threshold is 6 total or 6 per class, then complete the audience, tracking, claim, and destination-link boundaries. Do not change website code, create ads, or spend funds until Q3 is complete. Then prepare a named launch revision and bounded Build Assignment.
+Continue Q3 in `questions/SDSA-QUEST-002.md`: complete the audience, tracking, claim, and destination-link boundaries. Do not change website code, create ads, or spend funds until Q3 is complete. Then prepare a named launch revision and bounded Build Assignment.

@@ -6,10 +6,12 @@
 **Authority:** direct human confirmation in the SpecLoops Product Room  
 **Campaign:** `SDSA-CAMPAIGN-002`
 
+**Supersession:** The internal enrollment floor of 6 was rejected by `SDSA-DEC-007`. Other decisions in this record remain current.
+
 ## Decision
 
 - The supplied class listings are for 2026.
-- The internal campaign enrollment floor is 6.
+- The internal campaign enrollment floor was initially set to 6 and is retained here as historical evidence; it is no longer current.
 - Final registration remains on the City of Chula Vista's public website.
 - The academy website may act as an explanatory conversion funnel and hand families off to the City via a prominent `Sign up now` action.
 

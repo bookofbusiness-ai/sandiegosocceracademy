@@ -45,7 +45,7 @@ Increase enrollment for a new class expected to begin in approximately one month
 - **Fee per class:** $85 resident / $106 non-resident.
 - **Registration window displayed:** September 8 at 8:00 AM through October 30.
 - **Capacity per class:** minimum 12, maximum 36.
-- **Human-defined campaign enrollment floor:** 6. This is an internal relaunch threshold and does not rewrite the City listing's displayed minimum of 12.
+- **Campaign outcome:** maximize class registrations within the approved test boundary; no fixed internal enrollment threshold controls success.
 - **Instructor:** San Diego Soccer Academy.
 - **Registration mechanism:** City account/sign-in flow; the official current catalog is `https://secure.rec1.com/CA/chula-vista-ca/catalog`.
 - **Contact shown:** Jason Taylor, `jason@sandiegosocceracademy.org`; facility phone `619-409-1994`.
@@ -93,9 +93,8 @@ Increase enrollment for a new class expected to begin in approximately one month
 
 ## Unresolved
 
-- Whether the success threshold of 6 registrations applies campaign-wide or to each class.
 - Direct City class URLs, if available; otherwise the general catalog remains the verified destination.
-- Whether the City listing's displayed minimum of 12 can be changed or should simply remain external source information while the campaign uses an internal floor of 6.
+- Whether the City listing's displayed minimum of 12 can be changed; until then it remains external source information and is not used as the campaign's success threshold.
 - Whether Wednesday 4:30 PM-6:30 PM remains the current schedule.
 - Current coach titles and affiliations.
 - Donation destination or payment link.

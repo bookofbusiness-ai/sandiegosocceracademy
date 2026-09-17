@@ -42,4 +42,4 @@ The listings show Jason Taylor at `jason@sandiegosocceracademy.org` for question
 - They do not show live enrollment counts.
 - They do not expose a direct class registration URL or activity code.
 - The maximum of 36 is capacity, not an approved campaign target.
-- The screenshot displays `Min Participants 12`; the user's separately defined internal campaign enrollment floor is 6. Both facts are preserved within their respective scopes.
+- The screenshot displays `Min Participants 12`. A previously defined internal campaign threshold of 6 was later rejected and is preserved only in decision history.
