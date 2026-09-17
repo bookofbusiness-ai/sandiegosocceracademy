@@ -36,6 +36,15 @@
 - **Recommendation:** Validate one smallest viable club cohort before designing a full multi-age organization.
 - **Human decision:** Pending; this track must not block the class relaunch.
 
+## Q5: Which people and destinations are current for the full-site rebuild?
+
+- **Status:** `PARTIALLY_ANSWERED`
+- **Known:** The rebuild must include the full website, not only the homepage. The current public site contains four coach profiles: Jason Taylor, Jeff Taylor, Ashley Hernandez-Cavanagh, and Greg Coco. The Replit reference and repository prototype contain three: Jason, Jeff, and Ashley. The Replit experience makes private training prominent and exposes coach emails, but its callback form is generic and does not demonstrate preferred-coach routing.
+- **Human direction:** Preserve two website pathways. Group training routes through the park district and ultimately to the City registration system. Private-training inquiries should be routed to coaches based on the family's selected coach profile.
+- **Missing:** Current coach roster; approved names, titles, credentials, affiliations, biographies, specialties, emails, service areas, and availability; routing destination for each coach; fallback when the preferred coach is unavailable; authoritative volunteering, sponsorship, and donation destinations.
+- **Recommendation:** Confirm the current roster first, then verify each profile and route. Keep a general academy fallback so a family is never stranded if a coach is unavailable or routing fails.
+- **Why it matters:** Publishing an outdated coach or misrouting family information would undermine trust and create a privacy and service failure.
+
 ## Resume rule
 
-Q1-Q3 are answered. Review the named target in `specs/SDSA-LAUNCH-v1.md`. Keep Q4 as a parallel discovery track that does not block the class relaunch. Do not change website code or produce launch ads until the named target is approved and a Build Assignment is issued.
+Q1-Q3 are answered. Resume at Q5 by confirming the current coach roster and then the profile and routing details. Keep Q4 as a parallel discovery track that does not block the class relaunch. Do not change website code or produce launch ads until Q5 is reconciled, the named target is approved, and a Build Assignment is issued.

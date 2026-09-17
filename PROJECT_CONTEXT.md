@@ -19,18 +19,21 @@ Help more San Diego County children access soccer coaching that builds skill, co
 
 ## Desired outcome
 
-Increase enrollment for a new class expected to begin in approximately one month, relaunch the nonprofit with a focused family-conversion experience, and evaluate whether the academy should become an affordable subsidized boys' and girls' club with training inside the club model.
+Increase enrollment for the Fall 2026 classes, relaunch the nonprofit as a complete and trustworthy public website with distinct group-training and private-training pathways, and evaluate whether the academy should become an affordable subsidized boys' and girls' club with training inside the club model.
 
 ## Current reality
 
 - The GitHub repository was empty when work began.
 - The first application commit is `5ae799a`.
 - The site is a dependency-free static HTML, CSS, and JavaScript application.
-- It includes responsive navigation, light and dark themes, program information, private training, coaching staff, mission, contact information, and a callback form.
+- It includes responsive navigation, light and dark themes, program information, private training, three coaching profiles, mission, contact information, and a generic callback form.
 - The callback form preserves the existing public n8n intake workflow and its established field mapping.
 - Local preview mode validates without transmitting personal information.
 - The site is not yet published from this repository and the custom domain has not been changed in this campaign.
 - The first application build happened before the v0.1.9 Product Room flow was run. It is therefore an unaccepted implementation candidate, not an approved product target.
+- The current public website includes broader organizational content than the prototype: four coach profiles, expanded About/Our Story content, volunteering and donation concepts, FAQ content, and contact information.
+- The Replit reference is oriented toward private 1-on-1 coaching and direct coach contact, but its form does not demonstrate selected-coach routing.
+- The requested rebuild has two primary public pathways: park-district group training with City registration, and private training with coach-profile selection and coach-aware inquiry routing.
 - The user reports low sign-ups for the upcoming class.
 - User-supplied City of Chula Vista listings establish two Wednesday class offers at Salt Creek Park Soccer Arena, with dates displayed as October 7-December 2 and no class November 25.
 - The user confirmed that the class listings are for 2026.
@@ -86,6 +89,8 @@ Increase enrollment for a new class expected to begin in approximately one month
 - Use only the approved factual promise: fall soccer classes for ages 6-14; Wednesday skill-building sessions at Salt Creek Park, October 7-December 2; $85 residents / $106 non-residents; registration through the City of Chula Vista.
 - Use privacy-light measurement: no Meta Pixel, advertising cookies, visitor profiles, or personal-data transmission from the academy site; use aggregate Meta statistics, anonymous academy `Sign up now` click counts, and City registration totals.
 - Use the browser-verified filtered City catalog URL that returns both approved soccer classes: `https://secure.rec1.com/CA/chula-vista-ca/catalog/index/70755b78039cd652919a0e4ea69d4d56?filter=c2VhcmNoPVNvY2NlciUyMFNraWxscyUyMCUyNiUyMEdhbWVzLVND`.
+- Treat the redesign as a complete website rebuild, not a homepage-only project. Preserve or improve Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact.
+- Maintain two explicit pathways: group training hands off to the City; private training supports coach selection and routes the inquiry according to that choice.
 
 ## Proposed
 
@@ -99,8 +104,8 @@ Increase enrollment for a new class expected to begin in approximately one month
 
 - Whether the City listing's displayed minimum of 12 can be changed; until then it remains external source information and is not used as the campaign's success threshold.
 - Whether Wednesday 4:30 PM-6:30 PM remains the current schedule.
-- Current coach titles and affiliations.
-- Donation destination or payment link.
+- Current coach roster, profile facts, direct-contact details, private-training routing destination for each coach, and general fallback route.
+- Authoritative volunteering, sponsorship, and donation destinations or payment link.
 - Club launch horizon, initial boys' and girls' age groups, seasonal format, expected roster sizes, coaching model, and facility plan.
 - Family price target, subsidy budget, scholarship policy, and sponsorship assumptions.
 - Final hosting project and production deployment approval.
@@ -115,10 +120,10 @@ Increase enrollment for a new class expected to begin in approximately one month
 ## Current campaign
 
 - **Campaign:** `SDSA-CAMPAIGN-002` Enrollment relaunch and club strategy
-- **Status:** Product Room framing
+- **Status:** Product Room content reconciliation
 - **Primary quest:** `SDSA-QUEST-002` Decide the relaunch path and club boundary
 - **Secondary historical quest:** `SDSA-QUEST-001` prior website candidate review
-- **Buildability blockers:** two-track approval, launch offer facts, success target, and club/public-copy boundary
+- **Buildability blockers:** current coach roster and profiles, coach-specific private-inquiry routing and fallback, support/donation destinations, and approval of the revised full-site target
 
 ## Evidence and provenance
 
@@ -127,5 +132,6 @@ Increase enrollment for a new class expected to begin in approximately one month
 - User-supplied class listings: `evidence/source/chula-vista-class-ages-6-9.png` and `evidence/source/chula-vista-class-ages-10-14.png`.
 - Extracted offer evidence: `evidence/CLASS_OFFER-SDSA-002.md`.
 - City destination evidence: `evidence/CITY_DESTINATION-SDSA-003.md`.
+- Full-site and Replit reconciliation evidence: `evidence/WEBSITE_RECONCILIATION-SDSA-004.md`.
 - Implementation evidence: `evidence/BUILD_RECEIPT-SDSA-001.md`.
 - Source images and generated-image provenance: `README.md`.

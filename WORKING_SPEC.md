@@ -2,13 +2,13 @@
 
 **Quest:** `SDSA-QUEST-002` Decide the relaunch path and club boundary  
 **Stage:** `PRODUCT ROOM`  
-**Persistence:** `COMMITTED_LOCAL`  
+**Persistence:** `COMMITTED_REMOTE`
 **Implementation authority:** `NONE` for additional scope  
 **Human acceptance:** `PENDING`
 
 ## Desired outcome
 
-Create a relaunch that fills the upcoming class while establishing an honest strategic path toward a highly affordable, subsidized boys' and girls' club if that model proves viable.
+Create a full nonprofit website relaunch that fills the upcoming classes, supports coach-selected private-training inquiries, preserves the organization's essential trust and support content, and establishes an honest strategic path toward a highly affordable subsidized boys' and girls' club if that model proves viable.
 
 ## Approved strategy
 
@@ -29,6 +29,16 @@ The enrollment track is the approved primary campaign. The two-track boundary is
 Both are shown at Salt Creek Park Soccer Arena, 2710 Otay Lakes Road, Chula Vista, with registration displayed as September 8 at 8:00 AM through October 30. The user confirmed the year is 2026. The City listing's displayed minimum of 12 remains external source information and must not be silently rewritten. A previously recorded internal threshold of 6 was later rejected.
 
 Final registration remains on the City's public website. The academy website may act as a focused explanatory funnel with `Sign up now` actions that send families to the City system.
+
+## Full-site and service-path model
+
+The rebuild is not limited to the homepage. It must provide distinct, linkable, responsive destinations for Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact.
+
+- **Group training:** explain verified park-district classes and hand families to the City registration system.
+- **Private training:** explain the service, present verified coach profiles, allow the family to select a preferred coach, and route the inquiry to that coach or a documented academy fallback.
+- **Organization and trust:** preserve the nonprofit story, mission, values, methodology, FAQ, volunteering, sponsorship, donation concept, and general contact path without inventing unsupported facts or transaction destinations.
+
+The current public site supplies the broader content inventory. The Replit reference supplies the stronger private-training model. The repository prototype is useful implementation evidence but is not complete enough to be the approved target.
 
 ## Approved acquisition test
 
@@ -69,8 +79,9 @@ The destination returned both approved soccer class results during verification 
 
 - Preserve the reference site's core navigation and contact paths.
 - Lead with children, community, and growth rather than an empty stadium.
-- Present group programs, private coaching, methodology, coaches, mission, and contact in one responsive page.
+- Present group programs, private coaching, methodology, coaches, mission, FAQ, community support, and contact through a complete responsive information architecture.
 - Preserve the existing n8n callback integration and exact payload mapping.
+- Treat the current generic callback as evidence only until preferred-coach selection and routing destinations are confirmed.
 - Keep localhost verification non-transmitting.
 - Use a dependency-free static architecture with portable hosting.
 - Support system-aware light/dark themes and reduced motion.
@@ -84,22 +95,24 @@ The destination returned both approved soccer class results during verification 
 
 ## Unresolved questions
 
-- Direct City class links or approval to use the general catalog fallback.
-- Current coach titles and affiliations.
-- Donation destination.
+- Current coach roster, titles, credentials, affiliations, biographies, specialties, direct-contact details, and availability.
+- Coach-specific inquiry routes and a general fallback route.
+- Authoritative volunteering, sponsorship, and donation destinations.
 - Club launch horizon, team/age-group scope, facilities, coaching, subsidy economics, and sponsorship model.
 - Hosting and production publication approval.
 
 ## Acceptance behavior
 
-- The homepage loads without horizontal overflow at desktop and 390px mobile.
-- Navigation reaches each major section and mobile navigation opens and closes.
+- Every public destination loads without horizontal overflow at desktop and 390px mobile.
+- Persistent navigation reaches Home, Programs, Private Training, Coaches, About, FAQ, Get Involved, and Contact; mobile navigation opens and closes.
 - Images load with reserved dimensions and useful alternative text.
 - The callback form validates required fields and shows loading, success, and error states.
 - Localhost form tests do not contact the production workflow.
 - Dark mode and reduced-motion preferences are honored.
 - SEO metadata, canonical URL, sitemap, robots file, and organization structured data are present.
 - No stale session date is presented as current.
+- Group-registration actions reach the verified City destination and disclose the handoff.
+- Private-training inquiries include a preferred coach, reach the documented coach-specific or fallback route, and preserve honest success and error states.
 
 ## Current evidence
 
@@ -107,4 +120,4 @@ See `evidence/BUILD_RECEIPT-SDSA-001.md`.
 
 ## Next checkpoint
 
-Q3 is complete. Review `specs/SDSA-LAUNCH-v1.md` as the proposed named target. Do not change website code, create ads, or spend funds until the target is approved and a bounded Build Assignment is issued.
+Q3 is complete. Reconcile Q5 by confirming the current coach roster, profile facts, inquiry routes, fallback, and support destinations. Then review `specs/SDSA-LAUNCH-v1.md` as the proposed named target. Do not change website code, create ads, or spend funds until the target is approved and a bounded Build Assignment is issued.

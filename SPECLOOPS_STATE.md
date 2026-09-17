@@ -7,7 +7,7 @@
 **Last verified application HEAD:** `5ae799af74d29d65ea9450539b6526a8f63f06a7`  
 **Freshness:** `FRESH`  
 **Room:** `PRODUCT ROOM`  
-**Stage:** `TARGET SYNTHESIS`
+**Stage:** `TARGET REVISION`
 **Mode:** `GUIDED`  
 **Persistence:** `COMMITTED_REMOTE`
 **Future implementation authority:** `NONE`
@@ -15,19 +15,19 @@
 ## Active campaign
 
 - **Campaign ID/title:** `SDSA-CAMPAIGN-002` Enrollment relaunch and club strategy
-- **Campaign state:** Product Room framing
+- **Campaign state:** Product Room content reconciliation
 - **Approved path:** freeze class offer -> define conversion plan -> approve launch revision -> issue Build Assignment -> execute and verify; explore the club as a separate governed track
-- **Buildability Gate:** `READY_FOR_TARGET_APPROVAL`
-- **Blockers:** human approval of named launch revision `SDSA-LAUNCH-v1`; the proposed club remains a separate non-blocking discovery track
+- **Buildability Gate:** `NEEDS_CONTENT_RECONCILIATION`
+- **Blockers:** current coach roster and profile facts; coach-specific inquiry routes and fallback; support/donation destinations; then human approval of named launch revision `SDSA-LAUNCH-v1`. The proposed club remains a separate non-blocking discovery track.
 
 ## Active quest
 
 - **Quest ID/title:** `SDSA-QUEST-002` Decide the relaunch path and club boundary
 - **Quest state:** Product Room
-- **Required decision areas remaining:** approve the named class-launch revision; club hypothesis remains in the separate discovery track
+- **Required decision areas remaining:** reconcile full-site people, profile, routing, and support content; approve the named full-site launch revision. The club hypothesis remains in the separate discovery track.
 - **Optional refinements:** ad creative, sponsorship packages, club operations, analytics, CRM, online registration
-- **Current Question ID/status:** `Q3 / ANSWERED`
-- **Highest assigned Question ID:** `Q4`
+- **Current Question ID/status:** `Q5 / PARTIALLY_ANSWERED`
+- **Highest assigned Question ID:** `Q5`
 
 ## Build transition and return
 
@@ -43,9 +43,9 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 
 ## Resume cursor
 
-- **Last accepted decision:** approve privacy-light measurement; the public City catalog was independently verified to provide a filtered destination containing both classes
-- **Exact next action:** review and approve or revise `specs/SDSA-LAUNCH-v1.md`
-- **Why it is next:** Q1-Q3 are answered and the target must be approved as one coherent revision before a Build Assignment can authorize implementation
+- **Last accepted decision:** the redesign covers the full website and preserves two pathways: park-district group registration and coach-selected private-training inquiries
+- **Exact next action:** confirm whether Jason Taylor, Jeff Taylor, Ashley Hernandez-Cavanagh, and Greg Coco are the current coach roster
+- **Why it is next:** the public site, Replit reference, and repository prototype disagree about the coach roster and none proves the requested coach-aware routing destinations
 
 ## Current artifacts
 
@@ -64,11 +64,13 @@ No retrospective Build Assignment was fabricated. The v0.1.9 candidate was insta
 - Advertising Claims Decision Record: `decisions/SDSA-DEC-009.md`
 - Measurement Boundary Decision Record: `decisions/SDSA-DEC-010.md`
 - City Destination Decision Record: `decisions/SDSA-DEC-011.md`
+- Full-Site Scope Decision Record: `decisions/SDSA-DEC-012.md`
 - Canon Reconciliation: `CANON_RECONCILIATION.md`
 - Project Blueprint: `PROJECT_BLUEPRINT.md`
 - Build Receipt: `evidence/BUILD_RECEIPT-SDSA-001.md`
 - Class Offer Evidence: `evidence/CLASS_OFFER-SDSA-002.md`
 - City Destination Evidence: `evidence/CITY_DESTINATION-SDSA-003.md`
+- Website Reconciliation Evidence: `evidence/WEBSITE_RECONCILIATION-SDSA-004.md`
 - Proposed named spec: `specs/SDSA-LAUNCH-v1.md`
 - Approved spec: `NONE`
 - Production handoff: `NONE`
